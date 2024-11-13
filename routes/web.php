@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get("/AboutUs", function () {
     return view('website.aboutus');
 });
+Route::get("/Events", function () {
+    return view('website.events');
+});
