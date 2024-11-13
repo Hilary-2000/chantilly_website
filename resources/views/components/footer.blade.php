@@ -22,10 +22,10 @@
                     <div class="single-footer-widget">
                         <h4>Our School</h4>
                         <ul class="footer-widget-list">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contact</a></li>
-                            <li><a href="#">Become a Teacher</a></li>
+                            <li><a href="/AboutUs">About Us</a></li>
+                            <li><a href="/Events">Events</a></li>
+                            <li><a href="/ContactUs">Contact Us</a></li>
+                            <li><a href="/Vacancies">Become one of us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -33,10 +33,9 @@
                     <div class="single-footer-widget">
                         <h4>Links</h4>
                         <ul class="footer-widget-list">
-                            <li><a href="#">Courses</a></li>
-                            <li><a href="#">Events</a></li>
-                            <li><a href="#">Gallery</a></li>
-                            <li><a href="#">FAQs</a></li>
+                            <li><a href="/Events">Events</a></li>
+                            <li><a href="/Gallery">Gallery</a></li>
+                            <li><a href="/Downloads">Downloads</a></li>
                         </ul>
                     </div>
                 </div>
@@ -44,10 +43,9 @@
                     <div class="single-footer-widget">
                         <h4>Support</h4>
                         <ul class="footer-widget-list">
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Forums</a></li>
-                            <li><a href="#">Language Packs</a></li>
-                            <li><a href="#">Release Status</a></li>
+                            <li><a href="/Downloads">Downloads</a></li>
+                            <li><a href="/Vacancies">Vacancies</a></li>
+                            <li><a href="/ContactUs">Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
