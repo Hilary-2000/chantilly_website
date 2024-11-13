@@ -155,6 +155,7 @@ body {
     overflow: hidden;
     position: relative;
     text-align: center;
+    padding-top: 50px;
 }
 .section-title h3 {
     line-height: 20px;
@@ -2682,7 +2683,7 @@ header.header-four, header.header-five {
 /*  20. Class Grid Page
 /*----------------------------------------*/
 .breadcrumb-banner-area {
-    background: url("../img/banner/9.jpg");
+    background: url("/img/class/banner_1.jpg");
 	background-size:cover;
 	background-position:center top;
 	background-repeat:no-repeat;

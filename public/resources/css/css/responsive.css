@@ -280,7 +280,9 @@
         line-height: 52px;
         margin-bottom: 10px;
     }
-    .skill-image, .teacher-image {text-align: center;}
+    .skill-image, .teacher-image {
+        text-align: center;
+    }
     .service-area.service-style-two {
         overflow: hidden;
         padding-bottom: 60px;
