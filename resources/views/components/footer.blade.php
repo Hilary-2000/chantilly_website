@@ -9,16 +9,16 @@
                         <a href="#"><img src="img/logo/chantilly_logo.png" alt=""></a>
                     </div>
                     <div class="footer-info">
-                        <span><i class="fa fa-map-marker"></i>1st Floor New World Tower Miami</span>
-                        <span><i class="fa fa-envelope"></i>admin@power-boosts.com</span>
-                        <span><i class="fa fa-phone"></i>(801) 2345 - 6789</span>
+                        <span><i class="fa fa-map-marker"></i>Banana Raini Rd, off Limuru Road Ruaka, Karuri</span>
+                        <span><i class="fa fa-envelope"></i>info@chantillyschools.ac.ke</span>
+                        <span><i class="fa fa-phone"></i><a href="tel:0714402822" style="color: white;">(254) 714 402 822</a></span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="footer-widget-container section-padding">
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="single-footer-widget">
                         <h4>Our School</h4>
                         <ul class="footer-widget-list">
@@ -29,7 +29,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="single-footer-widget">
                         <h4>Links</h4>
                         <ul class="footer-widget-list">
@@ -39,7 +39,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="single-footer-widget">
                         <h4>Support</h4>
                         <ul class="footer-widget-list">
@@ -49,17 +49,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="subscribe-container">
-                        <p>Subscribe now and receive weekly newsletter with educational materials, new courses, interesting posts, popular books and much more!</p>
-                        <form action="#">
-                            <div class="subscribe-form">
-                                <input type="email" name="email" placeholder="Your email here">
-                                <button type="submit"><i class="fa fa-send"></i></button>
-                            </div>    
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="row">
@@ -67,15 +56,12 @@
                 <div class="footer-container">
                     <div class="row">
                         <div class="col-lg-6">
-                            <span>&copy; {{date("Y")}} <a href="#">Power-Boosts</a>. All rights reserved</span>
+                            <span>&copy; {{date("Y")}} <a href="#">Chantilly Schools</a>. All rights reserved</span>
                         </div>
                         <div class="col-lg-6">
                             <div class="social-links">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-google-plus"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a target="_blank" href="https://www.facebook.com/chantillyschools/"><i class="fa fa-facebook"></i></a>
+                                <a target="_blank" href="https://www.instagram.com/chantillyschools.kaizen/"><i class="fa fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -155,14 +141,14 @@
 <!-- Google Map js
 ============================================ --> 		
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuU_0_uLMnFM-2oWod_fzC0atPZj7dHlU"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkvn-HZGqisswqVvIfekN-iMsj0swcTiM"></script>
 <script src="https://www.google.com/jsapi"></script>
 <script>
     function initialize() {
         var mapOptions = {
         zoom: 15,
         scrollwheel: false,
-        center: new google.maps.LatLng(23.763494, 90.432226)
+        center: new google.maps.LatLng(-1.1804595416946806, 36.7626112423361)
         };
 
         var map = new google.maps.Map(document.getElementById('googleMap'),
@@ -175,10 +161,17 @@
         icon: 'img/map-marker.png',
         map: map
         });
-        
     }
         
     google.maps.event.addDomListener(window, 'load', initialize);
+
+    // get the page value
+    var page = @json($page ?? '');
+    if(page == "homepage"){
+        setInterval(() => {
+            document.getElementsByClassName("nivo-nextNav")[0].click();
+        }, 10000);
+    }
 </script>	
 
 <!-- main JS

@@ -8,12 +8,13 @@ use Illuminate\View\Component;
 
 class footer extends Component
 {
+    public $page;
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($page)
     {
-        //
+        $this->page = $page ?? "";
     }
 
     /**

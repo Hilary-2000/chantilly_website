@@ -7,11 +7,8 @@
                     <div class="header-top-info">
                         <span>School hours: 8.00-18.00 Mon-Sat</span>
                         <div class="social-links">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-google-plus"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a target="_blank" href="https://www.facebook.com/chantillyschools/"><i class="fa fa-facebook"></i></a>
+                            <a target="_blank" href="https://www.instagram.com/chantillyschools.kaizen/"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>

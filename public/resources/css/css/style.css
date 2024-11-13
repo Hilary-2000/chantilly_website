@@ -576,8 +576,8 @@ nav#dropdown {
     text-align: center;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
-    backdrop-filter: blur(5px) brightness(0.7); /* Adjust blur and brightness */
+    /* background: rgba(0, 0, 0, 0.3); Semi-transparent background */
+    backdrop-filter: blur(1px) brightness(0.7); /* Adjust blur and brightness */
     border-radius: 10px; /* Optional: adds rounded corners */
 }
 .banner-content h1,
@@ -647,6 +647,7 @@ nav#dropdown {
 /* .nivo-main-image,  */
 .slides img{
     max-height: 70vh;
+    filter: brightness(0.6);
 }
 
 /*----------------------------------------*/
@@ -1112,7 +1113,7 @@ span.arrow > a:after {
     font-size: 15px;
 }
 .fun-factor-area {
-    background: url("../img/banner/3.jpg");
+    background: url("/img/class/banner.jpg");
 	background-size:cover;
 	background-position:center center;
 	background-repeat:no-repeat;
