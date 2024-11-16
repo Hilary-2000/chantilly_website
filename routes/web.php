@@ -31,3 +31,6 @@ Route::get("/Vacancies", function () {
 Route::get("/Vacancies/Apply", function () {
     return view('website.apply_vacancy');
 });
+Route::get("/Downloads", function () {
+    return view('website.downloads');
+});
