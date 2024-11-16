@@ -4,7 +4,7 @@
     <x-header title="Chantilly Schools Homepage"/>
 <body>
     {{-- mobile menu and desktop menu --}}
-    <x-menu/>
+    <x-menu active="home"/>
 
     {{-- BODY STARTS HERE --}}
     <!--Slider Area Start-->

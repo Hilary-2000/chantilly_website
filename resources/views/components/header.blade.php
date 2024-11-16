@@ -7,7 +7,7 @@
     
     <!-- favicon
     ============================================ -->		
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/img/logo/favicon.png">
     
     <!-- Google Fonts
     ============================================ -->		

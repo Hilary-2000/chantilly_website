@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-12">
                         <div class="logo">
-                            <a href="/"><img src="img/logo/chantilly_logo.png" alt="TECHEDU"></a>
+                            <a href="/"><img src="/img/logo/chantilly_logo.png" alt="TECHEDU"></a>
                         </div>
                     </div>
                     <div class="col-lg-9 d-none d-lg-block">
@@ -55,13 +55,13 @@
                             <div class="mainmenu">
                                 <nav>
                                     <ul id="nav">
-                                        <li><a href="/">Home</a></li>
-                                        <li><a href="/AboutUs">About us</a></li>
-                                        <li><a href="/Events">Events</a></li>
-                                        <li><a href="/Gallery">Gallery</a></li>
-                                        <li><a href="/Vacancies">Vacancies</a></li>
-                                        <li><a href="/Downloads">Downloads</a></li>
-                                        <li><a href="/ContactUs">Contact Us</a></li>
+                                        <li class="{{$active == "home" ? "active" : ""}}"><a href="/">Home</a></li>
+                                        <li class="{{$active == "aboutus" ? "active" : ""}}"><a href="/AboutUs">About us</a></li>
+                                        <li class="{{$active == "events" ? "active" : ""}}"><a href="/Events">Events</a></li>
+                                        <li class="{{$active == "gallery" ? "active" : ""}}"><a href="/Gallery">Gallery</a></li>
+                                        <li class="{{$active == "vacancy" ? "active" : ""}}"><a href="/Vacancies">Vacancies</a></li>
+                                        <li class="{{$active == "downloads" ? "active" : ""}}"><a href="/Downloads">Downloads</a></li>
+                                        <li class="{{$active == "contactus" ? "active" : ""}}"><a href="/ContactUs">Contact Us</a></li>
                                     </ul>
                                 </nav>
                             </div>

@@ -5,7 +5,7 @@
 
 <body>
     {{-- mobile menu and desktop menu --}}
-    <x-menu />
+    <x-menu active="aboutus"/>
 
     {{-- BODY STARTS HERE --}}
     <!--Breadcrumb Banner Area Start-->

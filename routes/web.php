@@ -25,3 +25,9 @@ Route::get("/Events", function () {
 Route::get("/Gallery", function () {
     return view('website.gallery');
 });
+Route::get("/Vacancies", function () {
+    return view('website.vacancies');
+});
+Route::get("/Vacancies/Apply", function () {
+    return view('website.apply_vacancy');
+});

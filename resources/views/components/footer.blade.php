@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="footer-info-container text-center section-padding">
                     <div class="footer-logo">
-                        <a href="#"><img src="img/logo/chantilly_logo.png" alt=""></a>
+                        <a href="#"><img src="/img/logo/chantilly_logo.png" alt=""></a>
                     </div>
                     <div class="footer-info">
                         <span><i class="fa fa-map-marker"></i>Banana Raini Rd, off Limuru Road Ruaka, Karuri</span>
@@ -158,7 +158,7 @@
         var marker = new google.maps.Marker({
         position: map.getCenter(),
         animation:google.maps.Animation.BOUNCE,
-        icon: 'img/map-marker.png',
+        icon: '/img/map-marker.png',
         map: map
         });
     }

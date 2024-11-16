@@ -384,7 +384,8 @@ ul.register li:hover .register-form, ul.login li:hover .login-form {
     display: block;
     font-size: 13px;
     font-weight: 600;
-    line-height: 99px;
+    padding-top: 30px;
+    line-height: 50px;
     text-decoration: none;
     text-transform: uppercase;
     -webkit-transition: all 0.3s ease 0s;
@@ -398,6 +399,12 @@ ul.register li:hover .register-form, ul.login li:hover .login-form {
 .mainmenu ul#nav > li:hover > a, .mainmenu ul#nav li ul.sub-menu > li a:hover {color: #01B0F1}
 .mobile-menu-area {
 	overflow: hidden;
+}
+
+.mainmenu .active{
+    border-bottom: 3px solid #01B0F1;
+    padding-bottom: 2px;
+    color: #01B0F1;
 }
 /*-------------------------*/
 /*  Dropdown Menu
@@ -2851,7 +2858,10 @@ header.header-four, header.header-five {
     margin-bottom: 10px;
 }
 .class-list-text h3 a {color: #333}
-.class-list-item:hover .class-list-text h3 a {color: #01B0F1;}
+
+.class-list-item:hover
+.class-list-text h3 a {color: #01B0F1;}
+
 .class-information > span {
     color: #333333;
     display: block;
@@ -2863,7 +2873,7 @@ header.header-four, header.header-five {
     margin-top: 12px;
     padding: 0 19px;
 }
-.class-list-item:hover .class-list-text .button-default{
+.class-list-text .button-default:hover{
     background: #666666 none repeat scroll 0 0;
     color: #ffffff;
 }
@@ -3173,7 +3183,7 @@ header.header-four, header.header-five {
 }
 .single-widget-container .teacher-info-widget:last-child {margin-bottom: 0;}
 .widget-infos h4 a:hover {color: #01B0F1;}
-.single-widget-container input, .contact-form-container input {
+.single-widget-container input, .contact-form-container input, .contact-form-container select {
     border: 1px solid #e8e8e8;
     border-radius: 4px;
     height: 37px;
@@ -3419,7 +3429,7 @@ span.schedule-time {
     padding-top: 30px;
 }
 .contact-form .single-title {margin-bottom: 26px;}
-.contact-form-container input, .contact-form-container textarea {color: #909090}
+.contact-form-container input, .contact-form-container textarea, .contact-form-container select {color: #909090}
 .contact-form-container textarea {height: 199px}
 .contact-form-container .button-default {
     font-size: 13px;
