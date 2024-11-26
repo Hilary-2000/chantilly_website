@@ -239,7 +239,9 @@ body {
 }
 .social-links > a:hover, .header-login-register li:hover a {color: #666666}
 .social-links a:last-child {margin-right: 0}
-.header-login-register {float: right}
+.header-login-register {
+    float: right;
+}
 .header-login-register a {
     color: #ffffff;
     display: block;
@@ -273,7 +275,7 @@ ul.register .register-form, .login-form {
     z-index: -99;
 }
 ul.register li:hover .register-form, ul.login li:hover .login-form {
-    margin-top: 0;
+    margin-top: 40px;
     -webkit-transform: rotateX(0deg);
     transform: rotateX(0deg);
     visibility: visible;
@@ -474,6 +476,18 @@ nav#dropdown {
     width: 290px;
     z-index: 9999;
 }
+/* Change text color on hover */
+.hover-text:hover {
+    color: #007bff; /* Bootstrap primary color */
+    transition: color 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Apply a zoom effect to the image */
+.hover-img:hover {
+    transform: scale(1.1); /* Zoom effect */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow */
+}
 .search.open {height: 50px}
 .search-form {
     background-color: #ffffff;
@@ -585,7 +599,7 @@ nav#dropdown {
     top: 0;
     width: 100%;
     /* background: rgba(0, 0, 0, 0.3); Semi-transparent background */
-    backdrop-filter: blur(1px) brightness(0.7); /* Adjust blur and brightness */
+    /* backdrop-filter: blur(1px) brightness(0.7); Adjust blur and brightness */
     border-radius: 10px; /* Optional: adds rounded corners */
 }
 .banner-content h1,
@@ -655,7 +669,7 @@ nav#dropdown {
 /* .nivo-main-image,  */
 .slides img{
     max-height: 70vh;
-    filter: brightness(0.6);
+    filter: brightness(0.5);
 }
 
 /*----------------------------------------*/
@@ -1150,7 +1164,7 @@ span.arrow > a:after {
     margin-bottom: 11px;
     outline: medium none;
 }
-.teacher-image-carousel {
+.teacher-image-carousel, .user-profile{
     border: 1px solid #f0f0f0;
     border-radius: 50%;
     cursor: pointer;
@@ -1163,7 +1177,18 @@ span.arrow > a:after {
     width: 90px;
     overflow: hidden;
 }
-.teacher-image-carousel:after {
+.user-profile{
+    border: 1px solid #f0f0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    height: 60px;
+    outline: 0 none;
+    position: relative;
+    width: 60px;
+    overflow: hidden;
+}
+.teacher-image-carousel:after, .user-profile:after {
     position: absolute;
     left: 0;
     top: 0;

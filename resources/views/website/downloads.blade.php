@@ -36,7 +36,7 @@
                     <div class="section-title-wrapper">
                         <div class="section-title">
                             <h3>DOWNLOADS</h3>
-                            <p>Find out where, when and how we started and became.</p>
+                            <p>Get all the documents you need.</p>
                         </div>
                     </div>
                 </div>

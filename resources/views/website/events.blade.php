@@ -44,7 +44,15 @@
                     <div class="class-list-item">
                         <div class="row">
                             <div class="col-xl-5 col-lg-6 col-md-6">
-                                <a href="#"><img src="img/gallery/9.jpg" alt=""></a>
+                                {{-- <a href="#"><img src="img/gallery/9.jpg" alt=""></a> --}}
+                                <iframe
+                                    style="width: 25vw; height: 25vh;"
+                                    src="https://www.youtube.com/embed/dzVC4nUXgd8"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
                             </div>
                             <div class="col-xl-7 col-lg-6 col-md-6">
                                 <div class="class-list-text">
@@ -78,7 +86,7 @@
                     <div class="class-list-item">
                         <div class="row">
                             <div class="col-xl-5 col-lg-6 col-md-6">
-                                <a href="#"><img src="img/gallery/9.jpg" alt=""></a>
+                                <a href="#"><img src="img/gallery/6.jpg" alt=""></a>
                             </div>
                             <div class="col-xl-7 col-lg-6 col-md-6">
                                 <div class="class-list-text">
@@ -99,7 +107,7 @@
                     <div class="class-list-item">
                         <div class="row">
                             <div class="col-xl-5 col-lg-6 col-md-6">
-                                <a href="#"><img src="img/gallery/8.jpg" alt=""></a>
+                                <a href="#"><img src="img/gallery/11.jpg" alt=""></a>
                             </div>
                             <div class="col-xl-7 col-lg-6 col-md-6">
                                 <div class="class-list-text">
@@ -116,7 +124,7 @@
                     <div class="class-list-item">
                         <div class="row">
                             <div class="col-xl-5 col-lg-6 col-md-6">
-                                <a href="#"><img src="img/gallery/11.jpg" alt=""></a>
+                                <a href="#"><img src="img/gallery/1.jpg" alt=""></a>
                             </div>
                             <div class="col-xl-7 col-lg-6 col-md-6">
                                 <div class="class-list-text">
@@ -141,51 +149,6 @@
                                 <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
                             </ul>
                             <span>Page:</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-4">
-                    <div class="single-widget-item">
-                        <div class="single-title">
-                            <h3>Recent Events</h3>
-                        </div>
-                        <div class="single-widget-container">
-                            <div class="recent-post-item">
-                                <div class="recent-post-image">
-                                    <a href="#"><img src="img/gallery/15.jpg" alt=""></a>
-                                </div>
-                                <div class="recent-post-text">
-                                    <h4><a href="#">Alphabet Match Class</a></h4>
-                                    <span><i class="fa fa-calendar"></i>March 25, 2016</span>
-                                </div>
-                            </div>
-                            <div class="recent-post-item">
-                                <div class="recent-post-image">
-                                    <a href="#"><img src="img/gallery/16.jpg" alt=""></a>
-                                </div>
-                                <div class="recent-post-text">
-                                    <h4><a href="#">Cool Math Class</a></h4>
-                                    <span><i class="fa fa-calendar"></i>April 23, 2016</span>
-                                </div>
-                            </div>
-                            <div class="recent-post-item">
-                                <div class="recent-post-image">
-                                    <a href="#"><img src="img/gallery/17.jpg" alt=""></a>
-                                </div>
-                                <div class="recent-post-text">
-                                    <h4><a href="#">Color Match Class</a></h4>
-                                    <span><i class="fa fa-calendar"></i>July 12, 2016</span>
-                                </div>
-                            </div>
-                            <div class="recent-post-item">
-                                <div class="recent-post-image">
-                                    <a href="#"><img src="img/gallery/18.jpg" alt=""></a>
-                                </div>
-                                <div class="recent-post-text">
-                                    <h4><a href="#">Letter Match Class</a></h4>
-                                    <span><i class="fa fa-calendar"></i>June 29, 2016</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

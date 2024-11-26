@@ -1,9 +1,12 @@
 <!--Header Area Start-->
+@php
+use Illuminate\Support\Facades\Cookie;
+@endphp
 <header>
     <div class="header-top">
-        <div class="container">
+        <div class="container p-1">
             <div class="row">
-                <div class="col-lg-7 col-md-8">
+                <div class="col-lg-4 col-md-4">
                     <div class="header-top-info">
                         <span>School hours: 8.00-18.00 Mon-Sat</span>
                         <div class="social-links">
@@ -12,26 +15,81 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-4">
+                <div class="col-lg-3 col-md-3 p-2">
+                    @if (session('error'))
+                        <div class="alert alert-danger py-1 text-center my-1">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                </div>
+                <div class="col-lg-5 col-md-5">
                     <div class="header-login-register">
-                        <ul class="login">
+                        @php
+                            $user_data = session()->has('user_data') ? session("user_data", null) : null;
+                            $greeting = date("H") < 12 ? "Goodmorning" : (date("H") < 16 ? "Hello" : "Goodevening");
+                        @endphp
+                        <ul class="login w-100">
                             <li>
-                                <a href="#"><i class="fa fa-key"></i>Login</a>
+                                <div class="row align-items-center">
+                                    <div class="{{Cookie::has("authentication_code") ? "col-sm-6" : "col-sm-12"}}">
+                                        <a href="#"><i class="{{Cookie::has("authentication_code") ? "fa fa-user" : "fa fa-key"}}"></i>{{ Cookie::has("authentication_code") ? ($user_data != null ? ucwords(strtolower(explode(" ", $user_data->fullname)[0])) : "Invalid User") : "Login"}}</a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="user-profile m-1 {{Cookie::has("authentication_code") ? "" : "d-none"}}">
+                                            <img src="{{$user_data != null ? $user_data->display_picture ?? "/img/no-image.png" : "/img/no-image.png"}}" alt="teacher 3">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="login-form">
-                                    <h4>Login</h4>
-                                    <form action="#" method="post">
-                                        <div class="form-box">
-                                            <i class="fa fa-user"></i>
-                                            <input type="text" name="user-name" placeholder="Username">
+                                    <div class="{{Cookie::has("authentication_code") ? "d-none" : "" }}">
+                                        <h4>Login</h4>
+                                        <form action="/Login" method="post">
+                                            @csrf
+                                            <div class="form-box">
+                                                <i class="fa fa-user"></i>
+                                                <input type="text" name="user-name" placeholder="Username">
+                                            </div>
+                                            <div class="form-box">
+                                                <i class="fa fa-lock"></i>
+                                                <input type="password" name="user-password" placeholder="Password">
+                                            </div>
+                                            <div class="button-box">
+                                                <button type="submit" class="login-btn">Login</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="{{ Cookie::has("authentication_code") ? "" : "d-none" }}">
+                                        <h6>{{$greeting}}, {{$user_data != null ? ucwords(strtolower(explode(" ", $user_data->fullname)[0])) : "Invalid User"}}</h6>
+                                        <div class="">
+                                            <div class="row p-1 align-items-center hover-text">
+                                                <div class="col-sm-4">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <a href="#" class="text-secondary text-left">My Profile</a>
+                                                </div>
+                                            </div>
+                                            <div class="row p-1 align-items-center hover-text">
+                                                <div class="col-md-4">
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <a href="#" class="text-secondary text-left">Manage Admin</a>
+                                                </div>
+                                            </div>
+                                            <div class="row p-1 align-items-center hover-text">
+                                                <div class="col-md-4">
+                                                    <i class="fa fa-globe"></i>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <a href="/Homepage/Edit" class="text-secondary text-left">Manage Website</a>
+                                                </div>
+                                            </div>
+                                            <div class="border border-secondary border-rounded-sm">
+                                                <a href="/Logout" class="btn btn-sm btn-outline-danger w-100">Log-Out</a>
+                                            </div>
                                         </div>
-                                        <div class="form-box">
-                                            <i class="fa fa-lock"></i>
-                                            <input type="password" name="user-password" placeholder="Password">
-                                        </div>
-                                        <div class="button-box">
-                                            <button type="submit" class="login-btn">Login</button>
-                                        </div>
-                                    </form>
+                                    </div>
                                 </div>
                             </li>
                         </ul>

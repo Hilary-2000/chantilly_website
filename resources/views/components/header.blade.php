@@ -20,4 +20,30 @@
     <!-- Modernizr JS
     ============================================ -->		
     <script src="/resources/js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+        /* Define the pulse effect */
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 10px 2px rgba(2, 176, 241, 0.7);
+            }
+            50% {
+                box-shadow: 0 0 20px 10px rgba(2, 176, 241, 0.9);
+            }
+            100% {
+                box-shadow: 0 0 10px 2px rgba(2, 176, 241, 0.7);
+            }
+        }
+
+        /* Styling for sections */
+        .highlight {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Styling for the highlighted section */
+        .highlight {
+            animation: pulse 1s infinite;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+    </style>
 </head>
+
