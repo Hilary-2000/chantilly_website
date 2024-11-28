@@ -17,6 +17,36 @@ function isJson(jsonString) {
 
 window.onload = function () {
     setCarouselListener();
+    setCurrillumListerner();
+}
+
+function setCurrillumListerner() {
+    let curriculum_data = document.getElementsByClassName("curriculum_data");
+    for (let index = 0; index < curriculum_data.length; index++) {
+        const element = curriculum_data[index];
+        element.addEventListener("click", function () {
+            let elem_data = cObj("edit_curriculum_data_"+element.id.substring(17)).value;
+            if (isJson(elem_data)) {
+                var element_data = JSON.parse(elem_data);
+                cObj("curriculum_title").value = element_data['curriculum_title'];
+                cObj("curriculum_age_range").value = element_data['curriculum_age_range'];
+                cObj("curriculum_classes").value = element_data['curriculum_classes'];
+                cObj("curriculum_description").value = element_data['curriculum_description'];
+                cObj("download_curricullum_image").href = element_data['curriculum_image'];
+                cObj("curricullum_image_thumbnail").src = element_data['curriculum_image'];
+                cObj("curriculum_id").value = element_data['curriculum_id'];
+            }
+        });
+    }
+
+    var delete_curriculum = document.getElementsByClassName("delete_curriculum");
+    for (let index = 0; index < delete_curriculum.length; index++) {
+        const element = delete_curriculum[index];
+        element.addEventListener("click", function () {
+            var url = "/Homepage/deleteCurricullum/"+element.id.substring(18);
+            cObj("confirmDeleteCurricullum").href = url;
+        });
+    }
 }
 
 // JavaScript function to redirect to a section of the page by ID

@@ -82,6 +82,7 @@
     28. About Page
     29. Contact Page
     30. Scrollup
+    31. Modal Override
 -----------------------------------------------------------------------------------*/
 
 /*----------------------------------------*/
@@ -357,7 +358,7 @@ ul.register li:hover .register-form, ul.login li:hover .login-form {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 999999;
+    z-index: 1000;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s
 }
@@ -3491,7 +3492,10 @@ span.schedule-time {
 }
 
 
-
-
-
-
+/* Modal Override */
+.modal {
+    /* z-index: 2000 !important; Assign a higher z-index */
+}
+.modal-backdrop {
+    /* z-index: 1990 !important; Ensure backdrop is below modal */
+}

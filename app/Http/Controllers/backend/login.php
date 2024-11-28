@@ -27,6 +27,10 @@ class login extends Controller
                 Cookie::queue(Cookie::make("logged_in","true",7200));
                 Cookie::queue(Cookie::make("authentication_code","$authentication_code",7200));
                 
+                // update the users authentication code
+                DB::update("UPDATE users SET authentication_code = ? WHERE user_id = ?", [$authentication_code, $user_data[0]->user_id]);
+
+
                 // user_data
                 session([
                     'user_data' => $user_data[0]
@@ -43,6 +47,8 @@ class login extends Controller
     }
 
     function logout(){
+        $authentication_code = Cookie::get("authentication_code");
+        DB::update("UPDATE users SET authentication_code = NULL WHERE authentication_code = ?", [$authentication_code]);
         // destroy all cookies stored
         Cookie::queue(Cookie::forget("logged_in"));
         Cookie::queue(Cookie::forget("authentication_code"));

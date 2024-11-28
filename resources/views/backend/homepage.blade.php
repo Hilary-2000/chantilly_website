@@ -47,7 +47,7 @@
                     <p class="text-success {{count($homepage_carrousels) >=5 ? "" : "d-none"}}">Upto Five carrousels allowed!</p>
                 </div>
                 
-                <!-- Modal Structure -->
+                <!-- Modal Structure for carrousels-->
                 <div class="modal fade" id="contactFormModal" tabindex="-1" aria-labelledby="contactFormModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -82,7 +82,7 @@
                     </div>
                 </div>
 
-                <!-- Delete Confirmation Modal -->
+                <!-- Delete Confirmation Modal for carrousels-->
                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -183,7 +183,7 @@
     <!--End of slider Area-->
 
     <!--Class Area Start-->
-    <div class="class-area section-padding">
+    <div class="class-area section-padding" id="edit_curricullum">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -196,89 +196,198 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="single-widget-item res-mrg-top-xs">
-                        <div class="single-title">
-                            <h3 class="text-center">Select curricullum to edit</h3>
+                <div class="col-md-4 mb-4">
+                    <button class="btn btn-secondary btn-sm"  data-bs-toggle="modal" data-bs-target="#addCurricullumFormID"><i class="fa fa-plus"></i> Add Curricullum</button>
+
+                    {{-- MODAL STRUCTURE FOR THE CURRICULUMS --}}
+                    <div class="modal fade" id="addCurricullumFormID" tabindex="-1" aria-labelledby="addCurricullumForm" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="addCurricullumForm">Add Curricullum</h6>
+                                    <button type="button" class="btn btn-sm btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <div class="contact-form-container">
+                                        <form id="contact-form" action="/Homepage/saveCurricullum" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="curriculum_title" class="form-control-label">Curriculum Level</label>
+                                                <input type="text" name="curriculum_title" placeholder="Level Name e.g, Pre-Primary *" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="curriculum_age_range" class="form-control-label">Age range</label>
+                                                <input type="text" name="curriculum_age_range" placeholder="Age range e.g, 2 - 6 Yrs *" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="curriculum_classes" class="form-control-label">Number of classes</label>
+                                                <input type="number" name="curriculum_classes" placeholder='Number of classes e.g: "3" - (for grade 4 - 6) *' required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="curriculum_image" class="form-control-label">Curricullum Image</label>
+                                                <input type="file" name="curriculum_image" placeholder="Curricullum Image *" accept=".jpg, .jpeg, .png, .gif" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="curriculum_description" class="form-control-label">Curricullum Description</label>
+                                                <textarea class="yourmessage" name="curriculum_description" placeholder="Your curricullum description!" required></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-success w-100"><i class="fa fa-save"></i> Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Modal Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="contact-form">
-                            <div class="w-100 container p-3 bg-success border-top border-dark border-2 my-2"></div>
-                            <div class="contact-form-container">
-                                <form id="contact-form" action="#" method="post">
-                                    <input type="text" name="name" placeholder="Level Name e.g, Pre-Primary *">
-                                    <input type="text" name="name" placeholder="Age range e.g, 2 - 6 Yrs *">
-                                    <input type="text" name="name" placeholder="Level Name e.g, Pre-Primary *">
-                                    <input type="file" name="name" placeholder="Carrousel Title *" accept=".jpg, .jpeg, .png, .gif">
-                                    <textarea name="message" class="yourmessage" placeholder="Your Carrousel Description"></textarea>
-                                    <button type="submit" class="button-default button-yellow submit w-100"><i
-                                            class="fa fa-save"></i>Save</button>
-                                </form>
-                                <p class="form-messege"></p>
+                    </div>
+
+                    {{-- MODAL STRUCTURE FOR THE CURRICULUMS --}}
+                    <div class="modal fade" id="editCurricullumFormID" tabindex="-1" aria-labelledby="editCurricullumForm" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="editCurricullumForm">Edit Curricullum</h6>
+                                    <button type="button" class="btn btn-sm btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <div class="contact-form-container">
+                                        <form id="contact-form" action="/Homepage/updateCurricullum" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="curriculum_title" class="form-control-label">Curricullum Title</label>
+                                                <input type="hidden" name="curriculum_id" id="curriculum_id">
+                                                <input type="text" id="curriculum_title" name="curriculum_title" placeholder="Level Name e.g, Pre-Primary *" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="curriculum_age_range" class="form-control-label">Curricullum Age Range</label>
+                                                <input type="text" id="curriculum_age_range" name="curriculum_age_range" placeholder="Age range e.g, 2 - 6 Yrs *" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="curriculum_classes" class="form-control-label">Number of classes</label>
+                                                <input type="number" id="curriculum_classes" name="curriculum_classes" placeholder='Number of classes e.g: "3" - (for grade 4 - 6) *' required>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <div class="col-md-12">
+                                                    <a href="path/to/your-file.pdf" id="download_curricullum_image" download>
+                                                        <i class="fa fa-download text-success"> Download Image</i>
+                                                    </a>
+                                                    <div style="width: 100px; height: 100px;" >
+                                                        <img src="" id="curricullum_image_thumbnail" alt="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 w-100">
+                                                    <input class="w-100" type="file" id="curriculum_image" name="curriculum_image" placeholder="Carrousel Title *" accept=".jpg, .jpeg, .png, .gif" required>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="curriculum_classes" class="form-control-label">Curricullum Description</label>
+                                                <textarea class="yourmessage" id="curriculum_description" name="curriculum_description" placeholder="Your curricullum description!" required></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-success w-100"><i class="fa fa-save"></i> Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Modal Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delete Confirmation Modal for carrousels-->
+                    <div class="modal fade" id="deleteCurriculumModalID" tabindex="-1" aria-labelledby="deleteCurriculumModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteCurriculumModal">Confirm Deletion</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this? This action cannot be undone.
+                                </div>
+                                <div class="modal-footer">
+                                    <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="#" class="btn btn-danger" id="confirmDeleteCurricullum"><i class="fa fa-trash"></i> Delete</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-8 border border-primary rounded py-2">
-                    <div class="class-carousel carousel-style-one owl-carousel">
-                        <div class="single-class">
-                            <div class="single-class-image">
-                                <a href="/ContactUs">
-                                    <img src="/img/class/1.jpg" alt="">
-                                    <span class="class-date">Edit <span>Now</span></span>
-                                </a>
-                            </div>
-                            <div class="single-class-text">
-                                <div class="class-des">
-                                    <h4><a href="#">Pre-Primary</a></h4>
-                                    <p>Early childhood education focusing on foundational skills and holistic development.</p>
+                <div class="col-md-8 mb-4">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success py-1 text-center my-1">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-danger py-1 text-center my-1">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                </div>
+                <div class="col-md-12 border border-primary rounded py-2">
+                    @if (count($homepage_curriculum) > 0)
+                        <div class="class-carousel carousel-style-one owl-carousel">
+                            @foreach ($homepage_curriculum as $key => $item)
+                                <div class="single-class">
+                                    <div class="p-2 my-2">
+                                        <button class="btn btn-sm btn-danger delete_curriculum" data-bs-toggle="modal" data-bs-target="#deleteCurriculumModalID" id="delete_curriculum_{{$item->curriculum_id}}"><i class="fa fa-trash"></i></button>
+                                        <a href="/Homepage/displayCurricullum/{{$item->curriculum_id}}" class="btn btn-sm {{ $item->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa fa-eye"></i></a>
+                                    </div>
+                                    <div class="single-class-image">
+                                        <input type="hidden" value="{{json_encode($item)}}" id="edit_curriculum_data_{{$key}}" >
+                                        <a href="#edit_curricullum" data-bs-toggle="modal" data-bs-target="#editCurricullumFormID">
+                                            <img src="{{$item->curriculum_image}}" alt="">
+                                            <span class="class-date curriculum_data" id="edit_curricullum_{{$key}}">Edit <span>Now</span></span>
+                                        </a>
+                                    </div>
+                                    <div class="single-class-text">
+                                        <div class="class-des">
+                                            <h4><a href="#">{{$item->curriculum_title}}</a></h4>
+                                            <p>{{$item->curriculum_description}}</p>
+                                        </div>
+                                        <div class="class-schedule">
+                                            <span>AGE: {{$item->curriculum_age_range}} Yrs</span>
+                                            <span>CLASSES : {{$item->curriculum_classes}}</span>
+                                            <span class="arrow"><i class="fa fa-angle-right"></i></span>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="class-schedule">
-                                    <span>AGE: 2 - 6 Yrs</span>
-                                    <span>CLASSES : 3</span>
-                                    <span class="arrow"><a href="#"><i class="fa fa-angle-right"></i></a></span>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="class-list-item">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="class-list-text">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3><a class="text-secondary" href="#">No Curricullums present!</a></h3>
+                                            </div>
+                                        </div>
+                                        <p>No Curricullums present at the moment.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="single-class">
-                            <div class="single-class-image">
-                                <a href="/ContactUs">
-                                    <img src="/img/class/2.jpg" alt="">
-                                    <span class="class-date">Edit <span>Now</span></span>
-                                </a>
-                            </div>
-                            <div class="single-class-text">
-                                <div class="class-des">
-                                    <h4><a href="#">Primary</a></h4>
-                                    <p>Building core knowledge, critical thinking, and practical skills.</p>
-                                </div>
-                                <div class="class-schedule">
-                                    <span>AGE: 5 - 15 Yrs</span>
-                                    <span>CLASSES : 6</span>
-                                    <span class="arrow"><a href="#"><i class="fa fa-angle-right"></i></a></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-class">
-                            <div class="single-class-image">
-                                <a href="/ContactUs">
-                                    <img src="/img/class/3.jpg" alt="">
-                                    <span class="class-date">Edit <span>Now</span></span>
-                                </a>
-                            </div>
-                            <div class="single-class-text">
-                                <div class="class-des">
-                                    <h4><a href="#">Juniour Secondary</a></h4>
-                                    <p>Preparing students for advanced studies with an emphasis on competency and
-                                        specialization.</p>
-                                </div>
-                                <div class="class-schedule">
-                                    <span>AGE: 12 - 18 Yrs</span>
-                                    <span>CLASSES : 3</span>
-                                    <span class="arrow"><a href="#"><i class="fa fa-angle-right"></i></a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -286,7 +395,7 @@
     <!--End of Class Area-->
 
     <!--Fun Factor Area Start-->
-    <div class="fun-factor-area">
+    <div class="fun-factor-area" id="fun-factor-area">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-8">
@@ -296,8 +405,8 @@
                                 <div class="fun-factor-icon">
                                     <i class="fa fa-users"></i>
                                 </div>
-                                <h2><span class="counter">25</span></h2>
-                                <span>Teacher</span>
+                                <h2><span class="counter">{{$homepage_stats['teachers']}}</span></h2>
+                                <span>Teachers</span>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-6 col-6">
@@ -305,7 +414,7 @@
                                 <div class="fun-factor-icon">
                                     <i class="fa fa-bank"></i>
                                 </div>
-                                <h2><span class="counter">21</span></h2>
+                                <h2><span class="counter">{{$homepage_stats['classes']}}</span></h2>
                                 <span>Classes</span>
                             </div>
                         </div>
@@ -314,7 +423,7 @@
                                 <div class="fun-factor-icon">
                                     <i class="fa fa-user"></i>
                                 </div>
-                                <h2><span class="counter">450</span></h2>
+                                <h2><span class="counter">{{$homepage_stats['students']}}</span></h2>
                                 <span>Students</span>
                             </div>
                         </div>
@@ -328,12 +437,17 @@
                         <div class="contact-form">
                             <div class="w-100 container p-3 bg-success border-top border-dark border-2 my-2"></div>
                             <div class="contact-form-container">
-                                <form id="contact-form" action="#" method="post">
-                                    <input type="number" name="name" placeholder="Teachers *">
-                                    <input type="number" name="teachers" placeholder="Classes *">
-                                    <input type="number" name="students" placeholder="Students *">
-                                    <button type="submit" class="button-default button-yellow submit w-100"><i
-                                            class="fa fa-save"></i>Save</button>
+                                <form id="contact-form" action="/Homepage/updateStats/" method="post">
+                                    @csrf
+                                    <label for="teachers" class="form-control-label">Teachers Counts *</label>
+                                    <input type="number" name="teachers" value="{{$homepage_stats['teachers']}}" placeholder="Teachers *">
+
+                                    <label for="classes" class="form-control-label">Classes Count *</label>
+                                    <input type="number" name="classes" value="{{$homepage_stats['classes']}}" placeholder="Classes *">
+
+                                    <label for="students" class="form-control-label">Students Counts *</label>
+                                    <input type="number" name="students" value="{{$homepage_stats['students']}}" placeholder="Students *">
+                                    <button type="submit" class="button-default button-yellow submit w-100"><i class="fa fa-save"></i>Save</button>
                                 </form>
                                 <p class="form-messege"></p>
                             </div>
