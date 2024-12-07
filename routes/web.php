@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\aboutus;
 use App\Http\Controllers\backend\homepage;
 use App\Http\Controllers\backend\login;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,11 @@ Route::post("/Homepage/updateCurricullum", [homepage::class, "updateCurricullum"
 Route::get("/Homepage/deleteCurricullum/{curriculum_id}", [homepage::class, "deleteCurricullum"])->name("deleteCurricullum")->middleware("authenticate");
 Route::get("/Homepage/displayCurricullum/{curriculum_id}", [homepage::class, "displayCurricullum"])->name("displayCurricullum")->middleware("authenticate");
 Route::post("/Homepage/updateStats/", [homepage::class, "updateStats"])->name("updateStats")->middleware("authenticate");
+
+Route::get("/AboutUs/Edit", [aboutus::class, "editAboutUs"])->name("editAboutUs")->middleware("authenticate");
+Route::post("/AboutUs/Edit/manage", [aboutus::class, "manageAboutsUs"])->name("manageAboutsUs")->middleware("authenticate");
+Route::post("/AboutUs/Edit/uploadImage", [aboutus::class, "upload_image"])->name("upload_image")->middleware("authenticate");
+Route::post("/AboutUs/Edit/addAward", [aboutus::class, "add_award"])->name("add_award")->middleware("authenticate");
+Route::post("/AboutUs/Edit/editAward", [aboutus::class, "edit_award"])->name("edit_award")->middleware("authenticate");
+Route::get("/AboutUs/Edit/deleteAward/{award_id}", [aboutus::class, "delete_award"])->name("delete_award")->middleware("authenticate");
+Route::get("/AboutUs/Edit/changeDisplay/{award_id}", [aboutus::class, "change_display"])->name("change_display")->middleware("authenticate");

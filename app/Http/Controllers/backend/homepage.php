@@ -321,6 +321,6 @@ class homepage extends Controller
         }
 
         // 
-        return redirect("/Homepage/Edit#fun-factor-area")->with('success', 'Curriculum display status successfully!');
+        return redirect("/Homepage/Edit#fun-factor-area")->with('success', 'Homepage statistics updated successfully!');
     }
 }
