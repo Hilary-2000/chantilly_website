@@ -107,7 +107,7 @@ use Illuminate\Support\Facades\Cookie;
                                     <ul id="nav">
                                         <li class="{{$active == "edit_home" ? "active" : ""}}"><a href="/Homepage/Edit">Edit - Homepage</a></li>
                                         <li class="{{$active == "edit_aboutus" ? "active" : ""}}"><a href="/AboutUs/Edit">Edit - About us</a></li>
-                                        <li class="{{$active == "edit_events" ? "active" : ""}}"><a href="/Events">Edit - Events</a></li>
+                                        <li class="{{$active == "edit_events" ? "active" : ""}}"><a href="/Events/Edit">Edit - Events</a></li>
                                         <li class="{{$active == "edit_gallery" ? "active" : ""}}"><a href="/Gallery">Edit - Gallery</a></li>
                                         <li class="{{$active == "edit_vacancy" ? "active" : ""}}"><a href="/Vacancies">Edit - Vacancies</a></li>
                                         <li class="{{$active == "edit_downloads" ? "active" : ""}}"><a href="/Downloads">Edit - Downloads</a></li>

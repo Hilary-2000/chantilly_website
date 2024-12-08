@@ -62,13 +62,16 @@
                                     <form id="contact-form" action="/Homepage/saveCarousel" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-3">
-                                            <input type="text" name="caroussel_title" class="form-control" placeholder="Carrousel title *" required>
+                                            <label for="caroussel_title">Carrousel Title</label>
+                                            <input type="text" name="caroussel_title"  placeholder="Carrousel title *" required>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="file" name="caroussel_img" class="form-control" accept=".jpg, .jpeg, .png, .gif" required>
+                                            <label for="caroussel_title">Carrousel Image</label>
+                                            <input type="file" name="caroussel_img"  accept=".jpg, .jpeg, .png, .gif" required>
                                         </div>
                                         <div class="mb-3">
-                                            <textarea name="caroussel_description" class="form-control" placeholder="Your Carrousel Description" required></textarea>
+                                            <label for="caroussel_title">Carrousel Description</label>
+                                            <textarea name="caroussel_description"  placeholder="Your Carrousel Description" required></textarea>
                                         </div>
                                         <button type="submit" class="btn btn-success w-100"><i class="fa fa-save"></i> Save</button>
                                     </form>

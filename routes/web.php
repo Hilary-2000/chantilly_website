@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\aboutus;
+use App\Http\Controllers\backend\events;
 use App\Http\Controllers\backend\homepage;
 use App\Http\Controllers\backend\login;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,10 @@ Route::post("/AboutUs/Edit/addAward", [aboutus::class, "add_award"])->name("add_
 Route::post("/AboutUs/Edit/editAward", [aboutus::class, "edit_award"])->name("edit_award")->middleware("authenticate");
 Route::get("/AboutUs/Edit/deleteAward/{award_id}", [aboutus::class, "delete_award"])->name("delete_award")->middleware("authenticate");
 Route::get("/AboutUs/Edit/changeDisplay/{award_id}", [aboutus::class, "change_display"])->name("change_display")->middleware("authenticate");
+
+// events
+Route::get("/Events/Edit", [events::class, "editEvents"])->name("editEvents")->middleware("authenticate");
+Route::post("/Events/Edit/add", [events::class, "addEvents"])->name("addEvents")->middleware("authenticate");
+Route::post("/Events/Edit/update", [events::class, "updateEvent"])->name("updateEvent")->middleware("authenticate");
+Route::get("/Events/Edit/Delete/{event_id}", [events::class, "deleteEvent"])->name("deleteEvent")->middleware("authenticate");
+Route::get("/Events/Edit/Display/{event_id}", [events::class, "changeDisplay"])->name("changeDisplay")->middleware("authenticate");
