@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\backend\aboutus;
 use App\Http\Controllers\backend\events;
+use App\Http\Controllers\backend\gallery;
 use App\Http\Controllers\backend\homepage;
 use App\Http\Controllers\backend\login;
 use Illuminate\Support\Facades\Route;
@@ -53,3 +54,13 @@ Route::post("/Events/Edit/add", [events::class, "addEvents"])->name("addEvents")
 Route::post("/Events/Edit/update", [events::class, "updateEvent"])->name("updateEvent")->middleware("authenticate");
 Route::get("/Events/Edit/Delete/{event_id}", [events::class, "deleteEvent"])->name("deleteEvent")->middleware("authenticate");
 Route::get("/Events/Edit/Display/{event_id}", [events::class, "changeDisplay"])->name("changeDisplay")->middleware("authenticate");
+
+// gallery
+Route::get("/Gallery/Edit", [gallery::class, "editGallery"])->name("editGallery")->middleware("authenticate");
+Route::post("/Gallery/Edit/addGroupName", [gallery::class, "addGroupName"])->name("addGroupName")->middleware("authenticate");
+Route::post("/Gallery/Edit/updateGroupName", [gallery::class, "updateGroupName"])->name("updateGroupName")->middleware("authenticate");
+Route::get("/Gallery/Edit/deleteGroupName/{group_id}", [gallery::class, "deleteGroupName"])->name("deleteGroupName")->middleware("authenticate");
+Route::post("/Gallery/Edit/addPhoto", [gallery::class, "savePhoto"])->name("savePhoto")->middleware("authenticate");
+Route::post("/Gallery/Edit/updatePhoto", [gallery::class, "updatePhoto"])->name("updatePhoto")->middleware("authenticate");
+Route::get("/Gallery/Edit/deletePhoto/{gallery_photo}", [gallery::class, "deletePhoto"])->name("deletePhoto")->middleware("authenticate");
+Route::get("/Gallery/Edit/changeDisplay/{gallery_photo}", [gallery::class, "changeDisplay"])->name("changeDisplay")->middleware("authenticate");
