@@ -190,7 +190,7 @@
                                             <a class="btn btn-sm {{$item->image_status == "1" ? "btn-primary" : "btn-warning"}}  mt-2" href="/Gallery/Edit/changeDisplay/{{$item->img_id}}"><i class="fa {{$item->image_status == "1" ? "fa-eye" : "fa-eye-slash"}}"></i></a>
                                             <a class="gallery-icon venobox" href="{{$item->image_path}}"><i class="fa fa-image"></i></a>
                                             <span class="gallery-text">{{$item->group_name}}</span>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
                             @endforeach
