@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\events;
 use App\Http\Controllers\backend\gallery;
 use App\Http\Controllers\backend\homepage;
 use App\Http\Controllers\backend\login;
+use App\Http\Controllers\backend\Vacancies;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,3 +65,10 @@ Route::post("/Gallery/Edit/addPhoto", [gallery::class, "savePhoto"])->name("save
 Route::post("/Gallery/Edit/updatePhoto", [gallery::class, "updatePhoto"])->name("updatePhoto")->middleware("authenticate");
 Route::get("/Gallery/Edit/deletePhoto/{gallery_photo}", [gallery::class, "deletePhoto"])->name("deletePhoto")->middleware("authenticate");
 Route::get("/Gallery/Edit/changeDisplay/{gallery_photo}", [gallery::class, "changeDisplay"])->name("changeDisplay")->middleware("authenticate");
+
+Route::get("/Vacancies/Edit/", [Vacancies::class, "editVacancies"])->name("editVacancies")->middleware("authenticate");
+Route::post("/Vacancies/Edit/addVacancy", [Vacancies::class, "addVacancy"])->name("addVacancy")->middleware("authenticate");
+Route::post("/Vacancies/Edit/updateVacancy", [Vacancies::class, "updateVacancy"])->name("updateVacancy")->middleware("authenticate");
+Route::post("/Vacancies/Edit/deleteVacancy/{vacancy_id}", [Vacancies::class, "deleteVacancy"])->name("deleteVacancy")->middleware("authenticate");
+Route::get("/Vacancies/Edit/changeStatus/{vacancy_id}", [Vacancies::class, "changeStatus"])->name("changeStatus")->middleware("authenticate");
+Route::get("/Vacancies/View/{vacancy_id}/Applications", [Vacancies::class, "view_applications"])->name("view_applications")->middleware("authenticate");
