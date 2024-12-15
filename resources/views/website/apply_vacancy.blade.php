@@ -17,7 +17,7 @@
             <div class="single-title text-center">
                 <h3>Apply for : "{{$vacancy_data[0]->vacancy_title}}"</h3>
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="alert alert-info">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -31,7 +31,7 @@
                     </div>
                 @endif
                 @if (session('error'))
-                    <div class="alert alert-danger py-1 text-center my-1">
+                    <div class="alert alert-info py-1 text-center my-1">
                         {{ session('error') }}
                     </div>
                 @endif

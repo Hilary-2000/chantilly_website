@@ -5,7 +5,7 @@
 
 <body>
     {{-- mobile menu and desktop menu --}}
-    <x-edit-menu active="edit_vacancy" />
+    <x-menu active="vacancy" />
 
     {{-- BODY STARTS HERE --}}
 

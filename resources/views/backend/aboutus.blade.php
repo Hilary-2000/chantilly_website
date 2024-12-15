@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-md-12">
                     @if ($errors->any())
-                        <div class="alert alert-danger">
+                        <div class="alert alert-info">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -39,7 +39,7 @@
                         </div>
                     @endif
                     @if (session('error'))
-                        <div class="alert alert-danger py-1 text-center my-1">
+                        <div class="alert alert-info py-1 text-center my-1">
                             {{ session('error') }}
                         </div>
                     @endif
@@ -171,7 +171,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a href="#" class="btn btn-sm btn-danger" id="confirmDeleteCurricullum"><i class="fa fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-sm btn-info" id="confirmDeleteCurricullum"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <button class="btn btn-sm btn-outline-danger" id="delete_award_btn" data-bs-toggle="modal" data-bs-target="#deleteCurriculumModalID"><i class="fa fa-trash"></i> Delete</button>
+                                            <button class="btn btn-sm btn-outline-info" id="delete_award_btn" data-bs-toggle="modal" data-bs-target="#deleteCurriculumModalID"><i class="fa fa-trash"></i> Delete</button>
                                         </div>
                                         <div class="col-md-4">
                                             <a href="#" id="about_us_visibility" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> visible</a>

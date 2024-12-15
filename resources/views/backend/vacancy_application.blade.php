@@ -50,13 +50,13 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a class="btn btn-sm btn-danger" id="confirm_delete_applicant"><i class="fa fa-trash"></i> Delete</a>
+                                    <a class="btn btn-sm btn-info" id="confirm_delete_applicant"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     @if ($errors->any())
-                        <div class="alert alert-danger">
+                        <div class="alert alert-info">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -70,7 +70,7 @@
                         </div>
                     @endif
                     @if (session('error'))
-                        <div class="alert alert-danger py-1 text-center my-1">
+                        <div class="alert alert-info py-1 text-center my-1">
                             {{ session('error') }}
                         </div>
                     @endif
@@ -100,7 +100,7 @@
                                         <td>{{$item->phone}}</td>
                                         <td>
                                             <a href="/Vacancies/View/{{$item->vacancy_id}}/Applications/{{$item->application_id}}" class="btn btn-sm btn-outline-primary"><i class="fa fa-eye"></i></a>
-                                            <a class="btn btn-sm btn-outline-danger delete_applicant" id="delete_applicant_{{$item->application_id}}" data-bs-toggle="modal" data-bs-target="#deleteVacancyWindow" href="#!"><i class="fa fa-trash"></i></a>
+                                            <a class="btn btn-sm btn-outline-info delete_applicant" id="delete_applicant_{{$item->application_id}}" data-bs-toggle="modal" data-bs-target="#deleteVacancyWindow" href="#!"><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

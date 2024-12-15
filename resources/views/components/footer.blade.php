@@ -59,13 +59,12 @@
                             <span>&copy; {{date("Y")}} <a href="#">Chantilly Schools</a>. All rights reserved</span>
                         </div>
                         <div class="col-lg-4">
+                        </div>
+                        <div class="col-lg-4">
                             <div class="social-links">
                                 <a target="_blank" href="https://www.facebook.com/chantillyschools/"><i class="fa fa-facebook"></i></a>
                                 <a target="_blank" href="https://www.instagram.com/chantillyschools.kaizen/"><i class="fa fa-instagram"></i></a>
                             </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <span>&copy; {{date("Y")}} Proudly designed by <a target="_blank" href="https://hillary.ladybirdsmis.com/">Hillary</a> on Behalf of ShuleMaster.</span>
                         </div>
                     </div>
                 </div>

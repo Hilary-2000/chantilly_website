@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Cookie;
             <div class="row">
                 <div class="col-lg-4 col-md-4">
                     <div class="header-top-info">
-                        <span>School hours: 8.00-18.00 Mon-Sat</span>
-                        <div class="social-links">
+                        <div class="social-links mt-4">
                             <a target="_blank" href="https://www.facebook.com/chantillyschools/"><i class="fa fa-facebook"></i></a>
                             <a target="_blank" href="https://www.instagram.com/chantillyschools.kaizen/"><i class="fa fa-instagram"></i></a>
                         </div>
@@ -17,7 +16,7 @@ use Illuminate\Support\Facades\Cookie;
                 </div>
                 <div class="col-lg-3 col-md-3 p-2">
                     @if (session('error'))
-                        <div class="alert alert-danger py-1 text-center my-1">
+                        <div class="alert alert-info py-1 text-center my-1">
                             {{ session('error') }}
                         </div>
                     @endif
@@ -86,7 +85,7 @@ use Illuminate\Support\Facades\Cookie;
                                                 </div>
                                             </div>
                                             <div class="border border-secondary border-rounded-sm">
-                                                <a href="/Logout" class="btn btn-sm btn-outline-danger w-100">Log-Out</a>
+                                                <a href="/Logout" class="btn btn-sm btn-outline-info w-100">Log-Out</a>
                                             </div>
                                         </div>
                                     </div>

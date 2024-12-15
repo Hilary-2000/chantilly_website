@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-md-12 my-2">
                     @if ($errors->any())
-                        <div class="alert alert-danger">
+                        <div class="alert alert-info">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -51,7 +51,7 @@
                         </div>
                     @endif
                     @if (session('error'))
-                        <div class="alert alert-danger py-1 text-center my-1">
+                        <div class="alert alert-info py-1 text-center my-1">
                             {{ session('error') }}
                         </div>
                     @endif
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a href="#" class="btn btn-sm btn-danger" id="confirm_delete_vacancy"><i class="fa fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-sm btn-info" id="confirm_delete_vacancy"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -200,7 +200,7 @@
                                                 {!!$item->nature_scope!!}
                                             </p>
                                             <button class="btn btn-sm btn-outline-primary rounded edit_vacancies" id="edit_vacancies_{{$item->vacancy_id}}" data-bs-toggle="modal" data-bs-target="#editVacancies"><i class="fa fa-pencil"></i> Edit</button>
-                                            <button class="btn btn-sm btn-outline-danger rounded delete_vacancies" id="delete_vacancies_{{$item->vacancy_id}}" data-bs-toggle="modal" data-bs-target="#deleteVacancyWindow"><i class="fa fa-trash"></i> Delete</button>
+                                            <button class="btn btn-sm btn-outline-info rounded delete_vacancies" id="delete_vacancies_{{$item->vacancy_id}}" data-bs-toggle="modal" data-bs-target="#deleteVacancyWindow"><i class="fa fa-trash"></i> Delete</button>
                                             <a href="/Vacancies/Edit/changeStatus/{{$item->vacancy_id}}" class="btn btn-sm {{$item->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa {{$item->display == "1" ? "fa-eye" : "fa-eye-slash"}}"></i> {{$item->display == "1" ? "visible" : "hidden"}}</a>
                                             <a href="/Vacancies/View/{{$item->vacancy_id}}/Applications" class="btn btn-sm btn-secondary"><i class="fa fa-paper-plane-o"></i> View Applications</a>
                                         </div>

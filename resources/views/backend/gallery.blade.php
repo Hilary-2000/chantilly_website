@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-md-12">
                 @if ($errors->any())
-                    <div class="alert alert-danger">
+                    <div class="alert alert-info">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
@@ -50,7 +50,7 @@
                     </div>
                 @endif
                 @if (session('error'))
-                    <div class="alert alert-danger py-1 text-center my-1">
+                    <div class="alert alert-info py-1 text-center my-1">
                         {{ session('error') }}
                     </div>
                 @endif
@@ -158,7 +158,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <a type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                            <a href="#" class="btn btn-sm btn-danger" id="confirm_delete_gallery_photo"><i class="fa fa-trash"></i> Delete</a>
+                                            <a href="#" class="btn btn-sm btn-info" id="confirm_delete_gallery_photo"><i class="fa fa-trash"></i> Delete</a>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                         <div class="gallery-hover-effect">
                                             <input type="hidden" value="{{json_encode($item)}}" id="photo_details_{{$item->img_id}}">
                                             <button class="btn btn-sm btn-outline-primary mt-2 edit_gallery_photo" id="edit_gallery_photo_{{$item->img_id}}" data-bs-toggle="modal" data-bs-target="#editGalleryPhotoWin"><i class="fa fa-pencil"></i></button>
-                                            <button class="btn btn-sm btn-outline-danger mt-2 delete_gallery_photo" id="delete_gallery_photo_{{$item->img_id}}" data-bs-toggle="modal" data-bs-target="#deleteGalleryPhotoWin"><i class="fa fa-trash"></i></button>
+                                            <button class="btn btn-sm btn-outline-info mt-2 delete_gallery_photo" id="delete_gallery_photo_{{$item->img_id}}" data-bs-toggle="modal" data-bs-target="#deleteGalleryPhotoWin"><i class="fa fa-trash"></i></button>
                                             <a class="btn btn-sm {{$item->image_status == "1" ? "btn-primary" : "btn-warning"}}  mt-2" href="/Gallery/Edit/changeDisplay/{{$item->img_id}}"><i class="fa {{$item->image_status == "1" ? "fa-eye" : "fa-eye-slash"}}"></i></a>
                                             <a class="gallery-icon venobox" href="{{$item->image_path}}"><i class="fa fa-image"></i></a>
                                             <span class="gallery-text">{{$item->group_name}}</span>
@@ -279,7 +279,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a href="#" class="btn btn-sm btn-danger" id="confirm_delete_group"><i class="fa fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-sm btn-info" id="confirm_delete_group"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>
                         </div>

@@ -38,7 +38,7 @@
                 <div class="col-md-12">
                     <button class="btn btn-sm btn-primary"  data-bs-toggle="modal" data-bs-target="#addNewEvent"><i class="fa fa-plus"></i> Add New Event</button>
                     @if ($errors->any())
-                        <div class="alert alert-danger">
+                        <div class="alert alert-info">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -52,7 +52,7 @@
                         </div>
                     @endif
                     @if (session('error'))
-                        <div class="alert alert-danger py-1 text-center my-1">
+                        <div class="alert alert-info py-1 text-center my-1">
                             {{ session('error') }}
                         </div>
                     @endif
@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a href="#" class="btn btn-sm btn-danger" id="confirmEventDelete"><i class="fa fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-sm btn-info" id="confirmEventDelete"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -242,7 +242,7 @@
                                                 {{$event->event_description}}
                                             </p>
                                             <button class="btn btn-sm btn-outline-primary event" id="event_id_{{$event->event_id}}" data-bs-toggle="modal" data-bs-target="#editEvent"><i class="fa fa-pencil"></i> Edit</button>
-                                            <button class="btn btn-sm btn-outline-danger delete_event" id="del_event_id_{{$event->event_id}}" data-bs-toggle="modal" data-bs-target="#deleteEventModal"><i class="fa fa-trash"></i> Delete</button>
+                                            <button class="btn btn-sm btn-outline-info delete_event" id="del_event_id_{{$event->event_id}}" data-bs-toggle="modal" data-bs-target="#deleteEventModal"><i class="fa fa-trash"></i> Delete</button>
                                             <a href="/Events/Edit/Display/{{$event->event_id}}" class="btn btn-sm {{$event->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa {{$event->display == "1" ? "fa-eye" : "fa-eye-slash"}}"></i> {{$event->display == "1" ? "visible" : "hidden"}}</a>
                                         </div>
                                     </div>
@@ -304,7 +304,7 @@
                                                 {{$event->event_description}}
                                             </p>
                                             <button class="btn btn-sm btn-outline-primary event" id="event_id_{{$event->event_id}}" data-bs-toggle="modal" data-bs-target="#editEvent"><i class="fa fa-pencil"></i> Edit</button>
-                                            <button class="btn btn-sm btn-outline-danger delete_event" id="del_event_id_{{$event->event_id}}" data-bs-toggle="modal" data-bs-target="#deleteEventModal"><i class="fa fa-trash"></i> Delete</button>
+                                            <button class="btn btn-sm btn-outline-info delete_event" id="del_event_id_{{$event->event_id}}" data-bs-toggle="modal" data-bs-target="#deleteEventModal"><i class="fa fa-trash"></i> Delete</button>
                                             <a href="/Events/Edit/Display/{{$event->event_id}}" class="btn btn-sm {{$event->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa {{$event->display == "1" ? "fa-eye" : "fa-eye-slash"}}"></i> {{$event->display == "1" ? "visible" : "hidden"}}</a>
                                         </div>
                                     </div>
@@ -366,7 +366,7 @@
                                                 {{$event->event_description}}
                                             </p>
                                             <button class="btn btn-sm btn-outline-primary event" id="event_id_{{$event->event_id}}" data-bs-toggle="modal" data-bs-target="#editEvent"><i class="fa fa-pencil"></i> Edit</button>
-                                            <button class="btn btn-sm btn-outline-danger delete_event" id="del_event_id_{{$event->event_id}}" data-bs-toggle="modal" data-bs-target="#deleteEventModal"><i class="fa fa-trash"></i> Delete</button>
+                                            <button class="btn btn-sm btn-outline-info delete_event" id="del_event_id_{{$event->event_id}}" data-bs-toggle="modal" data-bs-target="#deleteEventModal"><i class="fa fa-trash"></i> Delete</button>
                                             <a href="/Events/Edit/Display/{{$event->event_id}}" class="btn btn-sm {{$event->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa {{$event->display == "1" ? "fa-eye" : "fa-eye-slash"}}"></i> {{$event->display == "1" ? "visible" : "hidden"}}</a>
                                         </div>
                                     </div>

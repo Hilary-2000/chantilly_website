@@ -23,7 +23,7 @@
             <div class="row my-2 border-bottom border-secondary py-2">
                 <div class="col-md-9">
                     @if ($errors->any())
-                        <div class="alert alert-danger">
+                        <div class="alert alert-info">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -37,7 +37,7 @@
                         </div>
                     @endif
                     @if (session('error'))
-                        <div class="alert alert-danger py-1 text-center my-1">
+                        <div class="alert alert-info py-1 text-center my-1">
                             {{ session('error') }}
                         </div>
                     @endif
@@ -98,7 +98,7 @@
                             </div>
                             <div class="modal-footer">
                                 <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                <a href="#" class="btn btn-danger" id="confirmDeleteCorrousel"><i class="fa fa-trash"></i> Delete</a>
+                                <a href="#" class="btn btn-info" id="confirmDeleteCorrousel"><i class="fa fa-trash"></i> Delete</a>
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                                                 <input type="hidden" id="carrousel_{{$key}}" value="{{json_encode($homepage_carrousel)}}">
                                                 <div class="col-md-3">
                                                     <button class="btn btn-sm btn-success edit_carrousel" type="button" id="edit_carrousel_{{$key}}" title="Edit Caroussel!"><i class="fa fa-pencil"></i></button>
-                                                    <button class="btn btn-sm btn-danger delete_carrousel" id="delete_carrousel_{{$key}}" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-placement="top" title="Delete Carrousel!"><i class="fa fa-trash"></i></button>
+                                                    <button class="btn btn-sm btn-info delete_carrousel" id="delete_carrousel_{{$key}}" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-placement="top" title="Delete Carrousel!"><i class="fa fa-trash"></i></button>
                                                     <a href="/Homepage/displayCarousel/{{$homepage_carrousel->carrousel_id}}" class="btn btn-sm {{$homepage_carrousel->display == "1" ? "btn-primary" : "btn-warning"}}" data-bs-placement="top" title="Change display status!"><i class="fa {{$homepage_carrousel->display == "1" ? "fa-eye" : "fa-eye-slash"}}"></i></a>
                                                 </div>
                                             </div>
@@ -317,7 +317,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <a href="#" class="btn btn-danger" id="confirmDeleteCurricullum"><i class="fa fa-trash"></i> Delete</a>
+                                    <a href="#" class="btn btn-info" id="confirmDeleteCurricullum"><i class="fa fa-trash"></i> Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -325,7 +325,7 @@
                 </div>
                 <div class="col-md-8 mb-4">
                     @if ($errors->any())
-                        <div class="alert alert-danger">
+                        <div class="alert alert-info">
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
@@ -339,7 +339,7 @@
                         </div>
                     @endif
                     @if (session('error'))
-                        <div class="alert alert-danger py-1 text-center my-1">
+                        <div class="alert alert-info py-1 text-center my-1">
                             {{ session('error') }}
                         </div>
                     @endif
@@ -350,7 +350,7 @@
                             @foreach ($homepage_curriculum as $key => $item)
                                 <div class="single-class">
                                     <div class="p-2 my-2">
-                                        <button class="btn btn-sm btn-danger delete_curriculum" data-bs-toggle="modal" data-bs-target="#deleteCurriculumModalID" id="delete_curriculum_{{$item->curriculum_id}}"><i class="fa fa-trash"></i></button>
+                                        <button class="btn btn-sm btn-info delete_curriculum" data-bs-toggle="modal" data-bs-target="#deleteCurriculumModalID" id="delete_curriculum_{{$item->curriculum_id}}"><i class="fa fa-trash"></i></button>
                                         <a href="/Homepage/displayCurricullum/{{$item->curriculum_id}}" class="btn btn-sm {{ $item->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa fa-eye"></i></a>
                                     </div>
                                     <div class="single-class-image">
