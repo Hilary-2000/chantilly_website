@@ -351,7 +351,7 @@
                                 <div class="single-class">
                                     <div class="p-2 my-2">
                                         <button class="btn btn-sm btn-info delete_curriculum" data-bs-toggle="modal" data-bs-target="#deleteCurriculumModalID" id="delete_curriculum_{{$item->curriculum_id}}"><i class="fa fa-trash"></i></button>
-                                        <a href="/Homepage/displayCurricullum/{{$item->curriculum_id}}" class="btn btn-sm {{ $item->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa fa-eye"></i></a>
+                                        <a href="/Homepage/displayCurricullum/{{$item->curriculum_id}}" class="btn btn-sm {{ $item->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa {{ $item->display == "1" ? "fa-eye" : "fa-eye-slash"}}"></i></a>
                                     </div>
                                     <div class="single-class-image">
                                         <input type="hidden" value="{{json_encode($item)}}" id="edit_curriculum_data_{{$key}}" >
@@ -463,95 +463,234 @@
     <!--End of Fun Factor Area-->
 
     <!--Service Area Start-->
-    <div class="service-area section-padding">
+    <div class="service-area section-padding" id="services_section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title-wrapper">
                         <div class="section-title">
-                            <h3>Our Services</h3>
-                            <p>Our best services for your kids</p>
+                            <h3>Other Chantilly Curricullum</h3>
+                            <p>Edit to show other chantilly school services.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="single-service-item-wrapper">
-                        <div class="single-service-item">
-                            <div class="single-service-text">
-                                <h4>Meals Provided</h4>
-                                <p>Serving nutritious, balanced meals to keep our students healthy and energized for
-                                    learning.</p>
-                            </div>
-                            <div class="single-service-icon">
-                                <i class="fa fa-cutlery"></i>
+                <div class="col-md-4 mb-4">
+                    <button class="btn btn-secondary btn-sm"  data-bs-toggle="modal" data-bs-target="#addChantillyService"><i class="fa fa-plus"></i> Add Service</button>
+
+                    {{-- MODAL STRUCTURE FOR THE CURRICULUMS --}}
+                    <div class="modal fade" id="addChantillyService" tabindex="-1" aria-labelledby="addChantillyServiceModal" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="addChantillyServiceModal">Add Service</h6>
+                                    <button type="button" class="btn btn-sm btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <div class="contact-form-container">
+                                        <form id="contact-form-service" action="/Homepage/saveServices" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <label for="service_title" class="form-control-label">Service Title</label>
+                                                <input type="text" name="service_title" placeholder="Service Title e.g, Transport, Lunch *" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="service_image" class="form-control-label">Service Image</label>
+                                                <input type="file" name="service_image" placeholder="Service Image *" accept=".jpg, .jpeg, .png, .gif" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="service_description" class="form-control-label">Service Description</label>
+                                                <textarea class="yourmessage" name="service_description" placeholder="Service description!" required></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-success w-100"><i class="fa fa-save"></i> Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Modal Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="single-service-item">
-                            <div class="single-service-text">
-                                <h4>Swimming Lessons</h4>
-                                <p>Building confidence, safety skills, and promoting physical fitness through regular
-                                    swimming sessions.</p>
-                            </div>
-                            <div class="single-service-icon">
-                                <i class="fa fa-anchor"></i>
+                    </div>
+
+                    {{-- MODAL STRUCTURE FOR THE CURRICULUMS --}}
+                    <div class="modal fade" id="editServiceModal" tabindex="-1" aria-labelledby="editServiceForm" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="editServiceForm">Edit Service</h6>
+                                    <button type="button" class="btn btn-sm btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <div class="contact-form-container">
+                                        <form id="contact-form" action="/Homepage/updateService" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-3">
+                                                <input type="hidden" name="edit_service_id" id="edit_service_id">
+                                                <label for="edit_service_title" class="form-control-label">Service Title</label>
+                                                <input type="text" id="edit_service_title" name="edit_service_title" placeholder="Service Title e.g, Transport, Lunch *" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <a href="/web-data/downloads/20241215172942.pdf" id="download_service_image" class="text-primary" download> <i class="fa fa-download text-success"> Download Image</i></a>
+                                                <div style="width: 100px; height: 100px;">
+                                                    <img src="/web-data/20241128173549.jpg" id="service_image_thumbnail" alt="">
+                                                </div>
+                                                <label for="edit_service_image" class="form-control-label">Service Image</label>
+                                                <input type="file" id="edit_service_image" name="edit_service_image" placeholder="Service Image *" accept=".jpg, .jpeg, .png, .gif" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="edit_service_description" class="form-control-label">Service Description</label>
+                                                <textarea class="yourmessage" id="edit_service_description" name="edit_service_description" placeholder="Service description!" required></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-success w-100"><i class="fa fa-save"></i> Update</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Modal Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="single-service-item">
-                            <div class="single-service-text">
-                                <h4>Transport Available</h4>
-                                <p>Ensuring safe and reliable pick-up and drop-off for students, providing peace of mind
-                                    to parents.</p>
-                            </div>
-                            <div class="single-service-icon">
-                                <i class="fa fa-bus"></i>
+                    </div>
+
+                    <!-- Delete Confirmation Modal for carrousels-->
+                    <div class="modal fade" id="deleteServiceModal" tabindex="-1" aria-labelledby="deleteServiceForm" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteServiceForm">Confirm Deletion</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this? This action cannot be undone.
+                                </div>
+                                <div class="modal-footer">
+                                    <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="#" class="btn btn-info" id="confirmDeleteService"><i class="fa fa-trash"></i> Delete</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="service-image">
-                        <img src="/img/banner/13.jpg" alt="">
-                    </div>
+                <div class="col-md-8 mb-4">
+                    @if ($errors->any())
+                        <div class="alert alert-info">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success py-1 text-center my-1">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-info py-1 text-center my-1">
+                            {{ session('error') }}
+                        </div>
+                    @endif
                 </div>
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="single-service-item-wrapper">
-                        <div class="single-service-item">
-                            <div class="single-service-icon">
-                                <i class="fa fa-calendar-check-o"></i>
-                            </div>
-                            <div class="single-service-text">
-                                <h4>School Trips</h4>
-                                <p>Offering exciting trips that broaden horizons and provide practical learning
-                                    experiences.</p>
+                <div class="col-md-12 border border-primary rounded py-2">
+                    @if (count($services) > 0)
+                        <div class="class-carousel carousel-style-one owl-carousel">
+                            @foreach ($services as $key => $item)
+                                <div class="single-class">
+                                    <div class="p-2 my-2">
+                                        <button class="btn btn-sm btn-info delete_service" id="delete_service_{{$item->service_id}}" data-bs-toggle="modal" data-bs-target="#deleteServiceModal"><i class="fa fa-trash"></i></button>
+                                        <a href="/Homepage/Services/changeStatus/{{$item->service_id}}" class="btn btn-sm {{$item->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa {{$item->display == "1" ? "fa-eye" : "fa-eye-slash"}}"></i></a>
+                                    </div>
+                                    <div class="single-class-image">
+                                        <input type="hidden" value="{{json_encode($item)}}" id="service_data_{{$item->service_id}}" >
+                                        <a href="#services_section" data-bs-toggle="modal" data-bs-target="#editServiceModal">
+                                            <img src="{{$item->service_image}}" alt="">
+                                            <span class="class-date edit_service_data" id="edit_service_data_{{$item->service_id}}">Edit <span>Now</span></span>
+                                        </a>
+                                    </div>
+                                    <div class="single-class-text">
+                                        <div class="class-des">
+                                            <h4><a href="#">{{$item->service_title}}</a></h4>
+                                            <p>{{$item->service_description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="class-list-item">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="class-list-text">
+                                        <div class="row">
+                                            <div class="col-md-9">
+                                                <h3><a class="text-secondary" href="#">No Services present!</a></h3>
+                                            </div>
+                                        </div>
+                                        <p>No Services present at the moment.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="single-service-item">
-                            <div class="single-service-icon">
-                                <i class="fa fa-laptop"></i>
-                            </div>
-                            <div class="single-service-text">
-                                <h4>Computer Lessons</h4>
-                                <p>Equipping students with essential computer skills to thrive in today’s digital world.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-service-item">
-                            <div class="single-service-icon">
-                                <i class="fa fa-music"></i>
-                            </div>
-                            <div class="single-service-text">
-                                <h4>Music Lessons</h4>
-                                <p>Cultivating creativity and self-expression through engaging music lessons.</p>
-                            </div>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
     <!--End of Service Area-->
+    <script>
+        function hasJsonStructure(str) {
+          if (typeof str !== "string") return false;
+          try {
+            const result = JSON.parse(str);
+            const type = Object.prototype.toString.call(result);
+            return type === "[object Object]" || type === "[object Array]";
+          } catch (err) {
+            return false;
+          }
+        }
+        
+        function cObj(objectid) {
+            return document.getElementById(objectid);
+        }
+
+        window.addEventListener("load", function () {
+            var edit_service_data = document.getElementsByClassName("edit_service_data");
+            for (let index = 0; index < edit_service_data.length; index++) {
+                const element = edit_service_data[index];
+                element.addEventListener("click", function () {
+                    var service_data = cObj("service_data_"+element.id.substr(18)).value;
+                    if (hasJsonStructure(service_data)) {
+                        var new_service_data = JSON.parse(service_data);
+
+                        cObj("edit_service_title").value = new_service_data.service_title;
+                        cObj("edit_service_id").value = new_service_data.service_id;
+                        cObj("service_image_thumbnail").src = new_service_data.service_image;
+                        cObj("download_service_image").href = new_service_data.service_image;
+                        cObj("edit_service_description").value = new_service_data.service_description;
+                    }
+                });
+            }
+
+            var delete_service = document.getElementsByClassName("delete_service");
+            for (let index = 0; index < delete_service.length; index++) {
+                const element = delete_service[index];
+                element.addEventListener("click", function () {
+                    cObj("confirmDeleteService").href = "/Homepage/Services/delete/"+element.id.substr(15);
+                });
+            }
+        });
+    </script>
+
     {{-- BODY ENDS HERE --}}
     <script src="/resources/js/homepage.js"></script>
     {{-- FOOTER --}}

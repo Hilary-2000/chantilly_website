@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,7 @@ class homepage extends Controller
         $homepage_carrousels = DB::select("SELECT * FROM `homepage_carrousel`;");
         $homepage_curriculum = DB::select("SELECT * FROM `homepage_curriculum`;");
         $homepage_stats = DB::select("SELECT * FROM `homepage_stats`;");
+        $services = DB::select("SELECT * FROM homepage_service;");
 
         $home_stats = array(
             "teachers" => 0,
@@ -27,7 +29,7 @@ class homepage extends Controller
         }
 
         // set the return statement
-        return view("backend/homepage", ["homepage_carrousels" => $homepage_carrousels, "homepage_curriculum" => $homepage_curriculum, "homepage_stats" => $home_stats]);
+        return view("backend/homepage", ["homepage_carrousels" => $homepage_carrousels, "homepage_curriculum" => $homepage_curriculum, "homepage_stats" => $home_stats, "services" => $services]);
     }
     
     public function saveCaroussel(Request $request)
@@ -322,5 +324,142 @@ class homepage extends Controller
 
         // 
         return redirect("/Homepage/Edit#fun-factor-area")->with('success', 'Homepage statistics updated successfully!');
+    }
+
+    public function saveServices(Request $request){
+        // Validate the incoming request
+        $request->validate([
+            'service_title' => 'required|string|max:255',
+            'service_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
+            'service_description' => 'required|string'
+        ]);
+
+        try{
+            // file url
+            $fileUrl = null;
+
+            // Handle the uploaded image
+            if ($request->hasFile('service_image')) {
+                $file = $request->file('service_image');
+
+                // Generate a unique filename using the current date and time
+                $filename = now()->format('YmdHis') . '.' . $file->getClientOriginalExtension();
+
+                // Define the path for the 'web-data' folder
+                $destinationPath = public_path('web-data');
+
+                // Move the file to the 'web-data' folder
+                $file->move($destinationPath, $filename);
+
+                // Set the file URL relative to the public folder
+                $fileUrl = '/web-data/' . $filename; // Result: /web-data/filename.jpg
+            }
+
+
+            $insert = DB::insert("INSERT INTO homepage_service (service_title, service_image, service_description) VALUES (?,?,?)", [
+                $request->input("service_title"),
+                $fileUrl,
+                $request->input("service_description"),
+            ]);
+
+            return redirect("/Homepage/Edit#services_section")->with("success", "Service successfully registered!");
+        }catch(\Exception $e){
+            return back()->with("error", "Error : ". $e->getMessage());
+        }
+    }
+
+    public function updateService(Request $request){
+        // Validate the incoming request
+        $request->validate([
+            'edit_service_id' => 'required|string|max:255',
+            'edit_service_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
+            'edit_service_title' => 'required|string',
+            'edit_service_description' => 'required|string'
+        ]);
+
+        // get the old version
+        $services = DB::select("SELECT * FROM homepage_service WHERE service_id = ?", [$request->input("edit_service_id")]);
+        if (count($services) > 0) {
+            try{
+                $old_file_loc = public_path($services[0]->service_image);
+                if (File::exists($old_file_loc)) {
+                    File::delete($old_file_loc);
+                }
+
+                // file url
+                $fileUrl = null;
+    
+                // Handle the uploaded image
+                if ($request->hasFile('edit_service_image')) {
+                    $file = $request->file('edit_service_image');
+    
+                    // Generate a unique filename using the current date and time
+                    $filename = now()->format('YmdHis') . '.' . $file->getClientOriginalExtension();
+    
+                    // Define the path for the 'web-data' folder
+                    $destinationPath = public_path('web-data');
+    
+                    // Move the file to the 'web-data' folder
+                    $file->move($destinationPath, $filename);
+    
+                    // Set the file URL relative to the public folder
+                    $fileUrl = '/web-data/' . $filename; // Result: /web-data/filename.jpg
+                }
+
+                // insert the new file
+                $update = DB::update("UPDATE homepage_service SET service_title = ?, service_image = ?, service_description = ? WHERE service_id = ?", [
+                    $request->input("edit_service_title"),
+                    $fileUrl,
+                    $request->input("edit_service_description"),
+                    $request->input("edit_service_id"),
+                ]);
+
+                return redirect("/Homepage/Edit#services_section")->with("success", "Service successfully updated!");
+            }catch(\Exception $e){
+                return redirect("/Homepage/Edit#services_section")->with("success", "Error : ".$e->getMessage()."!");
+            }
+        }else{
+            return redirect("/Homepage/Edit#services_section")->with("success", "Invalid Service!");
+        }
+    }
+
+    public function deleteService($service_id){
+        $services = DB::select("SELECT * FROM homepage_service WHERE service_id = ?", [$service_id]);
+        if (count($services) > 0) {
+            // delete the file
+            try{
+                $old_file_loc = public_path($services[0]->service_image);
+                if (File::exists($old_file_loc)) {
+                    File::delete($old_file_loc);
+                }
+
+                // delete homepage_service
+                $delete = DB::delete("DELETE FROM homepage_service WHERE service_id = ?", [$service_id]);
+
+                // homepage service
+                return redirect("/Homepage/Edit#services_section")->with("success", "Service has been deleted successfully!");
+            }catch(\Exception $e){
+                // homepage service
+                return redirect("/Homepage/Edit#services_section")->with("error", "Error : ".$e->getMessage()."!");
+            }
+        }else{
+            // homepage service
+            return redirect("/Homepage/Edit#services_section")->with("error", "Invalid service!");
+        }
+    }
+
+    // changes status
+    function changeStatus($service_id){
+        $services = DB::select("SELECT * FROM homepage_service WHERE service_id = ?", [$service_id]);
+        if (count($services) > 0) {
+            // delete the file
+            $display = $services[0]->display == "1" ? "0" : "1";
+            $update = DB::update("UPDATE homepage_service SET display = ? WHERE service_id = ?", [$display, $service_id]);
+
+            return redirect("/Homepage/Edit#services_section")->with("success", "Status changed successfully!");
+        }else{
+            // homepage service
+            return redirect("/Homepage/Edit#services_section")->with("error", "Invalid service!");
+        }
     }
 }

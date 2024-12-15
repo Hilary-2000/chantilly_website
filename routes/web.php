@@ -84,3 +84,9 @@ Route::post("/Download/Edit/add", [download::class, "addDownloads"])->name("addD
 Route::post("/Download/Edit/edit", [download::class, "editDownloads"])->name("editDownloads")->middleware("authenticate");
 Route::get("/Download/Edit/delete/{download_id}", [download::class, "deleteDownloads"])->name("deleteDownloads")->middleware("authenticate");
 Route::get("/Download/Edit/status/{download_id}", [download::class, "changeStatus"])->name("changeStatus")->middleware("authenticate");
+
+
+Route::post("/Homepage/saveServices", [homepage::class, "saveServices"])->name("saveServices")->middleware("authenticate");
+Route::post("/Homepage/updateService", [homepage::class, "updateService"])->name("updateService")->middleware("authenticate");
+Route::get("/Homepage/Services/delete/{service_id}", [homepage::class, "deleteService"])->name("deleteService")->middleware("authenticate");
+Route::get("/Homepage/Services/changeStatus/{service_id}", [homepage::class, "changeStatus"])->name("changeStatus")->middleware("authenticate");
