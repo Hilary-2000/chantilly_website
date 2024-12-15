@@ -8,14 +8,6 @@
     <x-menu active="contactus"/>
 
     {{-- BODY STARTS HERE  --}}
-    <!--Google Map Area Start -->
-    <div class="google-map-area">
-        <!--  Map Section -->
-        <div id="contacts" class="map-area">
-            <div id="googleMap" style="width:100%;height:451px;"></div>
-        </div>
-    </div>
-    <!--End of Google Map Area-->
 
     <!--Contact Area Strat-->
     <div class="contact-area section-padding">

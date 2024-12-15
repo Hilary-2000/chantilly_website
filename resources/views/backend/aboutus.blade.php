@@ -261,15 +261,6 @@
         </div>
     </div>
     <!--End of Teachers Column Carousel-->
-
-    <!--Google Map Area Start -->
-    <div class="google-map-area">
-        <!--  Map Section -->
-        <div id="contacts" class="map-area">
-            <div id="googleMap" style="width:100%;height:451px;"></div>
-        </div>
-    </div>
-    <!--End of Google Map Area-->
     {{-- BODY ENDS HERE --}}
     <!-- Place the first <script> tag in your HTML's <head> -->
     <script src="https://cdn.tiny.cloud/1/if2hs0ax6hmgx2842yuozz7qt8lde0hvc8upqv9gmokdk2id/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>

@@ -180,7 +180,7 @@
                 <div class="col-md-12">
                     <div class="section-title-wrapper">
                         <div class="section-title">
-                            <h3>Our Services</h3>
+                            <h3>Other Services</h3>
                             <p>Our best services for your kids</p>
                         </div>
                     </div> 
@@ -258,15 +258,6 @@
         </div>
     </div>
     <!--End of Service Area-->
-    
-    <!--Google Map Area Start -->
-    <div class="google-map-area">
-        <!--  Map Section -->
-        <div id="contacts" class="map-area">
-            <div id="googleMap" style="width:100%;height:451px;"></div>
-        </div>
-    </div>
-    <!--End of Google Map Area-->
     {{-- BODY ENDS HERE --}}
 
     {{-- FOOTER --}}
