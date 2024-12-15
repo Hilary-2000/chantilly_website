@@ -202,35 +202,15 @@
                                             <button class="btn btn-sm btn-outline-primary rounded edit_vacancies" id="edit_vacancies_{{$item->vacancy_id}}" data-bs-toggle="modal" data-bs-target="#editVacancies"><i class="fa fa-pencil"></i> Edit</button>
                                             <button class="btn btn-sm btn-outline-danger rounded delete_vacancies" id="delete_vacancies_{{$item->vacancy_id}}" data-bs-toggle="modal" data-bs-target="#deleteVacancyWindow"><i class="fa fa-trash"></i> Delete</button>
                                             <a href="/Vacancies/Edit/changeStatus/{{$item->vacancy_id}}" class="btn btn-sm {{$item->display == "1" ? "btn-primary" : "btn-warning"}}"><i class="fa {{$item->display == "1" ? "fa-eye" : "fa-eye-slash"}}"></i> {{$item->display == "1" ? "visible" : "hidden"}}</a>
-                                            <a href="#!" class="btn btn-sm btn-secondary"><i class="fa fa-paper-plane-o"></i> View Applications</a>
+                                            <a href="/Vacancies/View/{{$item->vacancy_id}}/Applications" class="btn btn-sm btn-secondary"><i class="fa fa-paper-plane-o"></i> View Applications</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
                     @else
-                        
+                        <p>No vacancies present at the moment!</p>
                     @endif
-                    {{-- <div class="class-list-item">
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12">
-                                <div class="class-list-text">
-                                    <h3><a href="#">Driver & Mechanic</a></h3>
-                                    <div class="class-information">
-                                        <span>Deadline: March 25, 2016</span>
-                                    </div>
-                                    <p>
-                                        <h6>Nature & Scope</h6>
-                                        This position oversees all activities during transportation. The incumbents of this
-                                        role ensure that students are picked up from designated pick up and drop off points in a safe
-                                        manner
-                                    </p>
-                                    <a href="/Vacancies/Apply" class="button-default">Apply Now <i class="fa fa-angle-right"></i></a>
-                                    <a href="#" class="button-default">Job Description <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>

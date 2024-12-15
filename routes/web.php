@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\gallery;
 use App\Http\Controllers\backend\homepage;
 use App\Http\Controllers\backend\login;
 use App\Http\Controllers\backend\Vacancies;
+use App\Http\Controllers\frontend\vacancy;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +24,9 @@ Route::get('/', function () {return view('website.homepage');})->middleware("aut
 Route::get("/AboutUs", function () {return view('website.aboutus');})->middleware("authUser");
 Route::get("/Events", function () {return view('website.events');})->middleware("authUser");
 Route::get("/Gallery", function () {return view('website.gallery');})->middleware("authUser");
-Route::get("/Vacancies", function () {return view('website.vacancies');})->middleware("authUser");
-Route::get("/Vacancies/Apply", function () {return view('website.apply_vacancy');})->middleware("authUser");
+Route::get("/Vacancies", [vacancy::class, "get_vacancies"])->name("Vacancies")->middleware("authUser");
+Route::get("/Vacancies/Apply/{vacancy_id}", [vacancy::class, "apply_vacancies"])->middleware("authUser");
+Route::post("/Vacancies/apply", [vacancy::class, "apply"])->name("apply")->middleware("authUser");
 Route::get("/Downloads", function () {return view('website.downloads');})->middleware("authUser");
 Route::get("/ContactUs", function () {return view('website.contactus');})->middleware("authUser");
 
@@ -72,3 +74,5 @@ Route::post("/Vacancies/Edit/updateVacancy", [Vacancies::class, "updateVacancy"]
 Route::post("/Vacancies/Edit/deleteVacancy/{vacancy_id}", [Vacancies::class, "deleteVacancy"])->name("deleteVacancy")->middleware("authenticate");
 Route::get("/Vacancies/Edit/changeStatus/{vacancy_id}", [Vacancies::class, "changeStatus"])->name("changeStatus")->middleware("authenticate");
 Route::get("/Vacancies/View/{vacancy_id}/Applications", [Vacancies::class, "view_applications"])->name("view_applications")->middleware("authenticate");
+Route::get("/Vacancies/View/{vacancy_id}/Applications/{application_id}", [Vacancies::class, "view_application"])->name("view_application")->middleware("authenticate");
+Route::get("/Vacancies/Delete/Applicant/{application_id}", [Vacancies::class, "delete_application"])->name("delete_application")->middleware("authenticate");

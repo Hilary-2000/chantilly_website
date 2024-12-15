@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class Vacancies extends Controller
 {
@@ -60,6 +61,27 @@ class Vacancies extends Controller
     }
 
     public function deleteVacancy($vacancy_id){
+        $vacancies = DB::select("SELECT * FROM vacancy_applications WHERE vacancy_id = ?", [$vacancy_id]);
+        foreach ($vacancies as $key => $vacancy) {
+            // delete the file
+            if ($vacancy->cv_location != null) {
+                // insert data
+                try {
+                    // delete the file
+                    $document_local = public_path($vacancy->cv_location);
+                    if (File::exists($document_local)) {
+                        File::delete($document_local);
+                    }
+                } catch (\Exception $e) {
+                    // Handle exceptions
+                    session()->flash('error', 'Error saving application: ' . $e->getMessage());
+                }
+            }
+        }
+
+        // delete vacancy applications
+        $delete_application = DB::delete("DELETE FROM vacancy_applications WHERE vacancy_id = ?",[$vacancy_id]);
+
         // delete_vacancy
         $delete_vacancy = DB::delete("DELETE FROM vacancies WHERE vacancy_id = ?", [$vacancy_id]);
 
@@ -81,7 +103,48 @@ class Vacancies extends Controller
 
     public function view_applications($vacancy_id){
         // vacancy application
-        $vacancy_application = DB::select("SELECT * FROM `vacancy_applications` WHERE vacancy_id = ?", [$vacancy_id]);
-        return view("backend.vacancy_application", ["vacancy_application" => $vacancy_application]);
+        $vacancy_data = DB::select("SELECT * FROM vacancies WHERE vacancy_id = ?", [$vacancy_id]);
+        if (count($vacancy_data) > 0) {
+            $vacancy_application = DB::select("SELECT * FROM `vacancy_applications` WHERE vacancy_id = ?", [$vacancy_id]);
+            return view("backend.vacancy_application", ["vacancy_application" => $vacancy_application, "vacancy_data" => $vacancy_data]);
+        }else{
+            // return back to the page
+            return back()->with("error", "Invalid vacancy post!");
+        }
+    }
+
+    public function view_application($vacancy_id, $application_id){
+        $applicant_data = DB::select("SELECT VA.*, V.vacancy_title, V.vacancy_qualifications, V.nature_scope, V.deadline FROM vacancy_applications AS VA LEFT JOIN vacancies AS V ON V.vacancy_id = VA.vacancy_id WHERE VA.application_id = ? AND VA.vacancy_id = ?", [$application_id, $vacancy_id]);
+
+        if (count($applicant_data) > 0) {
+            return view("backend.view_vacancy_applicant", ["applicant_data" => $applicant_data[0]]);
+        }else{
+            return back()->with("error", "Invalid applicant!");
+        }
+    }
+
+    public function delete_application($application_id){
+        $application = DB::select("SELECT * FROM `vacancy_applications` WHERE application_id = ?", [$application_id]);
+        if (count($application) > 0) {
+            if ($application[0]->cv_location != null) {
+                // insert data
+                try {
+                    // delete the file
+                    $document_local = public_path($application[0]->cv_location);
+                    if (File::exists($document_local)) {
+                        File::delete($document_local);
+                    }
+                } catch (\Exception $e) {
+                    // Handle exceptions
+                    session()->flash('error', 'Error saving application: ' . $e->getMessage());
+                }
+            }
+
+            // delete file
+            $delete = DB::delete("DELETE FROM vacancy_applications WHERE application_id = ?", [$application_id]);
+            return back()->with("success", "Applicant deleted successfully!");
+        }else{
+            return back()->with("error", "An error has occured!");
+        }
     }
 }

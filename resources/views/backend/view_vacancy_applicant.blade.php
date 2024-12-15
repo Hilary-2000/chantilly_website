@@ -8,14 +8,15 @@
 
 <body>
     {{-- mobile menu and desktop menu --}}
-    <x-menu active="vacancy"/>
+    <x-edit-menu active="edit_vacancy" />
 
     {{-- BODY STARTS HERE --}}
     <!--Contact Area Strat-->
     <div class="contact-area section-padding">
         <div class="container">
+            <a href="/Vacancies/View/{{$applicant_data->vacancy_id}}/Applications" class="btn btn-sm btn-primary"><i class="fa fa-arrow-left"></i> back to applicants</a>
             <div class="single-title text-center">
-                <h3>Apply for : "{{$vacancy_data[0]->vacancy_title}}"</h3>
+                <h3>Application for : "{{$applicant_data->vacancy_title}}"</h3>
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -40,34 +41,28 @@
                 <div class="col-lg-6">
                     <div class="contact-form">
                         <div class="single-title">
-                            <h3>Apply Here</h3>
+                            <h3>Application details</h3>
                         </div>
                         <div class="contact-form-container">
-                            <form id="contact-form" action="/Vacancies/apply" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <input type="hidden" name="vacancy_id" value="{{$vacancy_data[0]->vacancy_id}}">
-                                <label for="fullname">Your Fullname</label>
-                                <input type="text" name="fullname" placeholder="Your Fullname *" required>
-                                <label for="email">Your Email</label>
-                                <input type="email" name="email" placeholder="Your Email *" required>
-                                <label for="phonenumber">Your Phone Number</label>
-                                <input type="text" name="phonenumber" placeholder="Your Phone Number *" required>
-                                <label for="marital_status">Marital Status</label>
-                                <select name="marital_status" required>
-                                    <option value="" hidden>Marital Status *</option>
-                                    <option value="married">Married</option>
-                                    <option value="single">Single</option>
-                                </select>
-                                <label for="date_of_birth">Date of Birth</label>
-                                <input type="date" max="{{date("Y-m-d", strtotime("-18 years"))}}" name="date_of_birth" placeholder="Date of Birth *" required>
-                                <label for="yourmessage">Date of Birth</label>
-                                <textarea name="your_message" class="yourmessage" id="your_message" placeholder="Your message"></textarea>
-                                <input type="hidden" name="about_yourself" id="about_yourself">
-                                <label for="">Your CV</label>
-                                <input type="file" accept=".pdf, .docx, .doc" name="your_cv" id="your_cv" required>
-                                <button type="submit" class="button-default button-yellow submit"><i class="fa fa-send"></i>Submit</button>
-                            </form>
-                            <p class="form-messege"></p>
+                            <label for="fullname">Applicant Fullname</label>
+                            <input disabled type="text" value="{{$applicant_data->fullname}}" name="fullname" placeholder="Applicant Fullname *" required>
+                            <label for="email">Applicant Email</label>
+                            <input type="email" name="email" value="{{$applicant_data->email}}" disabled placeholder="Applicant Email *" required>
+                            <label for="phonenumber">Applicant Phone Number</label>
+                            <input type="text" name="phonenumber" value="{{$applicant_data->phone}}" disabled placeholder="Applicant Phone Number *" required>
+                            <label for="marital_status">Marital Status</label>
+                            <input type="text" value="{{$applicant_data->marital_status}}" disabled>
+                            <label for="date_of_birth">Date of Birth</label>
+                            <input type="text" value="{{date("D dS M Y", strtotime($applicant_data->DOB))}}" disabled>
+                            <label for="">Applicant CV</label>
+                            <a class="{{$applicant_data->cv_location ? "" : "d-none"}}" href="{{$applicant_data->cv_location}}" id="download_gallery_photo" download="">
+                                <i class="fa fa-download text-success"> Download Applicant CV</i>
+                            </a>
+                            <p class="{{$applicant_data->cv_location ? "d-none" : ""}}">Applicant didn`t upload the CV!</p>
+                            <br><br>
+                            <label for="yourmessage">About the Applicant</label>
+                            <textarea name="your_message" class="yourmessage" id="your_message" placeholder="Applicant message"></textarea>
+                            <input type="hidden" name="about_yourself" id="about_yourself">
                         </div>
                     </div>
                 </div>
@@ -83,7 +78,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>Nature & Scope</h4>
-                                    <span>{!!$vacancy_data[0]->nature_scope!!}</span>
+                                    <span>{!!$applicant_data->nature_scope!!}</span>
                                 </div>
                             </div>
                             <div class="contact-address-info">
@@ -93,7 +88,7 @@
                                 <div class="contact-text">
                                     <h4>Qualification</h4>
                                     <span>
-                                        {!!$vacancy_data[0]->vacancy_qualifications!!}
+                                        {!!$applicant_data->vacancy_qualifications!!}
                                     </span>
                                 </div>
                             </div>
@@ -105,27 +100,20 @@
     </div>
     <!--End of Contact Area-->
     {{-- BODY ENDS HERE --}}
-
     <script>
+        var applicant_data = @json($applicant_data->summary_about_you ?? "");
         // init tinymce
         tinymce.init({
             selector: '#your_message',
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
-            // setup: function (editor) {
-            //     editor.on('init', function () {
-            //         editor.setContent(aboutUsHistory);
-            //     });
-            // }
-        });
-
-        // Synchronize TinyMCE content on form submission
-        document.querySelector('#contact-form').addEventListener('submit', function (event) {
-            const content = tinymce.get('your_message').getContent(); // Correct usage of the TinyMCE editor ID
-            document.getElementById('about_yourself').value = content;
+            setup: function (editor) {
+                editor.on('init', function () {
+                    editor.setContent(applicant_data);
+                });
+            }
         });
     </script>
-
     {{-- FOOTER --}}
     <x-footer page="vacancies"/>
 </body>
