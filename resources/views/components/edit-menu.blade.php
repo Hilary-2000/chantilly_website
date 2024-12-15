@@ -76,6 +76,14 @@ use Illuminate\Support\Facades\Cookie;
                                                     <a href="#" class="text-secondary text-left">Manage Admin</a>
                                                 </div>
                                             </div>
+                                            <div class="row p-1 align-items-center hover-text">
+                                                <div class="col-md-4">
+                                                    <i class="fa fa-globe"></i>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <a href="/" class="text-secondary text-left">Back to Wesbite</a>
+                                                </div>
+                                            </div>
                                             <div class="border border-secondary border-rounded-sm">
                                                 <a href="/Logout" class="btn btn-sm btn-outline-info w-100">Log-Out</a>
                                             </div>
@@ -109,7 +117,7 @@ use Illuminate\Support\Facades\Cookie;
                                         <li class="{{$active == "edit_events" ? "active" : ""}}"><a href="/Events/Edit">Edit - Events</a></li>
                                         <li class="{{$active == "edit_gallery" ? "active" : ""}}"><a href="/Gallery/Edit">Edit - Gallery</a></li>
                                         <li class="{{$active == "edit_vacancy" ? "active" : ""}}"><a href="/Vacancies/Edit/">Edit - Vacancies</a></li>
-                                        <li class="{{$active == "edit_downloads" ? "active" : ""}}"><a href="/Downloads">Edit - Downloads</a></li>
+                                        <li class="{{$active == "edit_downloads" ? "active" : ""}}"><a href="/Downloads/Edit">Edit - Downloads</a></li>
                                         {{-- <li class="{{$active == "contactus" ? "active" : ""}}"><a href="/ContactUs">Edit - Contact Us</a></li> --}}
                                     </ul>
                                 </nav>
@@ -129,13 +137,12 @@ use Illuminate\Support\Facades\Cookie;
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul>
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/AboutUs">About us</a></li>
-                                <li><a href="/Events">Events</a></li>
-                                <li><a href="/Gallery">Gallery</a></li>
-                                <li><a href="/Vacancies">Vacancies</a></li>
-                                <li><a href="/Downloads">Downloads</a></li>
-                                <li><a href="/ContactUs">Contact Us</a></li>
+                                <li class="{{$active == "edit_home" ? "active" : ""}}"><a href="/Homepage/Edit">Edit - Homepage</a></li>
+                                <li class="{{$active == "edit_aboutus" ? "active" : ""}}"><a href="/AboutUs/Edit">Edit - About us</a></li>
+                                <li class="{{$active == "edit_events" ? "active" : ""}}"><a href="/Events/Edit">Edit - Events</a></li>
+                                <li class="{{$active == "edit_gallery" ? "active" : ""}}"><a href="/Gallery/Edit">Edit - Gallery</a></li>
+                                <li class="{{$active == "edit_vacancy" ? "active" : ""}}"><a href="/Vacancies/Edit/">Edit - Vacancies</a></li>
+                                <li class="{{$active == "edit_downloads" ? "active" : ""}}"><a href="/Downloads/Edit">Edit - Downloads</a></li>
                             </ul>
                         </nav>
                     </div>					

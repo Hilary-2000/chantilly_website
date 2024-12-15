@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\backend\aboutus;
+use App\Http\Controllers\backend\download;
 use App\Http\Controllers\backend\events;
 use App\Http\Controllers\backend\gallery;
 use App\Http\Controllers\backend\homepage;
@@ -76,3 +77,10 @@ Route::get("/Vacancies/Edit/changeStatus/{vacancy_id}", [Vacancies::class, "chan
 Route::get("/Vacancies/View/{vacancy_id}/Applications", [Vacancies::class, "view_applications"])->name("view_applications")->middleware("authenticate");
 Route::get("/Vacancies/View/{vacancy_id}/Applications/{application_id}", [Vacancies::class, "view_application"])->name("view_application")->middleware("authenticate");
 Route::get("/Vacancies/Delete/Applicant/{application_id}", [Vacancies::class, "delete_application"])->name("delete_application")->middleware("authenticate");
+
+// downloads
+Route::get("/Downloads/Edit", [download::class, "get_downloads"])->name("get_downloads")->middleware("authenticate");
+Route::post("/Download/Edit/add", [download::class, "addDownloads"])->name("addDownloads")->middleware("authenticate");
+Route::post("/Download/Edit/edit", [download::class, "editDownloads"])->name("editDownloads")->middleware("authenticate");
+Route::get("/Download/Edit/delete/{download_id}", [download::class, "deleteDownloads"])->name("deleteDownloads")->middleware("authenticate");
+Route::get("/Download/Edit/status/{download_id}", [download::class, "changeStatus"])->name("changeStatus")->middleware("authenticate");
