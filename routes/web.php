@@ -8,6 +8,8 @@ use App\Http\Controllers\backend\homepage;
 use App\Http\Controllers\backend\login;
 use App\Http\Controllers\backend\Vacancies;
 use App\Http\Controllers\frontend\vacancy;
+use App\Http\Controllers\frontend\website;
+use App\Http\Controllers\frontend\website_homepage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,14 +23,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('website.homepage');})->middleware("authUser");
-Route::get("/AboutUs", function () {return view('website.aboutus');})->middleware("authUser");
-Route::get("/Events", function () {return view('website.events');})->middleware("authUser");
-Route::get("/Gallery", function () {return view('website.gallery');})->middleware("authUser");
+Route::get('/', [website::class, "getHomepage"])->name("getHomepage")->middleware("authUser");
+Route::get("/AboutUs", [website::class, "getAboutsUs"])->name("getAboutsUs")->middleware("authUser");
+Route::get("/Events", [website::class, "getEvents"])->name("getEvents")->middleware("authUser");
+Route::get("/Gallery", [website::class, "get_gallery"])->name("get_gallery")->middleware("authUser");
 Route::get("/Vacancies", [vacancy::class, "get_vacancies"])->name("Vacancies")->middleware("authUser");
 Route::get("/Vacancies/Apply/{vacancy_id}", [vacancy::class, "apply_vacancies"])->middleware("authUser");
 Route::post("/Vacancies/apply", [vacancy::class, "apply"])->name("apply")->middleware("authUser");
-Route::get("/Downloads", function () {return view('website.downloads');})->middleware("authUser");
+Route::get("/Downloads", [website::class, "get_downloads"])->name("get_downloads")->middleware("authUser");
 Route::get("/ContactUs", function () {return view('website.contactus');})->middleware("authUser");
 
 Route::post("/Login", [login::class, "login"])->name("login");

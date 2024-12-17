@@ -18,6 +18,37 @@ function isJson(jsonString) {
 window.onload = function () {
     setCarouselListener();
     setCurrillumListerner();
+
+    var edit_service_data = document.getElementsByClassName("edit_service_data");
+    for (let index = 0; index < edit_service_data.length; index++) {
+        const element = edit_service_data[index];
+        element.addEventListener("click", function () {
+            var service_data = cObj("service_data_"+element.id.substr(18)).value;
+            if (hasJsonStructure(service_data)) {
+                var new_service_data = JSON.parse(service_data);
+
+                cObj("edit_service_title").value = new_service_data.service_title;
+                cObj("edit_service_id").value = new_service_data.service_id;
+                cObj("service_image_thumbnail").src = new_service_data.service_image;
+                cObj("download_service_image").href = new_service_data.service_image;
+                cObj("edit_service_description").value = new_service_data.service_description;
+            }
+        });
+    }
+
+    var delete_service = document.getElementsByClassName("delete_service");
+    for (let index = 0; index < delete_service.length; index++) {
+        const element = delete_service[index];
+        element.addEventListener("click", function () {
+            cObj("confirmDeleteService").href = "/Homepage/Services/delete/"+element.id.substr(15);
+        });
+    }
+
+    // Synchronize TinyMCE content on form submission
+    document.querySelector('#contact-form-1').addEventListener('submit', function (event) {
+        const content = tinymce.get('carrousel_description').getContent();
+        document.getElementById('carrousel_description_replace').value = content;
+    });
 }
 
 function setCurrillumListerner() {
@@ -71,14 +102,14 @@ function setCarouselListener() {
     for (let index = 0; index < edit_carrousel.length; index++) {
         const element = edit_carrousel[index];
         element.addEventListener("click", function (){
-            redirectToSection("carrousel_section", "edit_carrousels");
             var carousel = cObj("carrousel_"+element.id.substring(15)).value;
             if(isJson(carousel)){
                 // fill the fields
                 var datapass = JSON.parse(carousel);
                 cObj("download_carrousel").classList.remove("d-none");
                 cObj("carrousel_title").value = datapass['carrousel_title'];
-                cObj("carrousel_description").value = datapass['carrousel_description'];
+                tinymce.get('carrousel_description').setContent(datapass['carrousel_description']);
+                cObj("carrousel_image_thumbnail").src = datapass['carousel_image'];
                 cObj("download_carrousel").href = datapass['carousel_image'];
                 cObj("carrousel_id").value = datapass['carrousel_id'];
             }

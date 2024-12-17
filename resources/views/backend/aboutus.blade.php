@@ -209,7 +209,7 @@
                                                 <i class="fa fa-download text-success"> Download Image</i>
                                             </a><br>
                                             <img id="edit_curricullum_image" width="100" height="100">
-                                            <input required type="file" id="edit_award_image" name="edit_award_image" accept=".jpg, .jpeg, .png, .gif" placeholder="Award Image">
+                                            <input type="file" id="edit_award_image" name="edit_award_image" accept=".jpg, .jpeg, .png, .gif" placeholder="Award Image">
                                             <label for="edit_award_description" class="form-control-label">Award Image</label>
                                             <textarea required id="edit_award_description" name="edit_award_description" cols="30" rows="5" placeholder="Enter award description!"></textarea>
                                             <button type="submit" class="btn btn-success btn-sm w-100"><i class="fa fa-save"></i> Edit</button>

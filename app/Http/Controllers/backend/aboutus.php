@@ -129,54 +129,70 @@ class aboutus extends Controller
             'edit_award_id' => 'required|string|max:255',
             'edit_award_title' => 'required|string|max:255',
             'edit_date_of_award' => 'required|string|max:255',
-            'edit_award_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
+            // 'edit_award_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
             'edit_award_description' => 'required|string',
         ]);
 
         // check if the id is valid
         $award = DB::select("SELECT * FROM aboutus_awards WHERE award_id = ?", [$request->input("edit_award_id")]);
         if (count($award)) {
-            try {
-                // delete the old file
-                $fileLoc = public_path($award[0]->award_image);
-                if(File::exists($fileLoc)){
-                    File::delete($fileLoc);
-                }
+            if ($request->hasFile("edit_award_image")) {
+                $request->validate([
+                    'edit_award_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240'
+                ]);
 
-                // file url
-                $fileUrl = null;
+                try {
+                    // delete the old file
+                    $fileLoc = public_path($award[0]->award_image);
+                    if(File::exists($fileLoc)){
+                        File::delete($fileLoc);
+                    }
     
-                // Handle the uploaded image
-                if ($request->hasFile('edit_award_image')) {
-                    $file = $request->file('edit_award_image');
-    
-                    // Generate a unique filename using the current date and time
-                    $filename = now()->format('YmdHis') . '.' . $file->getClientOriginalExtension();
-    
-                    // Define the path for the 'web-data' folder
-                    $destinationPath = public_path('web-data');
-    
-                    // Move the file to the 'web-data' folder
-                    $file->move($destinationPath, $filename);
-    
-                    // Set the file URL relative to the public folder
-                    $fileUrl = '/web-data/' . $filename; // Result: /web-data/filename.jpg
+                    // file url
+                    $fileUrl = null;
+        
+                    // Handle the uploaded image
+                    if ($request->hasFile('edit_award_image')) {
+                        $file = $request->file('edit_award_image');
+        
+                        // Generate a unique filename using the current date and time
+                        $filename = now()->format('YmdHis') . '.' . $file->getClientOriginalExtension();
+        
+                        // Define the path for the 'web-data' folder
+                        $destinationPath = public_path('web-data');
+        
+                        // Move the file to the 'web-data' folder
+                        $file->move($destinationPath, $filename);
+        
+                        // Set the file URL relative to the public folder
+                        $fileUrl = '/web-data/' . $filename; // Result: /web-data/filename.jpg
+                    }
+                    
+                    // check if the record is present!
+                    $update = DB::update("UPDATE aboutus_awards SET award_title = ?, award_date = ?, award_image = ?, award_description = ? WHERE award_id = ?",[
+                        $request->input("edit_award_title"),
+                        date("YmdHis", strtotime($request->input("edit_date_of_award"))),
+                        $fileUrl,
+                        $request->input("edit_award_description"),
+                        $request->input("edit_award_id")
+                    ]);
+                    
+                    // award image
+                    return redirect("/AboutUs/Edit#our_awards")->with('success', 'Award data has been updated successfully!');
+                } catch (\Exception $e) {
+                    // Handle exceptions
+                    return back()->with('error', 'Error saving carousel: ' . $e->getMessage());
                 }
-                
+            }else{
+                    
                 // check if the record is present!
-                $update = DB::update("UPDATE aboutus_awards SET award_title = ?, award_date = ?, award_image = ?, award_description = ? WHERE award_id = ?",[
+                $update = DB::update("UPDATE aboutus_awards SET award_title = ?, award_date = ?, award_description = ? WHERE award_id = ?",[
                     $request->input("edit_award_title"),
                     date("YmdHis", strtotime($request->input("edit_date_of_award"))),
-                    $fileUrl,
                     $request->input("edit_award_description"),
                     $request->input("edit_award_id")
                 ]);
-                
-                // award image
                 return redirect("/AboutUs/Edit#our_awards")->with('success', 'Award data has been updated successfully!');
-            } catch (\Exception $e) {
-                // Handle exceptions
-                return back()->with('error', 'Error saving carousel: ' . $e->getMessage());
             }
         }else{
             return back()->with("error", "Invalid award!");

@@ -44,13 +44,15 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="about-text-container">
-                        <ul>
-                            <li class="text-lg text-primary text-bold"><i class="fa fa-arrow-right"></i>  <i class="fa fa-file-pdf-o"></i> <a href="#" class="text-primary">Download Admission Letter.</a></li>
-                            <li class="text-lg text-primary text-bold"><i class="fa fa-arrow-right"></i>  <i class="fa fa-file-pdf-o"></i> <a href="#" class="text-primary">Download Newsletter.</a></li>
-                            <li class="text-lg text-primary text-bold"><i class="fa fa-arrow-right"></i>  <i class="fa fa-file-pdf-o"></i> <a href="#" class="text-primary">Download Fees Structure JSS.</a></li>
-                            <li class="text-lg text-primary text-bold"><i class="fa fa-arrow-right"></i>  <i class="fa fa-file-pdf-o"></i> <a href="#" class="text-primary">Download Fees Structure Upper Primary.</a></li>
-                            <li class="text-lg text-primary text-bold"><i class="fa fa-arrow-right"></i>  <i class="fa fa-file-pdf-o"></i> <a href="#" class="text-primary">Download Fees Structure Lower Primary.</a></li>
-                        </ul>
+                        <ol type="1">
+                            @if (count($downloads) > 0)
+                                @foreach ($downloads as $download)
+                                    <li class="text-lg text-primary text-bold my-2"><i class="fa fa-arrow-right"></i> <i class="fa fa-file-pdf-o"></i> <a href="{{$download->download_file}}" class="text-primary" download>Download {{$download->download_title}}.</a></li>
+                                @endforeach
+                            @else
+                                <li class="text-lg text-primary text-bold">No documents saved yet</li>
+                            @endif
+                        </ol>
                     </div>
                 </div>
             </div>

@@ -37,6 +37,9 @@
                 @endif
             </div>
             <div class="row">
+                <div class="col-md-12">
+                    <a href="/Vacancies" class="btn btn-sm btn-primary mb-3"><i class="fa fa-arrow-left"></i> Back to Vacancies</a>
+                </div>
                 <div class="col-lg-6">
                     <div class="contact-form">
                         <div class="single-title">

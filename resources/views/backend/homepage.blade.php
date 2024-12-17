@@ -43,7 +43,7 @@
                     @endif
                 </div>
                 <div class="col-md-3">
-                    <button class="btn btn-secondary btn-sm {{count($homepage_carrousels) >=5 ? "disabled" : ""}}"  data-bs-toggle="modal" data-bs-target="#contactFormModal"><i class="fa fa-plus"></i> Add Caroussel</button>
+                    <button class="btn btn-secondary btn-sm {{count($homepage_carrousels) >=5 ? "disabled" : ""}}" data-bs-toggle="modal" data-bs-target="#contactFormModal"><i class="fa fa-plus"></i> Add Caroussel</button>
                     <p class="text-success {{count($homepage_carrousels) >=5 ? "" : "d-none"}}">Upto Five carrousels allowed!</p>
                 </div>
                 
@@ -59,7 +59,7 @@
                             <!-- Modal Body -->
                             <div class="modal-body">
                                 <div class="contact-form-container">
-                                    <form id="contact-form" action="/Homepage/saveCarousel" method="post" enctype="multipart/form-data">
+                                    <form id="contact-form-2" action="/Homepage/saveCarousel" method="post" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-3">
                                             <label for="caroussel_title">Carrousel Title</label>
@@ -103,9 +103,50 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Modal Structure for carrousels-->
+                <div class="modal fade" id="edit_carrousel_modal" tabindex="-1" aria-labelledby="contactFormModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="contactFormModalLabel">Edit Carrousel</h6>
+                                <button type="button" class="btn btn-sm btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <!-- Modal Body -->
+                            <div class="modal-body">
+                                <div class="contact-form-container">
+                                    <form id="contact-form-1" action="/Homepage/updateCarousel" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <a href="path/to/your-file.pdf" class="d-none" id="download_carrousel" download>
+                                            <i class="fa fa-download text-success"> Download Image</i>
+                                        </a>
+                                        <div style="width: 100px; height: 100px;">
+                                            <img src="/web-data/20241128173549.jpg" id="carrousel_image_thumbnail" alt="">
+                                        </div>
+                                        <input type="hidden" name="carrousel_id" required id="carrousel_id">
+                                        <label for="carrousel_title"><b>Carrousel Title</b></label>
+                                        <input type="text" name="carrousel_title" required id="carrousel_title" placeholder="Carrousel Title *">
+                                        <label for="carrousel_image"><b>Carrousel Image</b></label>
+                                        <input type="file" name="carrousel_image" id="carrousel_image" placeholder="Carrousel File *" accept=".jpg, .jpeg, .png, .gif">
+                                        <label for="carrousel_description"><b>Carrousel Description</b></label>
+                                        <input type="hidden" name="carrousel_description" id="carrousel_description_replace">
+                                        <textarea id="carrousel_description" placeholder="Your Carrousel Description"></textarea>
+                                        <button type="submit" class="button-default button-yellow submit w-100"><i
+                                                class="fa fa-save"></i>Update</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Modal Footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
-                <div class="col-xl-9 col-lg-8">
+                <div class="col-xl-12 col-lg-12">
                     @if (count($homepage_carrousels) > 0)
                         @foreach ($homepage_carrousels as $key => $homepage_carrousel)
                             <div class="class-list-item">
@@ -121,7 +162,7 @@
                                                 </div>
                                                 <input type="hidden" id="carrousel_{{$key}}" value="{{json_encode($homepage_carrousel)}}">
                                                 <div class="col-md-3">
-                                                    <button class="btn btn-sm btn-success edit_carrousel" type="button" id="edit_carrousel_{{$key}}" title="Edit Caroussel!"><i class="fa fa-pencil"></i></button>
+                                                    <button class="btn btn-sm btn-success edit_carrousel" type="button" id="edit_carrousel_{{$key}}" title="Edit Caroussel!" data-bs-toggle="modal" data-bs-target="#edit_carrousel_modal"><i class="fa fa-pencil"></i></button>
                                                     <button class="btn btn-sm btn-info delete_carrousel" id="delete_carrousel_{{$key}}" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-placement="top" title="Delete Carrousel!"><i class="fa fa-trash"></i></button>
                                                     <a href="/Homepage/displayCarousel/{{$homepage_carrousel->carrousel_id}}" class="btn btn-sm {{$homepage_carrousel->display == "1" ? "btn-primary" : "btn-warning"}}" data-bs-placement="top" title="Change display status!"><i class="fa {{$homepage_carrousel->display == "1" ? "fa-eye" : "fa-eye-slash"}}"></i></a>
                                                 </div>
@@ -131,7 +172,7 @@
                                                 <span>{{$homepage_carrousel->carrousel_title}}</span>
                                             </div>
                                             <span><b><u>Description</u></b>:</span>
-                                            <p>{{$homepage_carrousel->carrousel_description}}</p>
+                                            <p>{!!$homepage_carrousel->carrousel_description!!}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -154,31 +195,6 @@
                             </div>
                         </div>
                     @endif
-                </div>
-                <div class="col-xl-3 col-lg-4 border rounded border-secondary p-2" id="edit_carrousels">
-                    <div class="single-widget-item res-mrg-top-xs">
-                        <div class="single-title">
-                            <h3 class="text-center">Select Carousel to Edit</h3>
-                        </div>
-                        <div class="contact-form">
-                            {{-- <div class="w-100 container p-3 bg-success border-top border-dark border-2 my-2"></div> --}}
-                            <div class="contact-form-container">
-                                <form id="contact-form" action="/Homepage/updateCarousel" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <a href="path/to/your-file.pdf" class="d-none" id="download_carrousel" download>
-                                        <i class="fa fa-download text-success"> Download Image</i>
-                                    </a>
-                                    <input type="hidden" name="carrousel_id" required id="carrousel_id">
-                                    <input type="text" name="carrousel_title" required id="carrousel_title" placeholder="Carrousel Title *">
-                                    <input type="file" name="carrousel_image" required id="carrousel_image" placeholder="Carrousel File *" accept=".jpg, .jpeg, .png, .gif">
-                                    <textarea name="carrousel_description" required id="carrousel_description" placeholder="Your Carrousel Description"></textarea>
-                                    <button type="submit" class="button-default button-yellow submit w-100"><i
-                                            class="fa fa-save"></i>Update</button>
-                                </form>
-                                <p class="form-messege"></p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -214,7 +230,7 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <div class="contact-form-container">
-                                        <form id="contact-form" action="/Homepage/saveCurricullum" method="post" enctype="multipart/form-data">
+                                        <form id="contact-form-3" action="/Homepage/saveCurricullum" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="curriculum_title" class="form-control-label">Curriculum Level</label>
@@ -260,7 +276,7 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <div class="contact-form-container">
-                                        <form id="contact-form" action="/Homepage/updateCurricullum" method="post" enctype="multipart/form-data">
+                                        <form id="contact-form-4" action="/Homepage/updateCurricullum" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="mb-3">
                                                 <label for="curriculum_title" class="form-control-label">Curricullum Title</label>
@@ -440,7 +456,7 @@
                         <div class="contact-form">
                             <div class="w-100 container p-3 bg-success border-top border-dark border-2 my-2"></div>
                             <div class="contact-form-container">
-                                <form id="contact-form" action="/Homepage/updateStats/" method="post">
+                                <form id="contact-form-5" action="/Homepage/updateStats/" method="post">
                                     @csrf
                                     <label for="teachers" class="form-control-label">Teachers Counts *</label>
                                     <input type="number" name="teachers" value="{{$homepage_stats['teachers']}}" placeholder="Teachers *">
@@ -469,7 +485,7 @@
                 <div class="col-md-12">
                     <div class="section-title-wrapper">
                         <div class="section-title">
-                            <h3>Other Chantilly Curricullum</h3>
+                            <h3>Other Services</h3>
                             <p>Edit to show other chantilly school services.</p>
                         </div>
                     </div>
@@ -529,7 +545,7 @@
                                 <!-- Modal Body -->
                                 <div class="modal-body">
                                     <div class="contact-form-container">
-                                        <form id="contact-form" action="/Homepage/updateService" method="post" enctype="multipart/form-data">
+                                        <form id="contact-form-6" action="/Homepage/updateService" method="post" enctype="multipart/form-data">
                                             @csrf
                                             <div class="mb-3">
                                                 <input type="hidden" name="edit_service_id" id="edit_service_id">
@@ -542,7 +558,7 @@
                                                     <img src="/web-data/20241128173549.jpg" id="service_image_thumbnail" alt="">
                                                 </div>
                                                 <label for="edit_service_image" class="form-control-label">Service Image</label>
-                                                <input type="file" id="edit_service_image" name="edit_service_image" placeholder="Service Image *" accept=".jpg, .jpeg, .png, .gif" required>
+                                                <input type="file" id="edit_service_image" name="edit_service_image" placeholder="Service Image *" accept=".jpg, .jpeg, .png, .gif">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="edit_service_description" class="form-control-label">Service Description</label>
@@ -647,6 +663,9 @@
         </div>
     </div>
     <!--End of Service Area-->
+
+    <!-- Place the first <script> tag in your HTML's <head> -->
+    <script src="https://cdn.tiny.cloud/1/if2hs0ax6hmgx2842yuozz7qt8lde0hvc8upqv9gmokdk2id/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         function hasJsonStructure(str) {
           if (typeof str !== "string") return false;
@@ -663,31 +682,14 @@
             return document.getElementById(objectid);
         }
 
-        window.addEventListener("load", function () {
-            var edit_service_data = document.getElementsByClassName("edit_service_data");
-            for (let index = 0; index < edit_service_data.length; index++) {
-                const element = edit_service_data[index];
-                element.addEventListener("click", function () {
-                    var service_data = cObj("service_data_"+element.id.substr(18)).value;
-                    if (hasJsonStructure(service_data)) {
-                        var new_service_data = JSON.parse(service_data);
+        // about us history
+        var aboutUsHistory = @json($history ?? '');
 
-                        cObj("edit_service_title").value = new_service_data.service_title;
-                        cObj("edit_service_id").value = new_service_data.service_id;
-                        cObj("service_image_thumbnail").src = new_service_data.service_image;
-                        cObj("download_service_image").href = new_service_data.service_image;
-                        cObj("edit_service_description").value = new_service_data.service_description;
-                    }
-                });
-            }
-
-            var delete_service = document.getElementsByClassName("delete_service");
-            for (let index = 0; index < delete_service.length; index++) {
-                const element = delete_service[index];
-                element.addEventListener("click", function () {
-                    cObj("confirmDeleteService").href = "/Homepage/Services/delete/"+element.id.substr(15);
-                });
-            }
+        // init tinymce
+        tinymce.init({
+            selector: '#carrousel_description',
+            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
         });
     </script>
 

@@ -8,6 +8,30 @@
     <x-menu active="events"/>
 
     {{-- BODY STARTS HERE --}}
+    @php
+        function convertToEmbedLink($youtubeUrl) {
+            // Parse the URL to extract query parameters
+            $parsedUrl = parse_url($youtubeUrl);
+            parse_str($parsedUrl['query'], $queryParams);
+
+            // Check if the URL contains a video ID
+            if (isset($queryParams['v'])) {
+                $videoId = $queryParams['v'];
+                return "https://www.youtube.com/embed/" . $videoId;
+            }
+
+            // Handle short links (e.g., youtu.be)
+            if (strpos($parsedUrl['host'], 'youtu.be') !== false) {
+                $videoId = trim($parsedUrl['path'], '/');
+                return "https://www.youtube.com/embed/" . $videoId;
+            }
+
+            // Return original URL if it's not a valid YouTube link
+            return $youtubeUrl;
+        }
+    @endphp 
+
+    {{-- BODY STARTS HERE --}}
 
     <!--Breadcrumb Banner Area Start-->
     <div class="breadcrumb-banner-area">
@@ -31,6 +55,8 @@
     
     <!--Class List Area Start-->
     <div class="class-list-area section-padding">
+
+        {{-- LIVE EVENTS --}}
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -39,121 +65,173 @@
                     </div>
                 </div>    
             </div>
-            <div class="row">
-                <div class="col-xl-9 col-lg-8">
-                    <div class="class-list-item">
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-6 col-md-6">
-                                {{-- <a href="#"><img src="img/gallery/9.jpg" alt=""></a> --}}
-                                <iframe
-                                    style="width: 25vw; height: 25vh;"
-                                    src="https://www.youtube.com/embed/dzVC4nUXgd8"
-                                    title="YouTube video player"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                            <div class="col-xl-7 col-lg-6 col-md-6">
-                                <div class="class-list-text">
-                                    <h3><a href="#">Graduation Day</a></h3>
-                                    <div class="class-information">
-                                        <span>Event Date: March 25, 2016</span>
+            @if (count($event_data['live']) > 0)
+                @foreach ($event_data['live'] as $event)
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-8">
+                            <div class="class-list-item">
+                                <div class="row">
+                                    <div class="col-xl-5 col-lg-6 col-md-6">
+                                        <input type="hidden" value='{{json_encode($event)}}' id="event_data_{{$event->event_id}}">
+                                        <a href="#" class="{{$event->event_video_link != null ? "d-none" : ""}}"><img src="{{$event->event_image}}" alt=""></a>
+                                        <iframe class="{{$event->event_video_link != null ? "" : "d-none"}}"
+                                            style="width: 25vw; height: 25vh;"
+                                            src="{{$event->event_video_link != null ? convertToEmbedLink($event->event_video_link) : "https://www.youtube.com/embed/dzVC4nUXgd8"}}"
+                                            title="{{$event->event_title}}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
                                     </div>
-                                    <p>
-                                        This is the Graduation day for the pp3 students who are now transitioning from pre-primary to lower-primary. <br>
-                                        This is not only a celebration but also leveling up. Students will be walking down the redcarpet to pick their certificates of merit. <br>
-                                        This is a step towards the right direction 🎈🎆.
-                                    </p>
-                                    <a href="#" class="button-default">Read More <i class="fa fa-angle-right"></i></a>
+                                    <div class="col-xl-7 col-lg-6 col-md-6">
+                                        <div class="class-list-text">
+                                            <h3><a href="#">{{$event->event_title}}</a></h3>
+                                            <div class="class-information">
+                                                <span>Event Date: {{date("D dS M Y", strtotime($event->event_start_date))}}</span>
+                                            </div>
+                                            <p>
+                                                {{$event->event_description}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="row">
+                    <div class="col-xl-9 col-lg-8">
+                        <div class="class-list-item">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-secondary">No live events at the moment!</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
+        {{-- LIVE EVENTS --}}
+
+        {{-- UPCOMING EVENTS --}}
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title" style="text-align: left; margin-bottom: 20px;">
-                        <h3>Recent Events</h3>
+                        <h3>Upcoming Events</h3>
                     </div>
                 </div>    
             </div>
-            <div class="row">
-                <div class="col-xl-9 col-lg-8">
-                    <div class="class-list-item">
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-6 col-md-6">
-                                <a href="#"><img src="img/gallery/6.jpg" alt=""></a>
-                            </div>
-                            <div class="col-xl-7 col-lg-6 col-md-6">
-                                <div class="class-list-text">
-                                    <h3><a href="#">Graduation Day</a></h3>
-                                    <div class="class-information">
-                                        <span>Event Date: March 25, 2016</span>
+            @if (count($event_data['upcoming']) > 0)
+                @foreach ($event_data['upcoming'] as $event)
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-8">
+                            <div class="class-list-item">
+                                <div class="row">
+                                    <div class="col-xl-5 col-lg-6 col-md-6">
+                                        <input type="hidden" value="{{json_encode($event)}}" id="event_data_{{$event->event_id}}">
+                                        <a href="#" class="{{$event->event_video_link != null ? "d-none" : ""}}"><img src="{{$event->event_image}}" alt=""></a>
+                                        <iframe class="{{$event->event_video_link != null ? "" : "d-none"}}"
+                                            style="width: 25vw; height: 25vh;"
+                                            src="{{$event->event_video_link != null ? convertToEmbedLink($event->event_video_link) : "https://www.youtube.com/embed/dzVC4nUXgd8"}}"
+                                            title="{{$event->event_title}}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
                                     </div>
-                                    <p>
-                                        This is the Graduation day for the pp3 students who are now transitioning from pre-primary to lower-primary. <br>
-                                        This is not only a celebration but also leveling up. Students will be walking down the redcarpet to pick their certificates of merit. <br>
-                                        This is a step towards the right direction 🎈🎆.
-                                    </p>
-                                    <a href="#" class="button-default">Read More <i class="fa fa-angle-right"></i></a>
+                                    <div class="col-xl-7 col-lg-6 col-md-6">
+                                        <div class="class-list-text">
+                                            <h3><a href="#">{{$event->event_title}}</a></h3>
+                                            <div class="class-information">
+                                                <span>Event Date: {{date("D dS M Y", strtotime($event->event_start_date))}}</span>
+                                            </div>
+                                            <p>
+                                                {{$event->event_description}}
+                                            </p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="class-list-item">
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-6 col-md-6">
-                                <a href="#"><img src="img/gallery/11.jpg" alt=""></a>
-                            </div>
-                            <div class="col-xl-7 col-lg-6 col-md-6">
-                                <div class="class-list-text">
-                                    <h3><a href="#">Annual general meeting (A.G.M)</a></h3>
-                                    <div class="class-information">
-                                        <span>Event Date: April 10, 2024</span>
-                                    </div>
-                                    <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</p>
-                                    <a href="#" class="button-default">Read More <i class="fa fa-angle-right"></i></a>
+                @endforeach
+            @else
+                <div class="row">
+                    <div class="col-xl-9 col-lg-8">
+                        <div class="class-list-item">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-secondary">No upcoming events at the moment!</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="class-list-item">
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-6 col-md-6">
-                                <a href="#"><img src="img/gallery/1.jpg" alt=""></a>
-                            </div>
-                            <div class="col-xl-7 col-lg-6 col-md-6">
-                                <div class="class-list-text">
-                                    <h3><a href="#">Parent`s Meeting.</a></h3>
-                                    <div class="class-information">
-                                        <span>Event Date: February 18, 2016</span>
-                                    </div>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of</p>
-                                    <a href="#" class="button-default">Read More <i class="fa fa-angle-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="pagination-content">
-                        <div class="pagination-button">
-                            <ul class="pagination">
-                                <li class="current"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                            </ul>
-                            <span>Page:</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
+        {{-- UPCOMING EVENTS --}}
+
+        {{-- PAST EVENTS --}}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title" style="text-align: left; margin-bottom: 20px;">
+                        <h3>Past Events</h3>
+                    </div>
+                </div>    
+            </div>
+            @if (count($event_data['happened']) > 0)
+                @foreach ($event_data['happened'] as $event)
+                    <div class="row">
+                        <div class="col-xl-9 col-lg-8">
+                            <div class="class-list-item">
+                                <div class="row">
+                                    <div class="col-xl-5 col-lg-6 col-md-6">
+                                        <input type="hidden" value='{{json_encode($event)}}' id="event_data_{{$event->event_id}}">
+                                        <a href="#" class="{{$event->event_video_link != null ? "d-none" : ""}}"><img src="{{$event->event_image}}" alt=""></a>
+                                        <iframe class="{{$event->event_video_link != null ? "" : "d-none"}}"
+                                            style="width: 25vw; height: 25vh;"
+                                            src="{{$event->event_video_link != null ? convertToEmbedLink($event->event_video_link) : "https://www.youtube.com/embed/dzVC4nUXgd8"}}"
+                                            title="{{$event->event_title}}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                    <div class="col-xl-7 col-lg-6 col-md-6">
+                                        <div class="class-list-text">
+                                            <h3><a href="#">{{$event->event_title}}</a></h3>
+                                            <div class="class-information">
+                                                <span>Event Date: {{date("D dS M Y", strtotime($event->event_start_date))}}</span>
+                                            </div>
+                                            <p>
+                                                {{$event->event_description}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="row">
+                    <div class="col-xl-9 col-lg-8">
+                        <div class="class-list-item">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="text-secondary">No past events at the moment!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+        {{-- PAST EVENTS --}}
     </div>
     <!--End of Class List Area-->
     {{-- BODY ENDS HERE --}}

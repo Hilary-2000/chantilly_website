@@ -103,7 +103,8 @@
                             </div>
                         @endforeach
                     @else
-                        <p class="text-center">No applications present at the moment!</p>
+                        <p class="text-danger text-center" style="font-size: 60px;"><i class="fa fa-exclamation-triangle"></i></p>
+                        <p class="text-center text-danger">No vacancies present at the moment!</p>
                     @endif
                 </div>
             </div>
