@@ -10,38 +10,52 @@
     {{-- BODY STARTS HERE --}}
     <!--Contact Area Strat-->
     <div class="contact-area section-padding">
-        <div class="container">
+        <div class="container p-2 rounded">
             <div class="row">
+                <div class="col-md-12">
+                    <h4 class="text-center">Edit - {{$user_data->fullname}}</h4>
+                    <a href="/SchoolAccount/Admin/" class="btn btn-sm btn-outline-secondary mb-2"><i class="fa fa-arrow-left"></i> Back to Administrators</a>
+                    <button class="btn btn-sm btn-outline-info mb-2" data-bs-toggle="modal" data-bs-target="#deleteAdministrator"><i class="fa fa-trash"></i> Delete - {{ucwords(strtolower(explode(" ", $user_data->fullname)[0]))}}</button>
+                </div>
                 <div class="col-lg-6">
                     <div class="contact-area-container">
                         <div class="single-title">
-                            <h3>Personal Information</h3>
+                            <h3>Personal Information for : <u>{{$user_data->fullname}}</u></h3>
                         </div>
-                        <p>Modify your personal information.</p>
-                        <!-- Delete Confirmation Modal for carrousels-->
+                        {{-- delete confirmatiom --}}
+                        <div class="modal fade" id="deleteAdministrator" tabindex="-1" aria-labelledby="deleteVacancy" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteVacancy">Confirm Deletion</h5>
+                                        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure you want to delete {{ucwords(strtolower(explode(" ", $user_data->fullname)[0]))}}? This action cannot be undone.
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <a class="btn btn-sm btn-info" href="/SchoolAccount/AdminProfile/delete/{{$user_data->user_id}}"><i class="fa fa-trash"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- edit Confirmation Modal for carrousels-->
                         <div class="modal fade" id="updateCredentialsModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="deleteModalLabel">Update Credentials</h5>
+                                        <h5 class="modal-title" id="deleteModalLabel">Update Credentials for : {{$user_data->fullname}}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                         <div class="contact-form-container">
-                                            <form id="contact-form-2" action="/SchoolAccount/MyProfile/UpdateCredentials" method="post" enctype="multipart/form-data">
+                                            <form id="contact-form-2" action="/SchoolAccount/AdminProfile/UpdateCredentials" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="mb-3">
                                                     <input type="hidden" name="user_id" value="{{$user_data->user_id}}">
-                                                    <label for="current_username">Current Username</label>
-                                                    <input type="text" name="current_username"  placeholder="Enter your new username *" required>
-                                                </div>
-                                                <div class="mb-3">
                                                     <label for="new_username">New Username</label>
                                                     <input type="text" name="new_username" id="new_username" placeholder="Optional (Only provide if you need to change your username) *">
-                                                </div>
-                                                <div class="mb-3">
-                                                    <label for="old_password">Old Password</label>
-                                                    <input type="text" name="old_password" id="old_password" placeholder="Enter your Old Password *" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="new_password">New Password</label>
@@ -54,7 +68,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-sm btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#updateCredentialsModal"><i class="fa fa-key"></i> Edit your credentials</button>
+                        <button class="btn btn-sm btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#updateCredentialsModal"><i class="fa fa-key"></i> Edit credentials</button>
                         @if ($errors->any())
                             <div class="alert alert-info">
                                 <ul>
@@ -116,16 +130,25 @@
                                     <span>{{$user_data->physical_address}}</span>
                                 </div>
                             </div>
+                            <div class="contact-address-info">
+                                <div class="contact-icon">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Date of Registration</h4>
+                                    <span>{{date("D dS M Y", strtotime($user_data->date_registered))}}</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="contact-form">
                         <div class="single-title">
-                            <h3>Update your data!</h3>
+                            <h3>Update Here!</h3>
                         </div>
                         <div class="contact-form-container">
-                            <form id="contact-form" action="/SchoolAccount/MyProfile/Update" method="post" enctype="multipart/form-data">
+                            <form id="contact-form" action="/SchoolAccount/AdminProfile/Update" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="user_id" value="{{$user_data->user_id}}">
                                 <label for="fullname"><h6 style="font-size: 12px;">Fullname</h6></label>

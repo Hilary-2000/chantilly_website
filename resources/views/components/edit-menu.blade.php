@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Cookie;
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 p-2">
-                    @if (session('error'))
+                    {{-- @if (session('error'))
                         <div class="alert alert-info py-1 text-center my-1">
                             {{ session('error') }}
                         </div>
-                    @endif
+                    @endif --}}
                 </div>
                 <div class="col-lg-5 col-md-5">
                     <div class="header-login-register">
@@ -73,7 +73,15 @@ use Illuminate\Support\Facades\Cookie;
                                                     <i class="fa fa-plus"></i>
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <a href="#" class="text-secondary text-left">Manage Admin</a>
+                                                    <a href="/SchoolAccount/Admin/" class="text-secondary text-left">Manage Admin</a>
+                                                </div>
+                                            </div>
+                                            <div class="row p-1 align-items-center hover-text">
+                                                <div class="col-md-4">
+                                                    <i class="fa fa-university"></i>
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <a href="/SchoolAccount/Edit/" class="text-secondary text-left">Manage School Profile</a>
                                                 </div>
                                             </div>
                                             <div class="row p-1 align-items-center hover-text">

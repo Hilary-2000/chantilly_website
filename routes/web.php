@@ -104,3 +104,11 @@ Route::get("/ExtraCurriculum/Edit/delete/{extracurriculum_id}", [extracurricular
 
 Route::get("/SchoolAccount/MyProfile", [school_account::class, "myProfile"])->name("myProfile")->middleware("authenticate");
 Route::post("/SchoolAccount/MyProfile/Update", [school_account::class, "updateProfile"])->name("updateProfile")->middleware("authenticate");
+Route::post("/SchoolAccount/MyProfile/UpdateCredentials", [school_account::class, "UpdateCredentials"])->name("UpdateCredentials")->middleware("authenticate");
+Route::get("/SchoolAccount/Admin/", [school_account::class, "manage_admin"])->name("manage_admin")->middleware("authenticate");
+Route::get("/SchoolAccount/Admin/View/{admin_id}", [school_account::class, "view_admin"])->name("view_admin")->middleware("authenticate");
+Route::post("/SchoolAccount/AdminProfile/Update", [school_account::class, "updateAdminProfile"])->name("updateAdminProfile")->middleware("authenticate");
+Route::post("/SchoolAccount/AdminProfile/UpdateCredentials", [school_account::class, "updateAdminCredentials"])->name("updateAdminCredentials")->middleware("authenticate");
+Route::get("/SchoolAccount/AdminProfile/delete/{admin_id}", [school_account::class, "delete_admin"])->name("delete_admin")->middleware("authenticate");
+Route::get("/SchoolAccount/Edit/", [school_account::class, "edit_school_account"])->name("edit_school_account")->middleware("authenticate");
+Route::post("/SchoolAccount/AdminProfile/Add", [school_account::class, "addAdmin"])->name("addAdmin")->middleware("authenticate");
