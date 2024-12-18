@@ -36,7 +36,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <button class="btn btn-sm btn-primary"  data-bs-toggle="modal" data-bs-target="#addNewEvent"><i class="fa fa-plus"></i> Add New Event</button>
+                    <button class="btn btn-sm btn-primary my-4"  data-bs-toggle="modal" data-bs-target="#addNewEvent"><i class="fa fa-plus"></i> Add New Event</button>
                     @if ($errors->any())
                         <div class="alert alert-info">
                             <ul>
@@ -162,7 +162,7 @@
                                                     <i class="fa fa-download text-success"> Download Image</i>
                                                 </a><br>
                                                 <img id="view_event_image" width="100" height="100" src="/web-data/20241207201418.jpg">
-                                                <input type="file" name="edit_event_image" id="edit_event_image" accept=".jpg, .jpeg, .png, .gif" placeholder="Event image" required>
+                                                <input type="file" name="edit_event_image" id="edit_event_image" accept=".jpg, .jpeg, .png, .gif" placeholder="Event image">
                                             </div>
                                             <div class="mb-1">
                                                 <label for="edit_event_youtube_link">Event youtube link</label>
@@ -224,7 +224,7 @@
                                         <input type="hidden" value='{{json_encode($event)}}' id="event_data_{{$event->event_id}}">
                                         <a href="#" class="{{$event->event_video_link != null ? "d-none" : ""}}"><img src="{{$event->event_image}}" alt=""></a>
                                         <iframe class="{{$event->event_video_link != null ? "" : "d-none"}}"
-                                            style="width: 25vw; height: 25vh;"
+                                            style="height: 25vh;"
                                             src="{{$event->event_video_link != null ? convertToEmbedLink($event->event_video_link) : "https://www.youtube.com/embed/dzVC4nUXgd8"}}"
                                             title="{{$event->event_title}}"
                                             frameborder="0"
@@ -286,7 +286,7 @@
                                         <input type="hidden" value="{{json_encode($event)}}" id="event_data_{{$event->event_id}}">
                                         <a href="#" class="{{$event->event_video_link != null ? "d-none" : ""}}"><img src="{{$event->event_image}}" alt=""></a>
                                         <iframe class="{{$event->event_video_link != null ? "" : "d-none"}}"
-                                            style="width: 25vw; height: 25vh;"
+                                            style="height: 25vh;"
                                             src="{{$event->event_video_link != null ? convertToEmbedLink($event->event_video_link) : "https://www.youtube.com/embed/dzVC4nUXgd8"}}"
                                             title="{{$event->event_title}}"
                                             frameborder="0"
@@ -348,7 +348,7 @@
                                         <input type="hidden" value='{{json_encode($event)}}' id="event_data_{{$event->event_id}}">
                                         <a href="#" class="{{$event->event_video_link != null ? "d-none" : ""}}"><img src="{{$event->event_image}}" alt=""></a>
                                         <iframe class="{{$event->event_video_link != null ? "" : "d-none"}}"
-                                            style="width: 25vw; height: 25vh;"
+                                            style="height: 25vh;"
                                             src="{{$event->event_video_link != null ? convertToEmbedLink($event->event_video_link) : "https://www.youtube.com/embed/dzVC4nUXgd8"}}"
                                             title="{{$event->event_title}}"
                                             frameborder="0"

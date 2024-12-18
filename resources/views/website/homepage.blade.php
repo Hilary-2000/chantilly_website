@@ -50,8 +50,8 @@
                                 <h3>Chantilly Schools</h3>
                                 <p>Chantilly Schools offers Kenyan CBC Curricullum</p>
                             </div>
-                        </div> 
-                    </div>       
+                        </div>
+                    </div>
                 </div>
                 <div class="class-carousel carousel-style-one owl-carousel">
                     @foreach ($curricullum as $key => $item)

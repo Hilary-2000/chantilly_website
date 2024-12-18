@@ -114,11 +114,11 @@ use Illuminate\Support\Facades\Cookie;
                                     <ul id="nav">
                                         <li class="{{$active == "edit_home" ? "active" : ""}}"><a href="/Homepage/Edit">Edit - Homepage</a></li>
                                         <li class="{{$active == "edit_aboutus" ? "active" : ""}}"><a href="/AboutUs/Edit">Edit - About us</a></li>
+                                        <li class="{{$active == "edit_extra_curricular" ? "active" : ""}}"><a href="/ExtraCurriculum/Edit">Edit - Extra-Curriculum</a></li>
                                         <li class="{{$active == "edit_events" ? "active" : ""}}"><a href="/Events/Edit">Edit - Events</a></li>
                                         <li class="{{$active == "edit_gallery" ? "active" : ""}}"><a href="/Gallery/Edit">Edit - Gallery</a></li>
                                         <li class="{{$active == "edit_vacancy" ? "active" : ""}}"><a href="/Vacancies/Edit/">Edit - Vacancies</a></li>
                                         <li class="{{$active == "edit_downloads" ? "active" : ""}}"><a href="/Downloads/Edit">Edit - Downloads</a></li>
-                                        {{-- <li class="{{$active == "contactus" ? "active" : ""}}"><a href="/ContactUs">Edit - Contact Us</a></li> --}}
                                     </ul>
                                 </nav>
                             </div>
@@ -139,6 +139,7 @@ use Illuminate\Support\Facades\Cookie;
                             <ul>
                                 <li class="{{$active == "edit_home" ? "active" : ""}}"><a href="/Homepage/Edit">Edit - Homepage</a></li>
                                 <li class="{{$active == "edit_aboutus" ? "active" : ""}}"><a href="/AboutUs/Edit">Edit - About us</a></li>
+                                <li class="{{$active == "edit_extra_curricular" ? "active" : ""}}"><a href="/ExtraCurriculum/Edit">Edit - Extra-Curriculum</a></li>
                                 <li class="{{$active == "edit_events" ? "active" : ""}}"><a href="/Events/Edit">Edit - Events</a></li>
                                 <li class="{{$active == "edit_gallery" ? "active" : ""}}"><a href="/Gallery/Edit">Edit - Gallery</a></li>
                                 <li class="{{$active == "edit_vacancy" ? "active" : ""}}"><a href="/Vacancies/Edit/">Edit - Vacancies</a></li>

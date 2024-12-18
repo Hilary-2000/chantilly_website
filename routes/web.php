@@ -3,6 +3,7 @@
 use App\Http\Controllers\backend\aboutus;
 use App\Http\Controllers\backend\download;
 use App\Http\Controllers\backend\events;
+use App\Http\Controllers\backend\extracurricular;
 use App\Http\Controllers\backend\gallery;
 use App\Http\Controllers\backend\homepage;
 use App\Http\Controllers\backend\login;
@@ -92,3 +93,9 @@ Route::post("/Homepage/saveServices", [homepage::class, "saveServices"])->name("
 Route::post("/Homepage/updateService", [homepage::class, "updateService"])->name("updateService")->middleware("authenticate");
 Route::get("/Homepage/Services/delete/{service_id}", [homepage::class, "deleteService"])->name("deleteService")->middleware("authenticate");
 Route::get("/Homepage/Services/changeStatus/{service_id}", [homepage::class, "changeStatus"])->name("changeStatus")->middleware("authenticate");
+
+Route::get("/ExtraCurriculum/Edit", [extracurricular::class,"editExtraCurricular"])->name("editExtraCurricular")->middleware("authenticate");
+Route::post("/ExtraCurriculum/Edit/add", [extracurricular::class, "addExtraCurricular"])->name("addExtraCurricular")->middleware("authenticate");
+Route::post("/ExtraCurriculum/Edit/update", [extracurricular::class, "updateExtraCurricular"])->name("updateExtraCurricular")->middleware("authenticate");
+Route::get("/ExtraCurriculum/Edit/change_status/{extracurriculum_id}", [extracurricular::class, "changeStatus"])->name("changeStatus")->middleware("authenticate");
+Route::get("/ExtraCurriculum/Edit/delete/{extracurriculum_id}", [extracurricular::class, "deleteExtraCurricular"])->name("deleteExtraCurricular")->middleware("authenticate");

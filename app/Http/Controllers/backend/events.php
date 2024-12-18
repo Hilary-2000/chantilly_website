@@ -81,48 +81,69 @@ class events extends Controller
         $request->validate([
             'edit_event_title' => 'required|string|max:255',
             'edit_event_description' => 'required|string',
-            'edit_event_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
+            // 'edit_event_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
             // 'edit_event_youtube_link' => 'required|string',
             'edit_start_date' => 'required|string',
             'edit_event_id' => 'required|string',
             'edit_event_type' => 'required|string',
         ]);
-
         // get the event data 
         $event_data = DB::select("SELECT * FROM events WHERE event_id = ?", [$request->input("edit_event_id")]);
         if (count($event_data) > 0) {
-            // proceed and save the new file
-            try {
-                // delete the old file
-                $old_file_loc = public_path($event_data[0]->event_image);
-                if (File::exists($old_file_loc)) {
-                    File::delete($old_file_loc);
+            if ($request->hasFile("edit_event_image")) {
+                $request->validate([
+                    'edit_event_image' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
+                ]);
+                // proceed and save the new file
+                try {
+                    // delete the old file
+                    $old_file_loc = public_path($event_data[0]->event_image);
+                    if (File::exists($old_file_loc)) {
+                        File::delete($old_file_loc);
+                    }
+    
+                    $fileUrl = null;
+        
+                    // Handle the uploaded image
+                    if ($request->hasFile('edit_event_image')) {
+                        $file = $request->file('edit_event_image');
+        
+                        // Generate a unique filename using the current date and time
+                        $filename = now()->format('YmdHis') . '.' . $file->getClientOriginalExtension();
+        
+                        // Define the path for the 'web-data' folder
+                        $destinationPath = public_path('web-data');
+        
+                        // Move the file to the 'web-data' folder
+                        $file->move($destinationPath, $filename);
+        
+                        // Set the file URL relative to the public folder
+                        $fileUrl = '/web-data/' . $filename; // Result: /web-data/filename.jpg
+                    }
+        
+                    // save the data to the database
+                    $insert = DB::update("UPDATE events SET event_title = ?, event_description = ?, event_image = ?, event_video_link = ?, event_start_date = ?, event_end_date = ?, event_type = ? WHERE event_id = ?", [
+                        $request->input("edit_event_title"),
+                        $request->input("edit_event_description"),
+                        $fileUrl,
+                        $request->input("edit_event_youtube_link"),
+                        date("YmdHis", strtotime($request->input("edit_start_date"))),
+                        date("YmdHis", strtotime($request->input("edit_start_date"))),
+                        $request->input("edit_event_type"),
+                        $request->input("edit_event_id")
+                    ]);
+                    
+                    return redirect("/Events/Edit")->with('success', 'Event updated successfully!');
+                } catch (\Exception $e) {
+                    // Handle exceptions
+                    return back()->with('error', 'Error saving event: ' . $e->getMessage());
                 }
-
-                $fileUrl = null;
-    
-                // Handle the uploaded image
-                if ($request->hasFile('edit_event_image')) {
-                    $file = $request->file('edit_event_image');
-    
-                    // Generate a unique filename using the current date and time
-                    $filename = now()->format('YmdHis') . '.' . $file->getClientOriginalExtension();
-    
-                    // Define the path for the 'web-data' folder
-                    $destinationPath = public_path('web-data');
-    
-                    // Move the file to the 'web-data' folder
-                    $file->move($destinationPath, $filename);
-    
-                    // Set the file URL relative to the public folder
-                    $fileUrl = '/web-data/' . $filename; // Result: /web-data/filename.jpg
-                }
-    
+            }else{
+        
                 // save the data to the database
-                $insert = DB::insert("UPDATE events SET event_title = ?, event_description = ?, event_image = ?, event_video_link = ?, event_start_date = ?, event_end_date = ?, event_type = ? WHERE event_id = ?", [
+                $insert = DB::update("UPDATE events SET event_title = ?, event_description = ?, event_video_link = ?, event_start_date = ?, event_end_date = ?, event_type = ? WHERE event_id = ?", [
                     $request->input("edit_event_title"),
                     $request->input("edit_event_description"),
-                    $fileUrl,
                     $request->input("edit_event_youtube_link"),
                     date("YmdHis", strtotime($request->input("edit_start_date"))),
                     date("YmdHis", strtotime($request->input("edit_start_date"))),
@@ -131,9 +152,6 @@ class events extends Controller
                 ]);
                 
                 return redirect("/Events/Edit")->with('success', 'Event updated successfully!');
-            } catch (\Exception $e) {
-                // Handle exceptions
-                return back()->with('error', 'Error saving event: ' . $e->getMessage());
             }
         }else {
             return back()->with('error', 'Invalid event');
