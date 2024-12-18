@@ -1165,8 +1165,12 @@ span.arrow > a:after {
     margin-bottom: 11px;
     outline: medium none;
 }
+.teacher-image-carousel{
+    border: 3px solid #F11923;
+    padding: 2px;
+}
 .teacher-image-carousel, .user-profile{
-    border: 1px solid #f0f0f0;
+    border: 3px solid #f0f0f0;
     border-radius: 50%;
     cursor: pointer;
     display: inline-block;

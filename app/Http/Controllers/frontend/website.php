@@ -61,4 +61,10 @@ class website extends Controller
         $downloads = DB::select("SELECT * FROM downloads WHERE display = '1'");
         return view("website.downloads", ["downloads" => $downloads]);
     }
+
+    // get the extracurrilum
+    public function get_extra_curricular(){
+        $curricullum = DB::select("SELECT * FROM extra_curriculum WHERE display = '1'");
+        return view("website.extra_curricular", ["curricullum" => $curricullum]);
+    }
 }

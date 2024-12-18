@@ -65,7 +65,7 @@ use Illuminate\Support\Facades\Cookie;
                                                     <i class="fa fa-user"></i>
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <a href="#" class="text-secondary text-left">My Profile</a>
+                                                    <a href="/SchoolAccount/MyProfile" class="text-secondary text-left">My Profile</a>
                                                 </div>
                                             </div>
                                             <div class="row p-1 align-items-center hover-text">
@@ -101,7 +101,7 @@ use Illuminate\Support\Facades\Cookie;
     <div class="header-logo-menu sticker">
         <div class="container">
             <div class="logo-menu-bg">
-                <div class="row">
+                <div class="row py-2 my-2" style="border-bottom: 1px solid rgb(226, 226, 226);">
                     <div class="col-lg-3 col-md-12">
                         <div class="logo">
                             <a href="/"><img src="/img/logo/chantilly_logo.png" alt="TECHEDU"></a>

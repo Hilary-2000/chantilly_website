@@ -65,15 +65,7 @@ use Illuminate\Support\Facades\Cookie;
                                                     <i class="fa fa-user"></i>
                                                 </div>
                                                 <div class="col-md-8">
-                                                    <a href="#" class="text-secondary text-left">My Profile</a>
-                                                </div>
-                                            </div>
-                                            <div class="row p-1 align-items-center hover-text">
-                                                <div class="col-md-4">
-                                                    <i class="fa fa-plus"></i>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <a href="#" class="text-secondary text-left">Manage Admin</a>
+                                                    <a href="/SchoolAccount/MyProfile" class="text-secondary text-left">My Profile</a>
                                                 </div>
                                             </div>
                                             <div class="row p-1 align-items-center hover-text">
@@ -96,15 +88,15 @@ use Illuminate\Support\Facades\Cookie;
                 </div>
             </div>
         </div>
-    </div>  
+    </div> 
     <!--Logo Mainmenu Start-->
     <div class="header-logo-menu sticker">
         <div class="container">
             <div class="logo-menu-bg">
-                <div class="row">
+                <div class="row mb-2" style="border-bottom: 1px solid rgb(226, 226, 226);">
                     <div class="col-lg-3 col-md-12">
                         <div class="logo">
-                            <a href="/"><img src="/img/logo/chantilly_logo.png" alt="TECHEDU"></a>
+                            <a href="/"><img src="/img/logo/chantilly_logo.png" alt="CHANTILLY SCHOOL"></a>
                         </div>
                     </div>
                     <div class="col-lg-9 d-none d-lg-block">
@@ -114,11 +106,12 @@ use Illuminate\Support\Facades\Cookie;
                                     <ul id="nav">
                                         <li class="{{$active == "home" ? "active" : ""}}"><a href="/">Home</a></li>
                                         <li class="{{$active == "aboutus" ? "active" : ""}}"><a href="/AboutUs">About us</a></li>
+                                        <li class="{{$active == "extra_curricula" ? "active" : ""}}"><a href="/ExtraCurriculum">Extra-Curriculum</a></li>
                                         <li class="{{$active == "events" ? "active" : ""}}"><a href="/Events">Events</a></li>
                                         <li class="{{$active == "gallery" ? "active" : ""}}"><a href="/Gallery">Gallery</a></li>
                                         <li class="{{$active == "vacancy" ? "active" : ""}}"><a href="/Vacancies">Vacancies</a></li>
                                         <li class="{{$active == "downloads" ? "active" : ""}}"><a href="/Downloads">Downloads</a></li>
-                                        <li class="{{$active == "contactus" ? "active" : ""}}"><a href="/ContactUs">Contact Us</a></li>
+                                        <li class="{{$active == "contactus" ? "active" : ""}}"><a href="/ContactUs">Contacts</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -137,16 +130,17 @@ use Illuminate\Support\Facades\Cookie;
                     <div class="mobile-menu">
                         <nav id="dropdown">
                             <ul>
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/AboutUs">About us</a></li>
-                                <li><a href="/Events">Events</a></li>
-                                <li><a href="/Gallery">Gallery</a></li>
-                                <li><a href="/Vacancies">Vacancies</a></li>
-                                <li><a href="/Downloads">Downloads</a></li>
-                                <li><a href="/ContactUs">Contact Us</a></li>
+                                <li class="{{$active == "home" ? "active" : ""}}"><a href="/">Home</a></li>
+                                <li class="{{$active == "aboutus" ? "active" : ""}}"><a href="/AboutUs">About us</a></li>
+                                <li class="{{$active == "extra_curricula" ? "active" : ""}}"><a href="/ExtraCurriculum">Extra-Curriculum</a></li>
+                                <li class="{{$active == "events" ? "active" : ""}}"><a href="/Events">Events</a></li>
+                                <li class="{{$active == "gallery" ? "active" : ""}}"><a href="/Gallery">Gallery</a></li>
+                                <li class="{{$active == "vacancy" ? "active" : ""}}"><a href="/Vacancies">Vacancies</a></li>
+                                <li class="{{$active == "downloads" ? "active" : ""}}"><a href="/Downloads">Downloads</a></li>
+                                <li class="{{$active == "contactus" ? "active" : ""}}"><a href="/ContactUs">Contacts</a></li>
                             </ul>
                         </nav>
-                    </div>					
+                    </div>
                 </div>
             </div>
         </div>
