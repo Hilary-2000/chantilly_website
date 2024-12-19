@@ -537,6 +537,11 @@ class school_account extends Controller
         }
     }
 
+    function reset_email(){
+        $delete = DB::delete("DELETE FROM email_config");
+        return back()->with("success", "E-mail configuration has been reset successfully!");
+    }
+
     function send_inquiry(Request $request){
         // validate the data
         $request->validate([
@@ -544,6 +549,7 @@ class school_account extends Controller
             'email' => 'required|string',
             'subject' => 'required|string',
             'message' => 'required|string',
+            "terms_n_conditions" => 'required'
         ]);
 
         // send the message to the admin using the credential

@@ -112,7 +112,7 @@ use Illuminate\Support\Facades\Cookie;
                 <div class="row py-2 my-2" style="border-bottom: 1px solid rgb(226, 226, 226);">
                     <div class="col-lg-3 col-md-12">
                         <div class="logo">
-                            <a href="/"><img src="/img/logo/chantilly_logo.png" alt="TECHEDU"></a>
+                            <a href="/"><img style="max-height: 100px;" src="{{ session('school_logo') ?? "/img/logo/chantilly_logo.png" }}" alt="TECHEDU"></a>
                         </div>
                     </div>
                     <div class="col-lg-9 d-none d-lg-block">

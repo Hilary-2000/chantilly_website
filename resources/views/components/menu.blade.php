@@ -95,8 +95,8 @@ use Illuminate\Support\Facades\Cookie;
             <div class="logo-menu-bg">
                 <div class="row mb-2" style="border-bottom: 1px solid rgb(226, 226, 226);">
                     <div class="col-lg-3 col-md-12">
-                        <div class="logo">
-                            <a href="/"><img src="/img/logo/chantilly_logo.png" alt="CHANTILLY SCHOOL"></a>
+                        <div class="logo" >
+                            <a href="/"><img style="max-height: 100px;" src="{{ session('school_logo') ?? "/img/logo/chantilly_logo.png" }}" alt="CHANTILLY SCHOOL"></a>
                         </div>
                     </div>
                     <div class="col-lg-9 d-none d-lg-block">

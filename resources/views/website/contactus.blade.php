@@ -99,6 +99,11 @@
                                 <input type="email" name="email" placeholder="Your Email *">
                                 <input type="text" name="subject" placeholder="Subject (What are you inquiring about?) *">
                                 <textarea name="message" class="yourmessage" placeholder="Your message here (We will get back to you ASAP)"></textarea>
+                                <div class="d-flex align-items-center">
+                                    <label for="terms_n_conditions">Accept <a href="/Chantilly/Terms" target="_blank"><u>Terms & Conditions</u></a> before you proceed!</label>
+                                    <input type="checkbox" id="terms_n_conditions" class="m-0" name="terms_n_conditions" style="width: 15px;" required>
+                                </div>
+                                <br><br>
                                 <button type="submit" class="button-default button-yellow submit"><i class="fa fa-send"></i>Submit</button>
                             </form>
                             <p class="form-messege"></p>

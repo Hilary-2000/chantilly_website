@@ -28,6 +28,7 @@
                                     </div>
                                     <div class="modal-body">
                                         <div class="contact-form-container">
+                                            <a href="/SchoolAccount/SchoolProfile/resetEmail" class="btn btn-sm btn-outline-warning">Reset E-Mail Config</a>
                                             <form id="contact-form-2" action="/SchoolAccount/SchoolProfile/SetupEmail" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="mb-3">
