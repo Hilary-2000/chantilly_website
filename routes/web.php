@@ -112,3 +112,9 @@ Route::post("/SchoolAccount/AdminProfile/UpdateCredentials", [school_account::cl
 Route::get("/SchoolAccount/AdminProfile/delete/{admin_id}", [school_account::class, "delete_admin"])->name("delete_admin")->middleware("authenticate");
 Route::get("/SchoolAccount/Edit/", [school_account::class, "edit_school_account"])->name("edit_school_account")->middleware("authenticate");
 Route::post("/SchoolAccount/AdminProfile/Add", [school_account::class, "addAdmin"])->name("addAdmin")->middleware("authenticate");
+Route::post("/SchoolAccount/SchoolProfile/Update", [school_account::class, "update_school_profile"])->name("update_school_profile")->middleware("authenticate");
+Route::post("/SchoolAccount/SchoolProfile/SetupEmail", [school_account::class, "setup_email"])->name("setup_email")->middleware("authenticate");
+
+
+// send email
+Route::post("/Client/send_inquiry", [school_account::class, "send_inquiry"])->name("send_inquiry")->middleware("authUser");

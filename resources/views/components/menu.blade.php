@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Cookie;
                 <div class="col-lg-4 col-md-4">
                     <div class="header-top-info">
                         <div class="social-links mt-4">
-                            <a target="_blank" href="https://www.facebook.com/chantillyschools/"><i class="fa fa-facebook"></i></a>
-                            <a target="_blank" href="https://www.instagram.com/chantillyschools.kaizen/"><i class="fa fa-instagram"></i></a>
+                            <a target="_blank" href="{{ session('school_facebook') ?? "https://www.facebook.com/chantillyschools/" }}"><i class="fa fa-facebook"></i></a>
+                            <a target="_blank" href="{{ session('school_instagram') ?? "https://www.instagram.com/chantillyschools.kaizen/" }}"><i class="fa fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>

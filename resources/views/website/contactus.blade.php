@@ -13,6 +13,27 @@
     <div class="contact-area section-padding">
         <div class="container">
             <div class="row">
+                <div class="col-md-12">
+                    @if ($errors->any())
+                        <div class="alert alert-info">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success py-1 text-center my-1">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-info py-1 text-center my-1">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                </div>
                 <div class="col-lg-6">
                     <div class="contact-area-container">
                         <div class="single-title">
@@ -26,7 +47,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>Address</h4>
-                                    <span>P.O Box 711, Karuri, Kenya</span>
+                                    <span>P.O Box 711, {{session('school_address') ?? "Banana Raini Rd, off Limuru Road Ruaka, Karuri"}}</span>
                                 </div>
                             </div>
                             <div class="contact-address-info">
@@ -35,7 +56,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>Phone</h4>
-                                    <span><a href="tel:0714402822">(254) 714 402 822</a></span>
+                                    <span><a href="tel:{{session('school_phone') ?? "0714402822"}}">(254) {{session('school_phone') ?? "0714402822"}}</a></span>
                                 </div>
                             </div>
                             <div class="contact-address-info">
@@ -44,7 +65,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>WhatsApp Message</h4>
-                                    <span><a target="_blank" href="https://wa.link/2xe379">Click me to send a message to (254) 714 402 822</a></span>
+                                    <span><a target="_blank" href="https://wa.me/254{{session('school_whatapp') ?? "0714402822"}}">Click me to send a message to (254) {{session('school_whatapp') ?? "0714402822"}}</a></span>
                                 </div>
                             </div>
                             <div class="contact-address-info">
@@ -53,7 +74,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>Email</h4>
-                                    <span>info@chantillyschools.ac.ke</span>
+                                    <span>{{session('school_email') ?? "info@chantillyschools.ac.ke"}}</span>
                                 </div>
                             </div>
                         </div>
@@ -65,15 +86,17 @@
                             <h3>Send Us A Message</h3>
                         </div>
                         <div class="contact-form-container">
-                            <form id="contact-form" action="#" method="post">
+                            <form id="contact-form" action="/Client/send_inquiry" method="post">
+                                @csrf
                                 <div class="row">
                                     <div class="col-md-6">
                                         <input type="text" name="name" placeholder="Your Name *">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="email" name="email" placeholder="Your Email *">
+                                        <input type="phone" name="phone" placeholder="Your Contacts *">
                                     </div>
                                 </div>
+                                <input type="email" name="email" placeholder="Your Email *">
                                 <input type="text" name="subject" placeholder="Subject (What are you inquiring about?) *">
                                 <textarea name="message" class="yourmessage" placeholder="Your message here (We will get back to you ASAP)"></textarea>
                                 <button type="submit" class="button-default button-yellow submit"><i class="fa fa-send"></i>Submit</button>

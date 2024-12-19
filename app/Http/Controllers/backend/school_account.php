@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class school_account extends Controller
 {
@@ -354,10 +355,226 @@ class school_account extends Controller
 
     public function edit_school_account(){
         $school_data = DB::select("SELECT * FROM school_details;");
+        $email_config = DB::select("SELECT * FROM email_config");
         if (count($school_data) > 0) {
-            return view("", ["school_data" => $school_data]);
+            return view("backend.school_data", ["school_data" => count($school_data) > 0 ? $school_data[0] : [], "email_config" => count($email_config) > 0 ? $email_config[0] : []]);
         }else {
+            return view("backend.school_data", ["school_data" => []]);
+        }
+    }
+
+    public function update_school_profile(Request $request){
+        // validate the data
+        $request->validate([
+            'school_name' => 'required|string|max:255',
+            'school_phone' => 'required|string',
+            'school_email' => 'required|string',
+            'school_address' => 'required|string',
+            // 'school_logo' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
+        ]);
+
+        $school_data = DB::select("SELECT * FROM school_details;");
+        if (count($school_data) > 0) {
+            // insert the image
+            try {
+                // file url
+                $fileUrl = null;
+                // Handle the uploaded image
+                if ($request->hasFile('school_logo')) {
+                    // validate the data
+                    $request->validate([
+                        'school_logo' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
+                    ]);
+
+                    // delete the old file
+                    if (File::exists(public_path($school_data[0]->school_logo ?? ""))) {
+                        File::delete(public_path($school_data[0]->school_logo));
+                    }
+
+                    // profile
+                    $file = $request->file('school_logo');
+
+                    // Generate a unique filename using the current date and time
+                    $filename = now()->format('YmdHis') . '.' . $file->getClientOriginalExtension();
+
+                    // Define the path for the 'web-data' folder
+                    $destinationPath = public_path('web-data');
+
+                    // Move the file to the 'web-data' folder
+                    $file->move($destinationPath, $filename);
+
+                    // Set the file URL relative to the public folder
+                    $fileUrl = '/web-data/' . $filename; // Result: /web-data/filename.jpg
+                }else{
+                    $fileUrl = $school_data[0]->school_logo;
+                }
+
+                // update school data
+                $school_data = DB::update("UPDATE school_details SET school_name = ?, school_logo = ?, school_phone = ?, school_whatapp = ?, school_email = ?, school_facebook = ?, school_instagram = ?, school_motto = ?, school_address = ? WHERE school_id = ?", [
+                    $request->input("school_name"),
+                    $fileUrl,
+                    $request->input("school_phone"),
+                    $request->input("school_whatapp"),
+                    $request->input("school_email"),
+                    $request->input("school_facebook"),
+                    $request->input("school_instagram"),
+                    $request->input("school_motto"),
+                    $request->input("school_address"),
+                    $school_data[0]->school_id
+                ]);
+                return redirect("/SchoolAccount/Edit/")->with('success', 'School profile updated successfully!');
+            } catch (\Exception $e) {
+                // Handle exceptions
+                return back()->with('error', 'Error saving event: ' . $e->getMessage());
+            }
+        }else {
+            // validate the data
+            $request->validate([
+                'school_logo' => 'required|file|mimes:jpg,jpeg,png,gif|max:10240', // Max file size: 2MB
+            ]);
+            // insert the image
+            try {
+                // file url
+                $fileUrl = null;
+                // Handle the uploaded image
+                if ($request->hasFile('school_logo')) {
+                    // profile
+                    $file = $request->file('school_logo');
+
+                    // Generate a unique filename using the current date and time
+                    $filename = now()->format('YmdHis') . '.' . $file->getClientOriginalExtension();
+
+                    // Define the path for the 'web-data' folder
+                    $destinationPath = public_path('web-data');
+
+                    // Move the file to the 'web-data' folder
+                    $file->move($destinationPath, $filename);
+
+                    // Set the file URL relative to the public folder
+                    $fileUrl = '/web-data/' . $filename; // Result: /web-data/filename.jpg
+                }
+
+                // update school data
+                $school_data = DB::insert("INSERT INTO school_details (school_name, school_logo, school_phone, school_whatapp, school_email, school_facebook, school_instagram, school_motto, school_address) VALUES (?,?,?,?,?,?,?,?,?)", [
+                    $request->input("school_name"),
+                    $fileUrl,
+                    $request->input("school_phone"),
+                    $request->input("school_whatapp"),
+                    $request->input("school_email"),
+                    $request->input("school_facebook"),
+                    $request->input("school_instagram"),
+                    $request->input("school_motto"),
+                    $request->input("school_address")
+                ]);
+                return redirect("/SchoolAccount/Edit/")->with('success', 'School profile updated successfully!');
+            } catch (\Exception $e) {
+                // Handle exceptions
+                return back()->with('error', 'Error saving event: ' . $e->getMessage());
+            }
+        }
+    }
+
+    public function setup_email(Request $request){
+        // validate the data
+        $request->validate([
+            'sender_name' => 'required|string|max:255',
+            'test_email_address' => 'required|string',
+            'email_host' => 'required|string',
+            'email_username' => 'required|string',
+            'email_password' => 'required|string'
+        ]);
+
+        // proceed to check if the configs work fine
+        $success = false;
+        try {
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->Host = $request->input("email_host");
+            $mail->SMTPAuth = true;
             
+            $mail->Username = $request->input("email_username");
+            $mail->Password = $request->input("email_password");
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
+            $mail->Port = 587;
+            
+            $mail->setFrom($request->input("email_username"),$request->input("sender_name"));
+            $mail->addAddress($request->input("test_email_address"));
+            $mail->isHTML(true);
+            $mail->Subject = "Test Message";
+            $mail->Body = "Hello, <br> If you have recieved this E-Mail your E-Mail setup was successfull!";
+            $success = $mail->send();
+        } catch (\Exception $th) {
+            return back()->with("success", "An error has occured, check your configuration and try again!");
+        }
+
+        // check success
+        if($success){
+            // save the data to the database
+            $email_config = DB::select("SELECT * FROM email_config");
+
+            if (count($email_config) > 0) {
+                $email_config_id = $email_config[0]->config_id;
+                $update = DB::update("UPDATE email_config SET email_username = ?, email_password = ?, email_host = ?, test_email_address = ?, sender_name = ? WHERE config_id = ?", [
+                    $request->input("email_username"),
+                    $request->input("email_password"),
+                    $request->input("email_host"),
+                    $request->input("test_email_address"),
+                    $request->input("sender_name"),
+                    $email_config_id
+                ]);
+            }else{
+                $insert = DB::insert("INSERT INTO email_config (email_username, email_password, email_host, test_email_address, sender_name) VALUES (?,?,?,?,?)", [
+                    $request->input("email_username"),
+                    $request->input("email_password"),
+                    $request->input("email_host"),
+                    $request->input("test_email_address"),
+                    $request->input("sender_name")
+                ]);
+            }
+            return back()->with("success", "Your email configuration successfully set-up");
+        }else{
+            return back()->with("error", "Check your configuration and try again!");
+        }
+    }
+
+    function send_inquiry(Request $request){
+        // validate the data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string',
+            'subject' => 'required|string',
+            'message' => 'required|string',
+        ]);
+
+        // send the message to the admin using the credential
+        $email_config = DB::select("SELECT * FROM email_config");
+        if (count($email_config) > 0) {
+            // proceed to check if the configs work fine
+            try {
+                $mail = new PHPMailer(true);
+                $mail->isSMTP();
+                $mail->Host = $email_config[0]->email_host;
+                $mail->SMTPAuth = true;
+                
+                $mail->Username = $email_config[0]->email_username;
+                $mail->Password = $email_config[0]->email_password;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
+                $mail->Port = 587;
+                
+                $mail->setFrom($email_config[0]->email_username,$email_config[0]->sender_name);
+                $mail->addAddress($request->input("email"));
+                $mail->isHTML(true);
+                $mail->Subject = $request->input("subject");
+                $mail->Body = "Message from : ".$request->input("name")."<br>Phone : ".$request->input("phone")."<br> Email : ".$request->input("email")."<br><br>Message : ".$request->input("message")."!";
+                $mail->send();
+
+                // return back
+                return back()->with("success", "Email sent successfully, we will get back to you ASAP");
+            } catch (\Exception $th) {
+                return back()->with("error", "An error has occured, try again later!");
+            }
+        }else{
+            return back()->with("error", "An error has occured, try again later!");
         }
     }
 }

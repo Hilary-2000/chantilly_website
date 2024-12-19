@@ -9,9 +9,9 @@
                         <a href="#"><img src="/img/logo/chantilly_logo.png" alt=""></a>
                     </div>
                     <div class="footer-info">
-                        <span><i class="fa fa-map-marker"></i>Banana Raini Rd, off Limuru Road Ruaka, Karuri</span>
-                        <span><i class="fa fa-envelope"></i>info@chantillyschools.ac.ke</span>
-                        <span><i class="fa fa-phone"></i><a href="tel:0714402822" style="color: white;">(254) 714 402 822</a></span>
+                        <span><i class="fa fa-map-marker"></i>{{session('school_address') ?? "Banana Raini Rd, off Limuru Road Ruaka, Karuri"}}</span>
+                        <span><i class="fa fa-envelope"></i>{{session('school_email') ?? "info@chantillyschools.ac.ke"}}</span>
+                        <span><i class="fa fa-phone"></i><a href="tel:{{session('school_phone') ?? "0714402822"}}" style="color: white;">{{session('school_phone') ?? "(254) 714 402 822"}}</a></span>
                     </div>
                 </div>
             </div>
@@ -56,14 +56,14 @@
                 <div class="footer-container">
                     <div class="row">
                         <div class="col-lg-4">
-                            <span>&copy; {{date("Y")}} <a href="#">Chantilly Schools</a>. All rights reserved</span>
+                            <span>&copy; {{date("Y")}} <a href="#">{{session('school_name') ?? "Chantilly Schools"}}</a>. All rights reserved</span>
                         </div>
                         <div class="col-lg-4">
                         </div>
                         <div class="col-lg-4">
                             <div class="social-links">
-                                <a target="_blank" href="https://www.facebook.com/chantillyschools/"><i class="fa fa-facebook"></i></a>
-                                <a target="_blank" href="https://www.instagram.com/chantillyschools.kaizen/"><i class="fa fa-instagram"></i></a>
+                                <a target="_blank" href="{{ session('school_facebook') ?? "https://www.facebook.com/chantillyschools/" }}"><i class="fa fa-facebook"></i></a>
+                                <a target="_blank" href="{{ session('school_instagram') ?? "https://www.instagram.com/chantillyschools.kaizen/" }}"><i class="fa fa-instagram"></i></a>
                             </div>
                         </div>
                     </div>
@@ -171,7 +171,9 @@
     var page = @json($page ?? '');
     if(page == "homepage"){
         setInterval(() => {
-            document.getElementsByClassName("nivo-nextNav")[0].click();
+            if (document.getElementsByClassName("nivo-nextNav") > 0) {
+                document.getElementsByClassName("nivo-nextNav")[0].click();
+            }
         }, 10000);
     }
 </script>	
