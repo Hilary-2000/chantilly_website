@@ -29,7 +29,12 @@ class aboutus extends Controller
 
     public function manageAboutsUs(Request $request){
         $content = $request->input("content");
-        $insert = DB::insert("INSERT INTO aboutus_history (history_details, history_display) VALUES (?,'1')", [$content]);
+        $about_us = DB::select("SELECT * FROM aboutus_history");
+        if (count($about_us) > 0) {
+            $update = DB::update("UPDATE aboutus_history SET history_details = ? WHERE history_id = ?", [$content, $about_us[0]->history_id]);
+        }else {
+            $insert = DB::insert("INSERT INTO aboutus_history (history_details, history_display) VALUES (?,'1')", [$content]);
+        }
 
         // redirect to the about us
         return redirect("/AboutUs/Edit")->with("success", "The history data has been saved successfully!");

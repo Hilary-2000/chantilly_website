@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="footer-info-container text-center section-padding">
                     <div class="footer-logo">
-                        <a href="#"><img src="/img/logo/chantilly_logo.png" alt=""></a>
+                        <a href="#"><img style="max-height: 100px;" src="{{ session('school_logo') ?? "/img/logo/chantilly_logo.png" }}" alt="CHANTILLY SCHOOL"></a>
                     </div>
                     <div class="footer-info">
                         <span><i class="fa fa-map-marker"></i>{{session('school_address') ?? "Banana Raini Rd, off Limuru Road Ruaka, Karuri"}}</span>
