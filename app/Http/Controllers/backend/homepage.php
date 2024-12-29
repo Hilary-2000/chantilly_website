@@ -18,6 +18,7 @@ class homepage extends Controller
         $homepage_curriculum = DB::select("SELECT * FROM `homepage_curriculum`;");
         $homepage_stats = DB::select("SELECT * FROM `homepage_stats`;");
         $services = DB::select("SELECT * FROM homepage_service;");
+        $faqs = DB::select("SELECT * FROM faqs");
 
         $home_stats = array(
             "teachers" => 0,
@@ -29,7 +30,7 @@ class homepage extends Controller
         }
 
         // set the return statement
-        return view("backend/homepage", ["homepage_carrousels" => $homepage_carrousels, "homepage_curriculum" => $homepage_curriculum, "homepage_stats" => $home_stats, "services" => $services]);
+        return view("backend/homepage", ["homepage_carrousels" => $homepage_carrousels, "homepage_curriculum" => $homepage_curriculum, "homepage_stats" => $home_stats, "services" => $services, "faqs" => $faqs]);
     }
     
     public function saveCaroussel(Request $request)
@@ -496,6 +497,41 @@ class homepage extends Controller
         }else{
             // homepage service
             return redirect("/Homepage/Edit#services_section")->with("error", "Invalid service!");
+        }
+    }
+
+    // save FAQ
+    function saveFAQS(Request $request){
+        // Validate the incoming request
+        $request->validate([
+            'faq_question' => 'required|string|max:255',
+            'faq_answer' => 'required|string'
+        ]);
+
+        $status = "1";
+        $insert = DB::insert("INSERT INTO faqs (faq_title, faq_description, faq_status) VALUES (?,?,?)",[$request->input("faq_question"), $request->input("faq_answer"), $status]);
+        return redirect("/Homepage/Edit#faqs_section")->with("success", "Question added successfully!");
+    }
+
+    function updateFAQS(Request $request){
+        // Validate the incoming request
+        $request->validate([
+            'edit_faq_question' => 'required|string|max:255',
+            'edit_faq_answer' => 'required|string',
+            'faqs_ids' => 'required|string'
+        ]);
+        $faqs_ids = $request->input("faqs_ids");
+        $edit_faq_answer = $request->input("edit_faq_answer");
+        $edit_faq_question = $request->input("edit_faq_question");
+
+        // update the FAQs
+        $select = DB::select("SELECT * FROM faqs WHERE faq_id = ?", [$faqs_ids]);
+        if (count($select) > 0) {
+            // uodate the faq description
+            $update = DB::update("UPDATE faqs SET faq_title = ?, faq_description = ? WHERE faq_id = ?", [$edit_faq_question, $edit_faq_answer, $faqs_ids]);
+            return redirect("/Homepage/Edit#faqs_section")->with("success", "FAQs have been updated successfully!");
+        }else{
+            return back()->with("success", "Invalid FAQs!");
         }
     }
 }

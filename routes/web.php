@@ -48,6 +48,8 @@ Route::post("/Homepage/updateCurricullum", [homepage::class, "updateCurricullum"
 Route::get("/Homepage/deleteCurricullum/{curriculum_id}", [homepage::class, "deleteCurricullum"])->name("deleteCurricullum")->middleware("authenticate");
 Route::get("/Homepage/displayCurricullum/{curriculum_id}", [homepage::class, "displayCurricullum"])->name("displayCurricullum")->middleware("authenticate");
 Route::post("/Homepage/updateStats/", [homepage::class, "updateStats"])->name("updateStats")->middleware("authenticate");
+Route::post("/Homepage/saveFAQS", [homepage::class, "saveFAQS"])->name("saveFAQS")->middleware("authenticate");
+Route::post("/Homepage/updateFAQS", [homepage::class, "updateFAQS"])->name("updateFAQS")->middleware("authenticate");
 
 Route::get("/AboutUs/Edit", [aboutus::class, "editAboutUs"])->name("editAboutUs")->middleware("authenticate");
 Route::post("/AboutUs/Edit/manage", [aboutus::class, "manageAboutsUs"])->name("manageAboutsUs")->middleware("authenticate");

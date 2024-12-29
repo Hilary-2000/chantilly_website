@@ -49,6 +49,21 @@ window.onload = function () {
         const content = tinymce.get('carrousel_description').getContent();
         document.getElementById('carrousel_description_replace').value = content;
     });
+
+    // faqs section
+    var faq_edit = document.getElementsByClassName("faq_edit");
+    for (let index = 0; index < faq_edit.length; index++) {
+        const element = faq_edit[index];
+        element.addEventListener("click", function () {
+            var question_data = cObj("question_data_"+this.id.substr(9)).value;
+            if (hasJsonStructure(question_data)) {
+                var quiz_data = JSON.parse(question_data);
+                tinymce.get("edit_faq_answer").setContent(quiz_data.faq_description);
+                cObj("edit_faq_question").value =  quiz_data.faq_title;
+                cObj("faqs_ids").value = quiz_data.faq_id;
+            }
+        });
+    }
 }
 
 function setCurrillumListerner() {

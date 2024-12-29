@@ -664,6 +664,168 @@
     </div>
     <!--End of Service Area-->
 
+    <!--Service Area Start-->
+    <div class="service-area section-padding" id="faqs_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title-wrapper">
+                        <div class="section-title">
+                            <h3>FAQs</h3>
+                            <p>Frequently asked questions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <button class="btn btn-secondary btn-sm"  data-bs-toggle="modal" data-bs-target="#addChantillyFAQS"><i class="fa fa-plus"></i> Add Question</button>
+
+                    {{-- MODAL STRUCTURE FOR THE CURRICULUMS --}}
+                    <div class="modal fade" id="addChantillyFAQS" tabindex="-1" aria-labelledby="addServiceFormModal" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="addServiceFormModal">Add FAQs</h6>
+                                    <button type="button" class="btn btn-sm btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <div class="contact-form-container">
+                                        <form id="add_faqs_window" action="/Homepage/saveFAQS" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-2">
+                                                <label for="faq_question">Question</label>
+                                                <input type="text" name="faq_question" id="faq_question" placeholder="Give your question here..." required>
+                                            </div>
+                                            <div class="mb-2">
+                                                <label for="faq_answer">Answer</label>
+                                                <input type="hidden" name="faq_answer" id="faq_answer_holder" required>
+                                                <textarea id="faq_answer" class="faq_answer" cols="30" rows="5" placeholder="Your question answer goes here!"></textarea>
+                                            </div>
+                                            <div class="mb-2">
+                                                <button class="btn btn-sm btn-success" type="submit"><i class="fa fa-save"></i> Save Question</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Modal Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{-- MODAL STRUCTURE FOR THE CURRICULUMS --}}
+                    <div class="modal fade" id="editFAQSModal" tabindex="-1" aria-labelledby="editFAQSForms" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="editFAQSForms">Edit FAQs</h6>
+                                    <button type="button" class="btn btn-sm btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <!-- Modal Body -->
+                                <div class="modal-body">
+                                    <div class="contact-form-container">
+                                        <form id="edit_faqs_window" action="/Homepage/updateFAQS" method="post" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mb-2">
+                                                <input type="hidden" name="faqs_ids" id="faqs_ids">
+                                                <label for="edit_faq_question">Question</label>
+                                                <input type="text" name="edit_faq_question" id="edit_faq_question" placeholder="Give your question here..." required>
+                                            </div>
+                                            <div class="mb-2">
+                                                <label for="edit_faq_answer">Answer</label>
+                                                <input type="hidden" name="edit_faq_answer" id="edit_faq_answer_holder" required>
+                                                <textarea id="edit_faq_answer" class="faq_answer" cols="30" rows="5" placeholder="Your question answer goes here!"></textarea>
+                                            </div>
+                                            <div class="mb-2">
+                                                <button class="btn btn-sm btn-success" type="submit"><i class="fa fa-save"></i> Update Question</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- Modal Footer -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delete Confirmation Modal for carrousels-->
+                    <div class="modal fade" id="deleteFAQwindow" tabindex="-1" aria-labelledby="deleteFAQform" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="deleteFAQform">Confirm Deletion</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to delete this? This action cannot be undone.
+                                </div>
+                                <div class="modal-footer">
+                                    <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="#" class="btn btn-info" id="confirmDeleteFAQ"><i class="fa fa-trash"></i> Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 mb-4">
+                    @if ($errors->any())
+                        <div class="alert alert-info">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success py-1 text-center my-1">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-info py-1 text-center my-1">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                </div>
+                <div class="col-md-12 mb-4">
+                    @if (count($faqs))
+                        <div class="accordion" id="faqs_accodions">
+                            @foreach ($faqs as $key => $item)
+                                <div class="accordion-item">
+                                    <input type="hidden" id="question_data_{{$item->faq_id}}" value="{{json_encode($item)}}">
+                                    <h2 class="accordion-header" id="heading_{{$key}}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
+                                        {!!$item->faq_title!!} - <a id="faq_edit_{{$item->faq_id}}" data-bs-toggle="modal" data-bs-target="#editFAQSModal" href="#!" class="btn btn-sm btn-outline-success faq_edit"><i class="fa fa-pencil"></i></a>  <a href="" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a>
+                                    </button>
+                                    </h2>
+                                    <div id="collapse_{{$key}}" class="accordion-collapse collapse" aria-labelledby="heading_{{$key}}" data-bs-parent="#faqs_accodions">
+                                        <div class="accordion-body">
+                                            {!!$item->faq_description!!}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="alert alert-success py-1 text-center my-1">
+                            <p>FAQs not present at the moment.</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Service Area-->
+
     <!-- Place the first <script> tag in your HTML's <head> -->
     <script src="https://cdn.tiny.cloud/1/if2hs0ax6hmgx2842yuozz7qt8lde0hvc8upqv9gmokdk2id/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
@@ -678,25 +840,36 @@
           }
         }
         
+        // id selector
         function cObj(objectid) {
             return document.getElementById(objectid);
         }
 
-        // about us history
-        var aboutUsHistory = @json($history ?? '');
-
         // init tinymce
         tinymce.init({
-            selector: '#carrousel_description',
+            selector: '.faq_answer',
             plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+
+        cObj("add_faqs_window").addEventListener("submit", function () {
+            const content = tinymce.get('faq_answer').getContent(); // Correct usage of the TinyMCE editor ID
+            cObj('faq_answer_holder').value = content;
+        });
+
+        cObj("edit_faqs_window").addEventListener("submit", function () {
+            const content = tinymce.get('edit_faq_answer').getContent(); // Correct usage of the TinyMCE editor ID
+            cObj('edit_faq_answer_holder').value = content;
         });
     </script>
 
     {{-- BODY ENDS HERE --}}
+
     <script src="/resources/js/homepage.js"></script>
+
     {{-- FOOTER --}}
     <x-footer page="homepage" />
+    {{-- FOOTER END HERE--}}
 </body>
 
 </html>
