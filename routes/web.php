@@ -50,6 +50,8 @@ Route::get("/Homepage/displayCurricullum/{curriculum_id}", [homepage::class, "di
 Route::post("/Homepage/updateStats/", [homepage::class, "updateStats"])->name("updateStats")->middleware("authenticate");
 Route::post("/Homepage/saveFAQS", [homepage::class, "saveFAQS"])->name("saveFAQS")->middleware("authenticate");
 Route::post("/Homepage/updateFAQS", [homepage::class, "updateFAQS"])->name("updateFAQS")->middleware("authenticate");
+Route::get("/Homepage/deleteFAQS/{faq_id}", [homepage::class, "deleteFAQS"])->name("deleteFAQS")->middleware("authenticate");
+Route::get("/Homepage/statusFAQS/{faq_id}", [homepage::class, "statusFAQS"])->name("statusFAQS")->middleware("authenticate");
 
 Route::get("/AboutUs/Edit", [aboutus::class, "editAboutUs"])->name("editAboutUs")->middleware("authenticate");
 Route::post("/AboutUs/Edit/manage", [aboutus::class, "manageAboutsUs"])->name("manageAboutsUs")->middleware("authenticate");

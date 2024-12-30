@@ -241,6 +241,50 @@
         </div>
     </div>
     <!--End of Service Area-->
+
+    <!--Service Area Start-->
+    <div class="service-area section-padding" id="faqs_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title-wrapper">
+                        <div class="section-title">
+                            <h3>FAQs</h3>
+                            <p>Frequently asked questions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-4">
+                    @if (count($faqs))
+                        <div class="accordion" id="faqs_accodions">
+                            @foreach ($faqs as $key => $item)
+                                <div class="accordion-item">
+                                    <input type="hidden" id="question_data_{{$item->faq_id}}" value="{{json_encode($item)}}">
+                                    <h2 class="accordion-header" id="heading_{{$key}}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
+                                        {!!$item->faq_title!!} 
+                                    </button>
+                                    </h2>
+                                    <div id="collapse_{{$key}}" class="accordion-collapse collapse" aria-labelledby="heading_{{$key}}" data-bs-parent="#faqs_accodions">
+                                        <div class="accordion-body">
+                                            {!!$item->faq_description!!}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
+                        <div class="alert alert-success py-1 text-center my-1">
+                            <p>FAQs not present at the moment.</p>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Service Area-->
     
     {{-- BODY ENDS HERE --}}
     <script>

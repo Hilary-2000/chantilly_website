@@ -64,6 +64,18 @@ window.onload = function () {
             }
         });
     }
+
+    var delete_FAQs = document.getElementsByClassName("delete_FAQs");
+    for (let index = 0; index < delete_FAQs.length; index++) {
+        const element = delete_FAQs[index];
+        element.addEventListener("click", function (event) {
+            var question_data = cObj("question_data_"+this.id.substr(12)).value;
+            if (hasJsonStructure(question_data)) {
+                var quiz_data = JSON.parse(question_data);
+                cObj("confirmDeleteFAQ").href = "/Homepage/deleteFAQS/"+quiz_data.faq_id;
+            }
+        });
+    }
 }
 
 function setCurrillumListerner() {

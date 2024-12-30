@@ -25,7 +25,8 @@ class website extends Controller
 
         // services
         $services = DB::select("SELECT * FROM homepage_service WHERE display = '1';");
-        return view("website.homepage", ["services" => $services, "carrousel" => $carrousel, "curricullum" => $curricullum, "homepage_stats" => $home_stats]);
+        $faqs = DB::select("SELECT * FROM `faqs` WHERE faq_status = '1'");
+        return view("website.homepage", ["services" => $services, "carrousel" => $carrousel, "curricullum" => $curricullum, "homepage_stats" => $home_stats, "faqs" => $faqs]);
     }
 
     public function getAboutsUs(){

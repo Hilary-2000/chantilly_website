@@ -765,7 +765,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Are you sure you want to delete this? This action cannot be undone.
+                                    Are you sure you want to delete this FAQ? This action cannot be undone.
                                 </div>
                                 <div class="modal-footer">
                                     <a type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -804,7 +804,9 @@
                                     <input type="hidden" id="question_data_{{$item->faq_id}}" value="{{json_encode($item)}}">
                                     <h2 class="accordion-header" id="heading_{{$key}}">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{$key}}" aria-expanded="false" aria-controls="collapse_{{$key}}">
-                                        {!!$item->faq_title!!} - <a id="faq_edit_{{$item->faq_id}}" data-bs-toggle="modal" data-bs-target="#editFAQSModal" href="#!" class="btn btn-sm btn-outline-success faq_edit"><i class="fa fa-pencil"></i></a>  <a href="" class="btn btn-sm btn-outline-danger"><i class="fa fa-trash"></i></a>
+                                        {!!$item->faq_title!!} - <a id="faq_edit_{{$item->faq_id}}" data-bs-toggle="modal" data-bs-target="#editFAQSModal" href="#!" class="btn btn-sm btn-outline-success faq_edit"><i class="fa fa-pencil"></i></a>  
+                                        <a href="#!" data-bs-toggle="modal" data-bs-target="#deleteFAQwindow" class="btn btn-sm btn-outline-info delete_FAQs" id="delete_FAQs_{{$item->faq_id}}"><i class="fa fa-trash"></i></a>
+                                        <a href="/Homepage/statusFAQS/{{$item->faq_id}}" class="btn btn-sm {{$item->faq_status == "1" ? "btn-outline-primary" : "btn-outline-warning"}}"><i class="fa {{$item->faq_status == "1" ? "fa-eye" : "fa-eye-slash"}}"></i></a>
                                     </button>
                                     </h2>
                                     <div id="collapse_{{$key}}" class="accordion-collapse collapse" aria-labelledby="heading_{{$key}}" data-bs-parent="#faqs_accodions">
@@ -827,7 +829,7 @@
     <!--End of Service Area-->
 
     <!-- Place the first <script> tag in your HTML's <head> -->
-    <script src="https://cdn.tiny.cloud/1/if2hs0ax6hmgx2842yuozz7qt8lde0hvc8upqv9gmokdk2id/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/ggolbjoxo01ftm9unfchjauk9agcbnvzc5460djiq9vu2axp/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         function hasJsonStructure(str) {
           if (typeof str !== "string") return false;

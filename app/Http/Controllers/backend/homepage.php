@@ -534,4 +534,25 @@ class homepage extends Controller
             return back()->with("success", "Invalid FAQs!");
         }
     }
+
+    function deleteFAQS($faq_id){
+        $faq = DB::select("SELECT * FROM faqs WHERE faq_id = ?", [$faq_id]);
+        if (count($faq) > 0) {
+            $delete = DB::delete("DELETE FROM faqs WHERE faq_id = ?", [$faq_id]);
+            return redirect("/Homepage/Edit#faqs_section")->with("success", "FAQ deleted successfully!!");
+        }else{
+            return redirect("/Homepage/Edit#faqs_section")->with("error", "Invalid FAQ!");
+        }
+    }
+
+    function statusFAQS($faq_id){
+        $faq = DB::select("SELECT * FROM faqs WHERE faq_id = ?", [$faq_id]);
+        if (count($faq) > 0) {
+            $faq_status = $faq[0]->faq_status == "1" ? "0" : "1";
+            $delete = DB::delete("UPDATE faqs SET faq_status = ? WHERE faq_id = ?", [$faq_status,$faq_id]);
+            return redirect("/Homepage/Edit#faqs_section")->with("success", "FAQ status changed successfully!!");
+        }else{
+            return redirect("/Homepage/Edit#faqs_section")->with("error", "Invalid FAQ!");
+        }
+    }
 }

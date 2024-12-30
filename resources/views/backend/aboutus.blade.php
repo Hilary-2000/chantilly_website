@@ -263,7 +263,7 @@
     <!--End of Teachers Column Carousel-->
     {{-- BODY ENDS HERE --}}
     <!-- Place the first <script> tag in your HTML's <head> -->
-    <script src="https://cdn.tiny.cloud/1/if2hs0ax6hmgx2842yuozz7qt8lde0hvc8upqv9gmokdk2id/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/ggolbjoxo01ftm9unfchjauk9agcbnvzc5460djiq9vu2axp/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
     <script>
