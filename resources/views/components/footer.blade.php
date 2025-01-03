@@ -9,7 +9,7 @@
                         <a href="#"><img style="max-height: 100px;" src="{{ session('school_logo') ?? "/img/logo/chantilly_logo.png" }}" alt="CHANTILLY SCHOOL"></a>
                     </div>
                     <div class="footer-info">
-                        <span><i class="fa fa-map-marker"></i>{{session('school_address') ?? "Banana Raini Rd, off Limuru Road Ruaka, Karuri"}}</span>
+                        <span><i class="fa fa-map-marker"></i>{!!session('school_pin_location') ? '<a target="_blank" class="text-white" href="https://www.google.com/maps?q='.session('school_pin_location').'" class=""><u>'.(session('school_address') ?? "Banana Raini Rd, off Limuru Road Ruaka, Karuri").'</u></a>' : session('school_address') ?? "Banana Raini Rd, off Limuru Road Ruaka, Karuri" !!}</span>
                         <span><i class="fa fa-envelope"></i>{{session('school_email') ?? "info@chantillyschools.ac.ke"}}</span>
                         <span><i class="fa fa-phone"></i><a href="tel:{{session('school_phone') ?? "0714402822"}}" style="color: white;">{{session('school_phone') ?? "(254) 714 402 822"}}</a></span>
                     </div>
@@ -139,44 +139,6 @@
 <!-- plugins JS
 ============================================ -->		
 <script src="/resources/js/plugins.js"></script>
-
-<!-- Google Map js
-============================================ --> 		
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkvn-HZGqisswqVvIfekN-iMsj0swcTiM"></script>
-<script src="https://www.google.com/jsapi"></script>
-<script>
-    function initialize() {
-        var mapOptions = {
-        zoom: 15,
-        scrollwheel: false,
-        center: new google.maps.LatLng(-1.1804595416946806, 36.7626112423361)
-        };
-
-        var map = new google.maps.Map(document.getElementById('googleMap'),
-            mapOptions);
-
-
-        var marker = new google.maps.Marker({
-        position: map.getCenter(),
-        animation:google.maps.Animation.BOUNCE,
-        icon: '/img/map-marker.png',
-        map: map
-        });
-    }
-        
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    // get the page value
-    var page = @json($page ?? '');
-    if(page == "homepage"){
-        setInterval(() => {
-            if (document.getElementsByClassName("nivo-nextNav") > 0) {
-                document.getElementsByClassName("nivo-nextNav")[0].click();
-            }
-        }, 10000);
-    }
-</script>	
 
 <!-- main JS
 ============================================ -->		

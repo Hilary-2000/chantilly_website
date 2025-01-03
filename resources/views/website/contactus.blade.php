@@ -52,6 +52,15 @@
                             </div>
                             <div class="contact-address-info">
                                 <div class="contact-icon">
+                                    <i class="fa fa-map-pin"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Pin Location</h4>
+                                    {!!session('school_pin_location') ? '<a target="_blank" href="https://www.google.com/maps?q='.session('school_pin_location').'" class=""><u>Click to find us!</u></a>' : "<p>No pin location set at the moment!</p>"!!}
+                                </div>
+                            </div>
+                            <div class="contact-address-info">
+                                <div class="contact-icon">
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <div class="contact-text">

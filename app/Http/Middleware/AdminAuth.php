@@ -44,6 +44,7 @@ class AdminAuth
         $school_phone = count($school_details) > 0 ? $school_details[0]->school_phone : null;
         $school_whatapp = count($school_details) > 0 ? $school_details[0]->school_whatapp : null;
         $school_instagram = count($school_details) > 0 ? $school_details[0]->school_instagram : null;
+        $school_pin_location = count($school_details) > 0 ? $school_details[0]->school_pin_location : null;
 
         session([
             "school_name" => $school_name,
@@ -53,7 +54,8 @@ class AdminAuth
             "school_phone" => $school_phone,
             "school_whatapp" => $school_whatapp,
             "school_facebook" => $school_facebook,
-            "school_instagram" => $school_instagram
+            "school_instagram" => $school_instagram,
+            "school_pin_location" => $school_pin_location
         ]);
 
         // move to the next page

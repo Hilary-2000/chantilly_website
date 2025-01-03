@@ -120,7 +120,7 @@
                             </div>
                             <div class="contact-address-info">
                                 <div class="contact-icon">
-                                    <i class="fa fa-map-marker"></i>
+                                    <i class="fa fa-facebook"></i>
                                 </div>
                                 <div class="contact-text">
                                     <h4>Facebook Link</h4>
@@ -129,7 +129,7 @@
                             </div>
                             <div class="contact-address-info">
                                 <div class="contact-icon">
-                                    <i class="fa fa-map-marker"></i>
+                                    <i class="fa fa-instagram"></i>
                                 </div>
                                 <div class="contact-text">
                                     <h4>Instagram Link</h4>
@@ -138,7 +138,7 @@
                             </div>
                             <div class="contact-address-info">
                                 <div class="contact-icon">
-                                    <i class="fa fa-map-marker"></i>
+                                    <i class="fa fa-adjust"></i>
                                 </div>
                                 <div class="contact-text">
                                     <h4>School Motto</h4>
@@ -152,6 +152,15 @@
                                 <div class="contact-text">
                                     <h4>Physical Address</h4>
                                     <span>{{$school_data->school_address ?? "N/A"}}</span>
+                                </div>
+                            </div>
+                            <div class="contact-address-info">
+                                <div class="contact-icon">
+                                    <i class="fa fa-map-pin"></i>
+                                </div>
+                                <div class="contact-text">
+                                    <h4>Pin Location</h4>
+                                    {!!$school_data->school_pin_location != null ? '<a target="_blank" href="https://www.google.com/maps?q='.$school_data->school_pin_location.'" class=""><u>Click to find us!</u></a>' : "<p>No pin location set at the moment!</p>"!!}
                                 </div>
                             </div>
                         </div>
@@ -184,6 +193,9 @@
                                 
                                 <label for="school_address"><h6 style="font-size: 12px;">Physical Address</h6></label>
                                 <input type="text" name="school_address" placeholder="Banana, Kiambu *" value="{{$school_data->school_address ?? "N/A"}}">
+                                
+                                <label for="school_pin_location"><h6 style="font-size: 12px;">School Pin Location</h6></label>
+                                <input type="text" name="school_pin_location" placeholder="Use google maps pin location *" value="{{$school_data->school_pin_location ?? ""}}">
                                 
                                 <label for="school_facebook"><h6 style="font-size: 12px;">School Facebook Link</h6></label>
                                 <input type="text" name="school_facebook" placeholder="Facebook Link - (Optional) *" value="{{$school_data->school_facebook ?? "N/A"}}">
