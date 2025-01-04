@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {{-- header title favicon etc --}}
-<x-header title="Vacancies - Chantilly Schools" />
+<x-edit-header title="Vacancies - Chantilly Schools" />
 
 <!-- Place the first <script> tag in your HTML's <head> -->
 <script src="https://cdn.tiny.cloud/1/ggolbjoxo01ftm9unfchjauk9agcbnvzc5460djiq9vu2axp/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>

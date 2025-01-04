@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {{-- header title favicon etc --}}
-<x-header title="Chantilly Schools Homepage" />
+<x-edit-header title="Chantilly Schools Homepage" />
 
 <body>
     {{-- mobile menu and desktop menu --}}
