@@ -242,8 +242,8 @@
         // init tinymce
         tinymce.init({
             selector: '.vacancy_descriptions',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            plugins: 'lists wordcount help',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | align lineheight | numlist bullist indent outdent | removeformat',
             setup: function (editor) {
                 editor.on('init', function () {
                     editor.setContent(aboutUsHistory);

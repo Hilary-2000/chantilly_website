@@ -44,36 +44,6 @@
                         </div>
                     @endif
 
-                    <!-- Modal Structure for history value-->
-                    <div class="modal fade bd-example-modal-lg" id="editAboutUs" tabindex="-1" aria-labelledby="contactFormModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="contactFormModalLabel">Edit History</h6>
-                                    <button type="button" class="btn btn-sm btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <!-- Modal Body -->
-                                <div class="modal-body">
-                                    <div class="contact-form-container">
-                                        <form id="contact-form" action="/AboutUs/Edit/manage" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            <input type="hidden" id="openEditorData" name="content" required>
-                                            <div class="mb-3">
-                                                <textarea id="about_us_editor" class="form-control" placeholder="Brief history about Chantilly School.."></textarea>
-                                            </div>
-                                            <button type="submit" class="btn btn-success w-100"><i class="fa fa-save"></i> Save History</button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <!-- Modal Footer -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Modal Structure for history image-->
                     <div class="modal fade bd-example-modal-sm" id="editHistoryImage" tabindex="-1" aria-labelledby="contactFormModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm">
@@ -102,8 +72,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="container mb-5">
+                        <div class="collapse collapsible-window mt-3" id="editWindow">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <h5 class="my-2">Edit History</h5>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="button" class="btn btn-sm btn-close" data-bs-toggle="collapse" data-bs-target="#editWindow"></button>
+                                    </div>
+                                </div>
+                                <form id="contact-form" action="/AboutUs/Edit/manage" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" id="openEditorData" name="content" required>
+                                    <div class="mb-3">
+                                        <textarea id="about_us_editor" class="form-control" placeholder="Brief history about Chantilly School.."></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100"><i class="fa fa-save"></i> Save History</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-6">
-                    <button class="btn btn-sm btn-primary mb-5"  data-bs-toggle="modal" data-bs-target="#editAboutUs"><i class="fa fa-pencil"></i> Edit History</button>
+                    <button class="btn btn-sm btn-primary mb-5"  data-bs-toggle="collapse" data-bs-target="#editWindow" ><i class="fa fa-pencil"></i> Edit History</button>
                     <div class="about-text-container">
                         {!! $history !!}
                     </div>
@@ -287,8 +281,8 @@
         // init tinymce
         tinymce.init({
             selector: '#about_us_editor',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+            plugins: 'anchor autolink link lists searchreplace table wordcount',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link | align lineheight | numlist bullist indent outdent | removeformat',
             setup: function (editor) {
                 editor.on('init', function () {
                     editor.setContent(aboutUsHistory);
@@ -346,7 +340,6 @@
         });
 
     </script>
-    <script src="/resources/js/homepage.js"></script>
     {{-- FOOTER --}}
     <x-footer page="homepage" />
 </body>
