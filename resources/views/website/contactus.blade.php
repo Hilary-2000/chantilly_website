@@ -109,7 +109,7 @@
                                 <input type="text" name="subject" placeholder="Subject (What are you inquiring about?) *">
                                 <textarea name="message" class="yourmessage" placeholder="Your message here (We will get back to you ASAP)"></textarea>
                                 <div class="d-flex align-items-center">
-                                    <label for="terms_n_conditions">Accept <a href="/Chantilly/Terms" target="_blank"><u>Terms & Conditions</u></a> before you proceed!</label>
+                                    <label for="terms_n_conditions">Accept <a href="/Chantilly/Terms-and-conditions" target="_blank"><u>Terms & Conditions</u></a> before you proceed!</label>
                                     <input type="checkbox" id="terms_n_conditions" class="m-0" name="terms_n_conditions" style="width: 15px;" required>
                                 </div>
                                 <br><br>

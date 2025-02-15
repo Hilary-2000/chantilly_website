@@ -123,6 +123,6 @@ Route::get("/SchoolAccount/SchoolProfile/resetEmail", [school_account::class, "r
 
 // send email
 Route::post("/Client/send_inquiry", [school_account::class, "send_inquiry"])->name("send_inquiry")->middleware("authUser");
-Route::get("/Chantilly/Terms", function (){
+Route::get("/Chantilly/Terms-and-conditions", function (){
     return view("backend.tnc");
 });

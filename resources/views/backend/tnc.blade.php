@@ -1,155 +1,162 @@
-<h2>Chantilly Schools Terms And Conditions!</h2>
-<p>Back to homepage -&gt; <a style="text-decoration: none;" href="/">Chantilly Schools</a></p>
-<p>These terms and conditions outline the rules and regulations for the use of Chantilly Schools's Website, located at
-    <a style="text-decoration: none;" href="https://chantillyschools.ac.ke">https://chantillyschools.ac.ke</a>.</p>
-<p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Chantilly Schools
-    if you do not agree to take all of the terms and conditions stated on this page.</p>
-<p>The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all
-    Agreements: &quot;Client&quot;, &quot;You&quot; and &quot;Your&quot; refers to you, the person log on this website
-    and compliant to the Company&#8217;s terms and conditions. &quot;The Company&quot;, &quot;Ourselves&quot;,
-    &quot;We&quot;, &quot;Our&quot; and &quot;Us&quot;, refers to our Company. &quot;Party&quot;, &quot;Parties&quot;,
-    or &quot;Us&quot;, refers to both the Client and ourselves. All terms refer to the offer, acceptance, and
-    consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate
-    manner for the express purpose of meeting the Client&#8217;s needs in respect of the provision of the
-    Company&#8217;s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the
-    above terminology or other words in the singular, plural, capitalization, and/or he/she or they, are taken as
-    interchangeable and therefore as referring to same.</p>
-<h2>Cookies</h2>
-<p>We employ the use of cookies. By accessing Chantilly Schools, you agreed to use cookies in agreement with Chantilly
-    Schools's Privacy Policy.</p>
-<p>Most interactive websites use <a href="https://generatortoolz.com/cookies" style="text-decoration: none;"
-        target="_blank">cookies</a> to let us retrieve the user&#8217;s details for each visit. Cookies are used by our
-    website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our
-    affiliate/advertising partners may also use cookies.</p>
-<h2>License</h2>
-<p>Unless otherwise stated, Chantilly Schools and/or its licensors own the intellectual property rights for all material
-    on Chantilly Schools. All intellectual property rights are reserved. You may access this from Chantilly Schools for
-    your own personal use subject to restrictions set in these terms and conditions.</p>
-<p>You must not:</p>
-<ul>
-    <li>Republish material from Chantilly Schools</li>
-    <li>Sell, rent or sub-license material from Chantilly Schools</li>
-    <li>Reproduce, duplicate or copy material from Chantilly Schools</li>
-    <li>Redistribute content from Chantilly Schools</li>
-</ul>
-<p>This Agreement shall begin on the date hereof. This page is generated with the help of <a
-        style="text-decoration: none;" href="https://generatortoolz.com/terms-and-conditions-generator"
-        target="_blank">terms and conditions generator</a> tool.</p>
-<p>Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas
-    of the website. Chantilly Schools does not filter, edit, publish or review Comments prior to their presence on the
-    website. Comments do not reflect the views and opinions of Chantilly Schools, its agents, and/or affiliates.
-    Comments reflect the views and opinions of the person who posts their views and opinions. To the extent permitted by
-    applicable laws, Chantilly Schools shall not be liable for the Comments or for any liability, damages, or expenses
-    caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this
-    website.</p>
-<p>Chantilly Schools reserves the right to monitor all Comments and to remove any Comments which can be considered
-    inappropriate, offensive or causes breach of these Terms and Conditions.</p>
-<p>You warrant and represent that:</p>
-<ul>
-    <li>You are entitled to post the Comments on our website and have all necessary licenses and consents to do so;</li>
-    <li>The Comments do not invade any intellectual property right, including without limitation copyright, patent or
-        trademark of any third party;</li>
-    <li>The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which
-        is an invasion of privacy;</li>
-    <li>The Comments will not be used to solicit or promote business or custom or present commercial activities or
-        unlawful activity.</li>
-</ul>
-<p>You hereby grant Chantilly Schools a non-exclusive license to use, reproduce, edit and authorize others to use,
-    reproduce and edit any of your Comments in any and all forms, formats, or media.</p>
-<h2>Hyperlinking to our Content</h2>
-<p>The following organizations may link to our Website without prior written approval:</p>
-<ul>
-    <li>Government agencies;</li>
-    <li>Search engines;</li>
-    <li>News organizations;</li>
-    <li>Online directory distributors may link to our Website in the same manner as they hyperlink to the Websites of
-        other listed businesses; and</li>
-    <li>System-wide Accredited Businesses except soliciting non-profit organizations, charity shopping malls, and
-        charity fundraising groups which may not hyperlink to our Website.</li>
-</ul>
-<p>These organizations may link to our home page, to publications, or to other Website information so long as the link:
-</p>
-<ol>
-    <li>is not in any way deceptive;</li>
-    <li>does not falsely imply sponsorship, endorsement or approval of the linking party and its products and/or
-        services; and</li>
-    <li>fits within the context of the linking party&#8217;s site.</li>
-</ol>
-<p>We may consider and approve other link requests from the following types of organizations:</p>
-<ul>
-    <li>Commonly-known consumer and/or business information sources;</li>
-    <li>Dot-com community sites;</li>
-    <li>Associations or other groups representing charities;</li>
-    <li>Online directory distributors;</li>
-    <li>Internet portals;</li>
-    <li>Accounting, law and consulting firms; and</li>
-    <li>Educational institutions and trade associations.</li>
-</ul>
-<p>We will approve link requests from these organizations if we decide that: </p>
-<ol>
-    <li>the link would not make us look unfavorably to ourselves or to our accredited businesses;</li>
-    <li>the organization does not have any negative records with us;</li>
-    <li>the benefit to us from the visibility of the hyperlink compensates the absence of <strong>Chantilly
-            Schools</strong>, and</li>
-    <li>the link is in the context of general resource information.</li>
-</ol>
-<p>These organizations may link to our home page so long as the link: </p>
-<ol>
-    <li>is not in any way deceptive;</li>
-    <li>does not falsely imply sponsorship, endorsement, or approval of the linking party and its products or services;
-        and</li>
-    <li>fits within the context of the linking party&#8217;s site.</li>
-</ol>
-<p>If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you
-    must inform us by sending an e-mail to <strong>Chantilly Schools</strong>. Please include your name, your
-    organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to
-    link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a
-    response.</p>
-<p>Approved organizations may hyperlink to our Website as follows:</p>
-<ul>
-    <li>By use of our corporate name; or</li>
-    <li>By use of the uniform resource locator being linked to; or</li>
-    <li>By use of any other description of our Website being linked to that makes sense within the context and format of
-        content on the linking party&#8217;s site.</li>
-</ul>
-<p>No use of <strong>Chantilly Schools</strong>'s logo or other artwork will be allowed for linking absent a trademark
-    license agreement.</p>
-<h2>iFrames</h2>
-<p>Without prior approval and written permission, you may not create frames around our Webpages that alter in any way
-    the visual presentation or appearance of our Website.</p>
-<h2>Content Liability</h2>
-<p>We shall not be held responsible for any content that appears on your Website. You agree to protect and defend us
-    against all claims that are arising on your Website. No link(s) should appear on any Website that may be interpreted
-    as libelous, obscene, or criminal, or which infringes, otherwise violates or advocates the infringement or other
-    violation of, any third party rights.</p>
-<h2>Privacy Policy</h2>
-<p>Please read our Privacy Policy.</p>
-<h2>Reservation of Rights</h2>
-<p>We reserve the right to request that you remove all links or any particular link to our Website. You agree to
-    immediately remove all links to our Website upon request. We also reserve the right to amend these terms and
-    conditions and its linking policy at any time. By continuously linking to our Website, you agree to be bound to and
-    follow these linking terms and conditions.</p>
-<h2>Removal of Links from Our Website</h2>
-<p>If you find any link on our Website that is offensive for any reason, you are free to contact and inform us at any
-    moment. We will consider requests to remove links but we are not obligated to do so or to respond to you directly.
-</p>
-<h2>Disclaimer</h2>
-<p>To the maximum extent permitted by applicable law, we exclude all representations, warranties, and conditions
-    relating to our website and the use of this website. Nothing in this disclaimer will:</p>
-<ol>
-    <li>Limit or exclude our or your liability for death or personal injury;</li>
-    <li>Limit or exclude our or your liability for fraud or fraudulent misrepresentation;</li>
-    <li>Limit any of our or your liabilities in any way that is not permitted under applicable law; or</li>
-    <li>Exclude any of our or your liabilities that may not be excluded under applicable law.</li>
-</ol>
-<p>The limitations and prohibitions of liability set in this Section and elsewhere in this disclaimer: (a) are subject
-    to the preceding paragraph; and (b) govern all liabilities arising under the disclaimer, including liabilities
-    arising in contract, in tort, and for breach of statutory duty.</p>
-<p>As long as the website and the information and services on the website are provided free of charge, we will not be
-    liable for any loss or damage of any nature.</p>
-<p>If you want to contact us then you can email us at info@chantillyschools.ac.ke.</p>
-<p>Go to homepage -&gt; <a style="text-decoration: none;" href="/">Chantilly Schools</a></p>
-<center>
-    <p>&quot;Thank you for taking the time to visit our Terms and Conditions.&quot;</p>
-</center><span style="font-size: 2pt; opacity: 0;"><a style="text-decoration: none;" href="https://rwbj.shop"
-        target="_blank">rwbj</a></span>
+<!DOCTYPE html>
+<html lang="en">
+{{-- header title favicon etc --}}
+<x-header title="Term and Conditions - Chantilly Schools" />
+
+<body>
+    {{-- mobile menu and desktop menu --}}
+    <x-menu active="contactus" />
+
+    {{-- BODY STARTS HERE  --}}
+
+    <!--Contact Area Strat-->
+    <div class="contact-area section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @if ($errors->any())
+                        <div class="alert alert-info">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success py-1 text-center my-1">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-info py-1 text-center my-1">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                </div>
+                {{-- <div class="col-lg-3">
+                    <div class="single-title">
+                        <h3>Menu</h3>
+                    </div>
+                    <div class="contact-area-container">
+                        <p>Chantilly Schools is all about maximizing the potential of each student, through continuous
+                            improvement <b>"Kaizen"</b>. We apply this philosophy in all areas.</p>
+                        <div class="contact-address-container">
+                        </div>
+                    </div>
+                </div> --}}
+                <div class="col-lg-12">
+                    <div class="contact-form">
+                        <div class="single-title">
+                            <h3>Terms And Conditions</h3>
+                        </div>
+                        <div class="contact-form-container">
+                            <h6>1. Introductions</h6>
+                            <p>Thank you for using the Chantilly School website (accessible at
+                                www.chantillyschools.ac.ke hereinafter, “the website”) owned, managed, maintained and operated
+                                by Chantilly Schools.
+
+                                This page states the terms and conditions under which you may use the website and any
+                                other materials, online communications and other information that is or becomes
+                                available on the website. By accessing the website, you accept and agree to be bound,
+                                without limitations or qualification by these terms. If you do not accept any of the
+                                terms stated here, do not use the website.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>2. Agreement between you and Chantilly Schools</h6>
+                            <p>
+                                The website is owned, managed, maintained and operated by Chantilly Schools (hereinafter Chantilly) and is offered to you conditioned on your acceptance without modification of these terms, conditions disclaimers and notices contained herein. Use of the content, services and/or products and services presented in any and all areas of this site constitutes your agreement that you will not use the website for any unlawful purpose and that you will abide by the following terms and conditions and those posted on specific areas of the site. This agreement between you and Chantilly (hereinafter “Agreement”) is effective until terminated by Chantilly, and maybe terminated or changed by Chantilly at any time without notice.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>3. Your obligations</h6>
+                            <p>In connection with your use of the website, you shall abide by all applicable laws, local or international including those pertaining to such areas as libel, slander, defamation, trade libel, product disparagement, harassment, invasion of privacy, tort, obscenity, indecency and copyright or trademark infringement. You are responsible for the content of any information that you put on the website or you submit to Chantilly for onward posting on the website. You agree that no materials of any kind submitted to the website or Chantilly by you will violate or infringe upon the rights of any third party, including copyright, trademark, privacy or other personal or proprietary rights, or contain libelous, defamatory or otherwise unlawful materials or be harmful to minors in any way. Chantilly reserves the right to refuse to post or to remove any information that is in Chantilly sole discretion, unacceptable, undesirable or in violation of these rules. However, Chantilly has no obligation to exercise such reservation of rights by Chantilly.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>4. General disclaimer</h6>
+                            <p>The information included on the website is provided free of charge as a user convenience and is to be used for informational purposes only. Some information contained on the website may represent opinion or judgment or contain inadvertent technical oversights, factual inaccuracies or typographical errors.Chantilly does not guarantee the accuracy or completeness of any information on the website. As such, Chantilly will not be responsible for any errors, inaccuracies, omissions or deficiencies in the information provided on the website. This information is provided as “AS IS” with no guarantees of completeness, non-infringement, accuracy or timeliness, and without warranties of any kind, express or implied. You therefore assume sole responsibility for all risks associated with the use of this information and further accept that Chantilly is in no way responsible for any consequences whatsoever to anyone arising from your use or interpretation of any information contained within or linked from or to the website. Before making decisions based on the information contained here, we strongly recommend that you visit the companies, institutions and/or individuals to ascertain the truth.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>5. Use of the website information at your own risk</h6>
+                            <p>The website may contain information or materials from various information sources. Chantilly does not represent or endorse the accuracy or reliability of any information or materials provided by these sources. Reliance upon any such information or material shall also be at our own risk. Neither Chantilly nor its affiliates, partners, officers, directors, employees, subsidiaries, or agents shall be liable to you or anyone else for any inaccuracy, error, omission, interruption, timeliness, completeness, deletion, defect, failure of performance, computer virus, communication line failure, alteration of, or use of any content herein, regardless of cause, or for any damages resulting therefrom.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>6. Copyright policy</h6>
+                            <p>All content provided on the website is owned by or licensed to Chantilly and/or our affiliates, associated companies, partners, officers, and/or agents and is protected by the Kenyan and International copyright laws. Chantilly and its licensors, affiliates, associated companies, partners, officers, and/or agents retain all proprietary rights to the content on the website. The content may not be reproduced, transmitted or distributed without the prior written permission of Chantilly.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>7. Trademarks</h6>
+                            <p>All Chantilly’s trademarks, service marks, trade names, logos, coats of arms, and graphics (“Marks”) indicated on the website are registered trademarks, coats of arms and/or generally intellectual properties. You shall not make use of any of these trademarks without the prior written permission of Chantilly.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>7. Limitation on liability</h6>
+                            <p>Under no circumstances shall Chantilly or any of its affiliates, partners, officers, directors, employees, subsidiaries or agents be held liable for any damages, whether direct, incidental, indirect, special or consequential damages, including, without limitation, lost use, data, revenues, time, money, profits or goodwill arising from or in connection with the use, reliance on, or performance of the information on the website, even when Chantilly has been advised of the possibility of such damages. Chantilly shall not be liable for damages or injury caused in whole or in part, whether foreseeable or unforeseeable, and whether based on tort (including defamation, contract, strict liability or otherwise in producing and publishing this website or any information contained on the website or linked by or to this website. If you are dissatisfied with any of the website’s terms and conditions, your sole and exclusive remedy is to discontinue using the website.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>8. Indemnity</h6>
+                            <p>As a condition of use of the website, you agree to indemnify Chantilly and its affiliates, partners, officers, directors, employees, subsidiaries and agents from and against any and all liabilities, expenses (including Advocates’ fees) and damages arising out of any and all claims resulting from your use of the website and the materials (including software) thereon, including, without limitation any claims alleging facts that if true would constitute a breach by you of these Terms of Use. This indemnity shall include, without limitation, any claim, inaccuracy or defamation based on materials that you submit for use on the website.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>9. Third-party websites</h6>
+                            <p>The website may contain links to third-party websites maintained by our affiliates, associated institutions, service providers, and other companies that are not affiliates of ours. We may also provide links that are solely meant to assist users in locating resources that maybe of interest to them. You assume sole responsibility and risk for your use of links to third-party websites. Chantilly does not represent or endorse the accuracy or reliability of any of the information, content or advertisements contained on, distributed through or linked, downloaded or accessed from any of the services contained on these third-party websites. No reference or link to a third-party or third-party website shall constitute and endorsement of such third-party or such third-party websites.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>10. Specific Disclaimers of Warranties</h6>
+                            <p>All materials and services in this Website, including those provided by links to third-party websites are provided “as is” without warranty of any kind.The content published on this Website may include inaccuracies or typographical errors. Changes are periodically made to the information herein. Chantilly makes no representations and, to the fullest extent allowed by law, disclaims all warranties, express or implied, including but not limited to warranties of non-infringement, merchantability and fitness for a particular purpose regarding the suitability of the information; the accuracy, reliability, completeness or timeliness of the content, services, products, text, graphics, links or other items contained within the Website, or the results obtained from accessing and using this Website and/or the content contained herein. Chantilly does not warrant that the functions contained in the materials will be uninterrupted or error-free, that this Website, including the server that makes it available, are free of viruses or other harmful components. In addition, Chantilly shall not be liable to you or anyone else for any loss or injury caused in whole or in part by contingencies beyond its control in procuring, compiling, interpreting, reporting or delivering the service and information through the Website and you assume the entire cost of all necessary maintenance, repair or correction arising from any such loss or injury.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>11. Modification</h6>
+                            <p>Chantilly shall have the right, at its sole discretion, to make improvements and/or changes in any aspect of the website at any time and does not accept any responsibility for the effects these alterations may have. Chantilly also reserves the right to change, modify, add or remove terms of this agreement at any time without notice. You agree to review this agreement periodically since such changes, modifications, additions or deletions shall be effective immediately upon posting and your subsequent use after such posting shall be deemed to be acceptance by you of such changes, modifications or deletions.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>12. Miscellaneous</h6>
+                            <p>This agreement shall be deemed to include all other notices, policies, disclaimers and other terms contained in this website; provided, however, that in the event of a conflict between such other terms and the terms of this agreement, the terms of this agreement shall control.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>13. Choice of law and jurisdiction</h6>
+                            <p>Our website is operated from our head offices at Chantilly School, Banana Raini Rd, off Limuru Road (Ruaka, Karuri). These Terms of Use shall be governed by and construed in accordance with the laws of the Republic of Kenya without regard to any conflict of law provisions thereof. Any action related to these Terms of Use shall be brought only in the Law courts of Kenya and all parties waive any objection to the personal jurisdiction of and venue in such courts.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <div class="contact-form-container">
+                            <h6>14. Contacts</h6>
+                            <p>You may contact us if you have any questions about the Terms of Use, the practices of this Site, or your dealings with the Site by sending an e-mail to chantillyschools@gmail.com.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Contact Area-->
+    {{-- BODY ENDS HERE --}}
+
+    {{-- FOOTER --}}
+    <x-footer page="aboutus" />
+</body>
+
+</html>
