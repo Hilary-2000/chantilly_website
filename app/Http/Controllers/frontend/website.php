@@ -12,6 +12,7 @@ class website extends Controller
     public function getHomepage(){
         $carrousel = DB::select("SELECT * FROM `homepage_carrousel` WHERE display = '1'");
         $curricullum = DB::select("SELECT * FROM homepage_curriculum WHERE display = '1'");
+        // return $curricullum;
         
         $homepage_stats = DB::select("SELECT * FROM `homepage_stats`;");
         $home_stats = array(

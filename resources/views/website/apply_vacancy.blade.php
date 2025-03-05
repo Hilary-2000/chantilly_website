@@ -4,7 +4,7 @@
 <x-header title="Vacancies - Chantilly Schools" />
 
 <!-- Place the first <script> tag in your HTML's <head> -->
-<script src="https://cdn.tiny.cloud/1/ggolbjoxo01ftm9unfchjauk9agcbnvzc5460djiq9vu2axp/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="https://cdn.tiny.cloud/1/{{env("TINY_MCE_KEY")}}/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
 <body>
     {{-- mobile menu and desktop menu --}}

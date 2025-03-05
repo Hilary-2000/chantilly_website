@@ -413,71 +413,6 @@
     </div>
     <!--End of Class Area-->
 
-    <!--Fun Factor Area Start-->
-    <div class="fun-factor-area" id="fun-factor-area">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                            <div class="single-fun-factor">
-                                <div class="fun-factor-icon">
-                                    <i class="fa fa-users"></i>
-                                </div>
-                                <h2><span class="counter">{{$homepage_stats['teachers']}}</span></h2>
-                                <span>Teachers</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                            <div class="single-fun-factor">
-                                <div class="fun-factor-icon">
-                                    <i class="fa fa-bank"></i>
-                                </div>
-                                <h2><span class="counter">{{$homepage_stats['classes']}}</span></h2>
-                                <span>Classes</span>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                            <div class="single-fun-factor">
-                                <div class="fun-factor-icon">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <h2><span class="counter">{{$homepage_stats['students']}}</span></h2>
-                                <span>Students</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 bg-white rounded p-2">
-                    <div class="single-widget-item res-mrg-top-xs">
-                        <div class="single-title">
-                            <h3 class="text-center">Edit Stats</h3>
-                        </div>
-                        <div class="contact-form">
-                            <div class="w-100 container p-3 bg-success border-top border-dark border-2 my-2"></div>
-                            <div class="contact-form-container">
-                                <form id="contact-form-5" action="/Homepage/updateStats/" method="post">
-                                    @csrf
-                                    <label for="teachers" class="form-control-label">Teachers Counts *</label>
-                                    <input type="number" name="teachers" value="{{$homepage_stats['teachers']}}" placeholder="Teachers *">
-
-                                    <label for="classes" class="form-control-label">Classes Count *</label>
-                                    <input type="number" name="classes" value="{{$homepage_stats['classes']}}" placeholder="Classes *">
-
-                                    <label for="students" class="form-control-label">Students Counts *</label>
-                                    <input type="number" name="students" value="{{$homepage_stats['students']}}" placeholder="Students *">
-                                    <button type="submit" class="button-default button-yellow submit w-100"><i class="fa fa-save"></i>Save</button>
-                                </form>
-                                <p class="form-messege"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--End of Fun Factor Area-->
-
     <!--Service Area Start-->
     <div class="service-area section-padding" id="services_section">
         <div class="container">
@@ -664,6 +599,71 @@
     </div>
     <!--End of Service Area-->
 
+    <!--Fun Factor Area Start-->
+    <div class="fun-factor-area" id="fun-factor-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                            <div class="single-fun-factor">
+                                <div class="fun-factor-icon">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <h2><span class="counter">{{$homepage_stats['teachers']}}</span></h2>
+                                <span>Teachers</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                            <div class="single-fun-factor">
+                                <div class="fun-factor-icon">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                                <h2><span class="counter">{{$homepage_stats['classes']}}</span></h2>
+                                <span>Classes</span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                            <div class="single-fun-factor">
+                                <div class="fun-factor-icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <h2><span class="counter">{{$homepage_stats['students']}}</span></h2>
+                                <span>Students</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 bg-white rounded p-2">
+                    <div class="single-widget-item res-mrg-top-xs">
+                        <div class="single-title">
+                            <h3 class="text-center">Edit Stats</h3>
+                        </div>
+                        <div class="contact-form">
+                            <div class="w-100 container p-3 bg-success border-top border-dark border-2 my-2"></div>
+                            <div class="contact-form-container">
+                                <form id="contact-form-5" action="/Homepage/updateStats/" method="GET">
+                                    @csrf
+                                    <label for="teachers" class="form-control-label">Teachers Counts *</label>
+                                    <input type="number" name="teachers" value="{{$homepage_stats['teachers']}}" placeholder="Teachers *">
+
+                                    <label for="classes" class="form-control-label">Classes Count *</label>
+                                    <input type="number" name="classes" value="{{$homepage_stats['classes']}}" placeholder="Classes *">
+
+                                    <label for="students" class="form-control-label">Students Counts *</label>
+                                    <input type="number" name="students" value="{{$homepage_stats['students']}}" placeholder="Students *">
+                                    <button type="submit" class="button-default button-yellow submit w-100"><i class="fa fa-save"></i>Save</button>
+                                </form>
+                                <p class="form-messege"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Fun Factor Area-->
+
     <!--Service Area Start-->
     <div class="service-area section-padding" id="faqs_section">
         <div class="container">
@@ -829,7 +829,7 @@
     <!--End of Service Area-->
 
     <!-- Place the first <script> tag in your HTML's <head> -->
-    <script src="https://cdn.tiny.cloud/1/ggolbjoxo01ftm9unfchjauk9agcbnvzc5460djiq9vu2axp/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/{{env("TINY_MCE_KEY")}}/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         function hasJsonStructure(str) {
           if (typeof str !== "string") return false;

@@ -75,85 +75,11 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="single-class">
-                        <div class="single-class-image">
-                            <a href="/ContactUs">
-                                <img src="img/class/2.jpg" alt="">
-                                <span class="class-date">Join <span>Now</span></span>
-                            </a>
-                        </div>
-                        <div class="single-class-text">
-                            <div class="class-des">
-                                <h4><a href="#">Primary</a></h4>
-                                <p>Building core knowledge, critical thinking, and practical skills.</p>
-                            </div>
-                            <div class="class-schedule">
-                                <span>AGE: 5 - 15 years</span>
-                                <span>CLASSES PRESENT : 6</span>
-                                <span class="arrow"><a href="#"><i class="fa fa-angle-right"></i></a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-class">
-                        <div class="single-class-image">
-                            <a href="/ContactUs">
-                                <img src="img/class/3.jpg" alt="">
-                                <span class="class-date">Join <span>Now</span></span>
-                            </a>
-                        </div>
-                        <div class="single-class-text">
-                            <div class="class-des">
-                                <h4><a href="#">Juniour Secondary</a></h4>
-                                <p>Preparing students for advanced studies with an emphasis on competency and specialization.</p>
-                            </div>
-                            <div class="class-schedule">
-                                <span>AGE: 12 - 18 years</span>
-                                <span>CLASSES PRESENT : 3</span>
-                                <span class="arrow"><a href="#"><i class="fa fa-angle-right"></i></a></span>
-                            </div>
-                        </div>
-                    </div>
                 </div>  
             </div>
         </div>
         <!--End of Class Area-->
     @endif
-
-    <!--Fun Factor Area Start-->
-    <div class="fun-factor-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                    <div class="single-fun-factor">
-                        <div class="fun-factor-icon">
-                            <i class="fa fa-users"></i>
-                        </div>
-                        <h2><span class="counter">{{$homepage_stats['teachers'] ?? 0}}</span></h2>
-                        <span>Teacher</span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                    <div class="single-fun-factor">
-                        <div class="fun-factor-icon">
-                            <i class="fa fa-bank"></i>
-                        </div>
-                        <h2><span class="counter">{{$homepage_stats['classes'] ?? 0}}</span></h2>
-                        <span>Classes</span>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                    <div class="single-fun-factor">
-                        <div class="fun-factor-icon">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        <h2><span class="counter">{{$homepage_stats['students'] ?? 0}}</span></h2>
-                        <span>Students</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--End of Fun Factor Area-->
     
     <!--Service Area Start-->
     <div class="service-area section-padding">
@@ -241,6 +167,42 @@
         </div>
     </div>
     <!--End of Service Area-->
+
+    <!--Fun Factor Area Start-->
+    <div class="fun-factor-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div class="single-fun-factor">
+                        <div class="fun-factor-icon">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <h2><span class="counter">{{$homepage_stats['teachers'] ?? 0}}</span></h2>
+                        <span>Teacher</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div class="single-fun-factor">
+                        <div class="fun-factor-icon">
+                            <i class="fa fa-bank"></i>
+                        </div>
+                        <h2><span class="counter">{{$homepage_stats['classes'] ?? 0}}</span></h2>
+                        <span>Classes</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-6">
+                    <div class="single-fun-factor">
+                        <div class="fun-factor-icon">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <h2><span class="counter">{{$homepage_stats['students'] ?? 0}}</span></h2>
+                        <span>Students</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of Fun Factor Area-->
 
     <!--Service Area Start-->
     <div class="service-area section-padding" id="faqs_section">

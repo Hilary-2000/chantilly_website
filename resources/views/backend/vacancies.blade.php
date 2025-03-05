@@ -218,7 +218,7 @@
     <!--End of Class List Area-->
     {{-- BODY ENDS HERE --}}
     <!-- Place the first <script> tag in your HTML's <head> -->
-    <script src="https://cdn.tiny.cloud/1/ggolbjoxo01ftm9unfchjauk9agcbnvzc5460djiq9vu2axp/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/{{env("TINY_MCE_KEY")}}/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 
     <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
     <script>
