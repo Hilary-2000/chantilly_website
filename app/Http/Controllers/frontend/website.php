@@ -69,4 +69,15 @@ class website extends Controller
         $curricullum = DB::select("SELECT * FROM extra_curriculum WHERE display = '1'");
         return view("website.extra_curricular", ["curricullum" => $curricullum]);
     }
+
+    function undermaintenance(){// check if the page is under maintenance.
+        $school_details = DB::select("SELECT * FROM `school_details`");
+        if (count($school_details) > 0) {
+            $under_maintenance = $school_details[0]->under_maintenance;
+            if ($under_maintenance == "0") {
+                return redirect("/");
+            }
+        }
+        return view("website.undermaintenance");
+    }
 }

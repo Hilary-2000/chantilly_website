@@ -110,12 +110,12 @@ use Illuminate\Support\Facades\Cookie;
         <div class="container">
             <div class="logo-menu-bg">
                 <div class="row py-2 my-2" style="border-bottom: 1px solid rgb(226, 226, 226);">
-                    <div class="col-lg-3 col-md-12">
+                    <div class="col-lg-2 col-md-12">
                         <div class="logo">
                             <a href="/"><img style="max-height: 100px;" src="{{ session('school_logo') ?? "/img/logo/chantilly_logo.png" }}" alt="TECHEDU"></a>
                         </div>
                     </div>
-                    <div class="col-lg-9 d-none d-lg-block">
+                    <div class="col-lg-10 d-none d-lg-block">
                         <div class="mainmenu-area">
                             <div class="mainmenu">
                                 <nav>
@@ -123,7 +123,7 @@ use Illuminate\Support\Facades\Cookie;
                                         <li class="{{$active == "edit_home" ? "active" : ""}}"><a href="/Homepage/Edit">Edit - Homepage</a></li>
                                         <li class="{{$active == "edit_aboutus" ? "active" : ""}}"><a href="/AboutUs/Edit">Edit - About us</a></li>
                                         <li class="{{$active == "edit_extra_curricular" ? "active" : ""}}"><a href="/ExtraCurriculum/Edit">Edit - Extra-Curriculum</a></li>
-                                        <li class="{{$active == "edit_events" ? "active" : ""}}"><a href="/Events/Edit">Edit - Events</a></li>
+                                        <li class="{{$active == "edit_events" ? "active" : ""}}"><a href="/Events/Edit">Edit - Video & Events</a></li>
                                         <li class="{{$active == "edit_gallery" ? "active" : ""}}"><a href="/Gallery/Edit">Edit - Gallery</a></li>
                                         <li class="{{$active == "edit_vacancy" ? "active" : ""}}"><a href="/Vacancies/Edit/">Edit - Vacancies</a></li>
                                         <li class="{{$active == "edit_downloads" ? "active" : ""}}"><a href="/Downloads/Edit">Edit - Downloads</a></li>

@@ -34,6 +34,7 @@ Route::get("/Vacancies/Apply/{vacancy_id}", [vacancy::class, "apply_vacancies"])
 Route::post("/Vacancies/apply", [vacancy::class, "apply"])->name("apply")->middleware("authUser");
 Route::get("/Downloads", [website::class, "get_downloads"])->name("get_downloads")->middleware("authUser");
 Route::get("/ContactUs", function () {return view('website.contactus');})->middleware("authUser");
+Route::get("/Under-Maintenance", [website::class,"undermaintenance"]);
 Route::get("/ExtraCurriculum", [website::class, "get_extra_curricular"])->name("get_extra_curricular")->middleware("authUser");
 
 Route::post("/Login", [login::class, "login"])->name("login");

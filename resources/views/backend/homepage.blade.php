@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {{-- header title favicon etc --}}
-<x-edit-header title="Chantilly Schools Homepage" />
+<x-edit-header title="Edit Homepage - Chantilly Schools" />
 
 <body>
     {{-- mobile menu and desktop menu --}}
@@ -854,6 +854,12 @@
             toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | align lineheight | numlist bullist indent outdent | removeformat',
         });
 
+        // init tinymce
+        tinymce.init({
+            selector: '#carrousel_description',
+            plugins: 'lists wordcount help',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | align lineheight | numlist bullist indent outdent | removeformat',
+        });
         cObj("add_faqs_window").addEventListener("submit", function () {
             const content = tinymce.get('faq_answer').getContent(); // Correct usage of the TinyMCE editor ID
             cObj('faq_answer_holder').value = content;

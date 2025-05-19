@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {{-- header title favicon etc --}}
-<x-edit-header title="Schools Profile - Chantilly Schools" />
+<x-edit-header title="Edit Schools Profile - Chantilly Schools" />
 
 <body>
     {{-- mobile menu and desktop menu --}}
@@ -205,7 +205,12 @@
                                 
                                 <label for="school_motto"><h6 style="font-size: 12px;">School Motto</h6></label>
                                 <input type="text" name="school_motto" placeholder="Banana, Kiambu *" value="{{$school_data->school_motto ?? "N/A"}}">
-                                <button type="submit" class="button-default button-yellow submit"><i class="fa fa-send"></i>Submit</button>
+                                
+                                <div class="form-group">
+                                    <label for="under_maintenance"><h6 style="font-size: 12px;">Under Maintenance</h6></label>
+                                    <input type="checkbox" style="all: revert;" name="under_maintenance" {{$school_data->under_maintenance == "1" ? "checked" : ""}}>
+                                </div>
+                                <button type="submit" class="button-default button-yellow submit"><i class="fa fa-upload"></i>Update</button>
                             </form>
                             <p class="form-messege"></p>
                         </div>

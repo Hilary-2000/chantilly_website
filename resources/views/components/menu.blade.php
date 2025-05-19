@@ -94,12 +94,12 @@ use Illuminate\Support\Facades\Cookie;
         <div class="container">
             <div class="logo-menu-bg">
                 <div class="row mb-2" style="border-bottom: 1px solid rgb(226, 226, 226);">
-                    <div class="col-lg-3 col-md-12">
+                    <div class="col-lg-2 col-md-12">
                         <div class="logo" >
                             <a href="/"><img style="max-height: 100px;" src="{{ session('school_logo') ?? "/img/logo/chantilly_logo.png" }}" alt="CHANTILLY SCHOOL"></a>
                         </div>
                     </div>
-                    <div class="col-lg-9 d-none d-lg-block">
+                    <div class="col-lg-10 d-none d-lg-block">
                         <div class="mainmenu-area">
                             <div class="mainmenu">
                                 <nav>
@@ -107,7 +107,7 @@ use Illuminate\Support\Facades\Cookie;
                                         <li class="{{$active == "home" ? "active" : ""}}"><a href="/">Home</a></li>
                                         <li class="{{$active == "aboutus" ? "active" : ""}}"><a href="/AboutUs">About us</a></li>
                                         <li class="{{$active == "extra_curricula" ? "active" : ""}}"><a href="/ExtraCurriculum">Extra-Curriculum</a></li>
-                                        <li class="{{$active == "events" ? "active" : ""}}"><a href="/Events">Events</a></li>
+                                        <li class="{{$active == "events" ? "active" : ""}}"><a href="/Events">Video & Events</a></li>
                                         <li class="{{$active == "gallery" ? "active" : ""}}"><a href="/Gallery">Gallery</a></li>
                                         <li class="{{$active == "vacancy" ? "active" : ""}}"><a href="/Vacancies">Vacancies</a></li>
                                         <li class="{{$active == "downloads" ? "active" : ""}}"><a href="/Downloads">Downloads</a></li>
@@ -133,7 +133,7 @@ use Illuminate\Support\Facades\Cookie;
                                 <li class="{{$active == "home" ? "active" : ""}}"><a href="/">Home</a></li>
                                 <li class="{{$active == "aboutus" ? "active" : ""}}"><a href="/AboutUs">About us</a></li>
                                 <li class="{{$active == "extra_curricula" ? "active" : ""}}"><a href="/ExtraCurriculum">Extra-Curriculum</a></li>
-                                <li class="{{$active == "events" ? "active" : ""}}"><a href="/Events">Events</a></li>
+                                <li class="{{$active == "events" ? "active" : ""}}"><a href="/Events">Video & Events</a></li>
                                 <li class="{{$active == "gallery" ? "active" : ""}}"><a href="/Gallery">Gallery</a></li>
                                 <li class="{{$active == "vacancy" ? "active" : ""}}"><a href="/Vacancies">Vacancies</a></li>
                                 <li class="{{$active == "downloads" ? "active" : ""}}"><a href="/Downloads">Downloads</a></li>

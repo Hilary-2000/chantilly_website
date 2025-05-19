@@ -410,7 +410,7 @@ class school_account extends Controller
                 }
 
                 // update school data
-                $school_data = DB::update("UPDATE school_details SET school_name = ?, school_logo = ?, school_phone = ?, school_whatapp = ?, school_email = ?, school_facebook = ?, school_instagram = ?, school_motto = ?, school_address = ?, school_pin_location = ? WHERE school_id = ?", [
+                $school_data = DB::update("UPDATE school_details SET school_name = ?, school_logo = ?, school_phone = ?, school_whatapp = ?, school_email = ?, school_facebook = ?, school_instagram = ?, school_motto = ?, school_address = ?, school_pin_location = ?, under_maintenance = ? WHERE school_id = ?", [
                     $request->input("school_name"),
                     $fileUrl,
                     $request->input("school_phone"),
@@ -421,6 +421,7 @@ class school_account extends Controller
                     $request->input("school_motto"),
                     $request->input("school_address"),
                     $request->input("school_pin_location"),
+                    ($request->input("under_maintenance") == "on" ? "1" : "0"),
                     $school_data[0]->school_id
                 ]);
                 return redirect("/SchoolAccount/Edit/")->with('success', 'School profile updated successfully!');
@@ -456,7 +457,7 @@ class school_account extends Controller
                 }
 
                 // update school data
-                $school_data = DB::insert("INSERT INTO school_details (school_name, school_logo, school_phone, school_whatapp, school_email, school_facebook, school_instagram, school_motto, school_address) VALUES (?,?,?,?,?,?,?,?,?)", [
+                $school_data = DB::insert("INSERT INTO school_details (school_name, school_logo, school_phone, school_whatapp, school_email, school_facebook, school_instagram, school_motto, school_address, under_maintenance) VALUES (?,?,?,?,?,?,?,?,?,?)", [
                     $request->input("school_name"),
                     $fileUrl,
                     $request->input("school_phone"),
@@ -465,7 +466,8 @@ class school_account extends Controller
                     $request->input("school_facebook"),
                     $request->input("school_instagram"),
                     $request->input("school_motto"),
-                    $request->input("school_address")
+                    $request->input("school_address"),
+                    ($request->input("under_maintenance") == "on" ? "1" : "0")
                 ]);
                 return redirect("/SchoolAccount/Edit/")->with('success', 'School profile updated successfully!');
             } catch (\Exception $e) {

@@ -16,7 +16,7 @@ class AdminAuth
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
+    {   
         // check for the user`s credentials
         if(!Cookie::has('authentication_code')){
             // get to see if its present

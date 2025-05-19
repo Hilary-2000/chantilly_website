@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {{-- header title favicon etc --}}
-<x-edit-header title="Administrators - Chantilly Schools" />
+<x-edit-header title="Edit Administrators - Chantilly Schools" />
 
 <body>
     {{-- mobile menu and desktop menu --}}

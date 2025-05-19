@@ -16,7 +16,15 @@ class GetUserData
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
+    {   // check if the page is under maintenance.
+        $school_details = DB::select("SELECT * FROM `school_details`");
+        if (count($school_details) > 0) {
+            $under_maintenance = $school_details[0]->under_maintenance;
+            if ($under_maintenance == "1") {
+                return redirect("/Under-Maintenance");
+            }
+        }
+        
         // check for the user`s credentials
         if(Cookie::has('authentication_code')){
             // get to see if its present

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {{-- header title favicon etc --}}
-<x-header title="Events - Chantilly Schools" />
+<x-header title="Video & Events - Chantilly Schools" />
 
 <body>
     {{-- mobile menu and desktop menu --}}
@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="breadcrumb-text">
-                        <h1 class="text-center">Events</h1>
+                        <h1 class="text-center">Video & Events</h1>
                         <div class="breadcrumb-bar">
                             <ul class="breadcrumb">
                                 <li><a href=".">Home</a></li>
