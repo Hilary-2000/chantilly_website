@@ -83,7 +83,7 @@
                                 </div>
                                 <div class="contact-text">
                                     <h4>Email</h4>
-                                    <span>{{session('school_email') ?? "info@chantillyschools.ac.ke"}}</span>
+                                    <span><a href="mailto:{{session('school_email') ?? "info@chantillyschools.ac.ke"}}" class="">{{session('school_email') ?? "info@chantillyschools.ac.ke"}}</a></span>
                                 </div>
                             </div>
                         </div>

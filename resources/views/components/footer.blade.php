@@ -10,8 +10,15 @@
                     </div>
                     <div class="footer-info">
                         <span><i class="fa fa-map-marker"></i>{!!session('school_pin_location') ? '<a target="_blank" class="text-white" href="https://www.google.com/maps?q='.session('school_pin_location').'" class=""><u>'.(session('school_address') ?? "Banana Raini Rd, off Limuru Road Ruaka, Karuri").'</u></a>' : session('school_address') ?? "Banana Raini Rd, off Limuru Road Ruaka, Karuri" !!}</span>
-                        <span><i class="fa fa-envelope"></i>{{session('school_email') ?? "info@chantillyschools.ac.ke"}}</span>
+                        <span><a class="text-white" href="mailto:{{session('school_email') ?? "info@chantillyschools.ac.ke"}}"><i class="fa fa-envelope"></i>{{session('school_email') ?? "info@chantillyschools.ac.ke"}}</a></span>
                         <span><i class="fa fa-phone"></i><a href="tel:{{session('school_phone') ?? "0714402822"}}" style="color: white;">{{session('school_phone') ?? "(254) 714 402 822"}}</a></span>
+                    </div>
+                    <div class="row w-50 mx-auto my-2">
+                        <hr class="bg-white white">
+                            <div class="social-links">
+                                <a target="_blank" href="{{ session('school_facebook') ?? "https://www.facebook.com/chantillyschools/" }}"><i class="fa fa-facebook"></i></a>
+                                <a target="_blank" href="{{ session('school_instagram') ?? "https://www.instagram.com/chantillyschools.kaizen/" }}"><i class="fa fa-instagram"></i></a>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -20,16 +27,19 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="single-footer-widget">
-                        <h4>Our School</h4>
+                        <h4>Quick Links</h4>
                         <ul class="footer-widget-list">
                             <li><a href="/AboutUs">About Us</a></li>
-                            <li><a href="/Events">Events</a></li>
                             <li><a href="/ContactUs">Contact Us</a></li>
-                            <li><a href="/Vacancies">Become one of us</a></li>
+                            <li><a href="/Gallery">Gallery</a></li>
+                            <li><a href="/Vacancies">Vacancies</a></li>
+                            <li><a href="/Events">Events</a></li>
+                            <li><a href="/Downloads">Downloads</a></li>
+                            <li><a href="/ExtraCurriculum">Extra Curriculum</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 d-none">
                     <div class="single-footer-widget">
                         <h4>Links</h4>
                         <ul class="footer-widget-list">
@@ -39,7 +49,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 d-none">
                     <div class="single-footer-widget">
                         <h4>Support</h4>
                         <ul class="footer-widget-list">

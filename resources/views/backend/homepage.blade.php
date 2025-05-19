@@ -600,7 +600,7 @@
     <!--End of Service Area-->
 
     <!--Fun Factor Area Start-->
-    <div class="fun-factor-area" id="fun-factor-area">
+    <div class="fun-factor-area d-none" id="fun-factor-area">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-8">
